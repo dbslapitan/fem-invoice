@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+html{
+  box-sizing: border-box;
+}
+
+*, *:before, *:after{
+  box-sizing: inherit;
+}
+
+body{
+  --header-bkg: #373B53;
+}
+
+body.dark-mode{
+  --header-bkg: #1E2139;
+}
