@@ -15,10 +15,12 @@ html{
 
 body{
   --header-bkg: #373B53;
+  --theme-image: url("assets/icon-moon.svg");
 }
 
 body.dark-mode{
   --header-bkg: #1E2139;
+  --theme-image: url("assets/icon-sun.svg");
 }
 
 button {

@@ -51,7 +51,7 @@ header{
 .theme{
   align-self: center;
   background-color: #FFFFFF00;
-  background-image: url("../assets/icon-sun.svg");
+  background-image: var(--theme-image);
   background-repeat: no-repeat;
   height: 1.25rem;
   margin-right: 1.5rem;
