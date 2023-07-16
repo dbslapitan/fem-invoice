@@ -1,0 +1,12 @@
+@media only screen and (min-width: 768px){
+  header{
+    height: 5rem;
+  }
+  .profile-picture{
+    margin: auto 2rem;
+  }
+
+  .theme{
+    margin: auto 2rem auto 0;
+  }
+}
