@@ -2,3 +2,32 @@ header{
   height: 4.5rem;
   background-color: var(--header-bkg);
 }
+
+.logo-container{
+  background-color: #7C5DFA;
+  border-radius: 0 1.25rem 1.25rem 0;
+  display: block;
+  height: inherit;
+  position: relative;
+  width: 4.5rem;
+  z-index: 1;
+}
+
+.logo{
+  background-image: url("../assets/logo.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  height: inherit;
+  width: inherit;
+  z-index: 3000;
+}
+
+.logo-design{
+  background-color: #9277FF;
+  border-radius: 1.25rem 0 1.25rem 0;
+  bottom: 0;
+  height: 2.25rem;
+  position: absolute;
+  width: inherit;
+  z-index: -1000;
+}
