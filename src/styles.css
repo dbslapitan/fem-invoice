@@ -6,6 +6,7 @@ html{
 *{
   margin: 0;
   padding: 0;
+  border-radius: 0;
 }
 
 *, *:before, *:after{
@@ -18,4 +19,18 @@ body{
 
 body.dark-mode{
   --header-bkg: #1E2139;
+}
+
+button {
+  border-style: none;
+}
+
+button:hover{
+  cursor: pointer;
+}
+
+div{
+  display: flex;
+  height: inherit;
+  width: inherit;
 }
