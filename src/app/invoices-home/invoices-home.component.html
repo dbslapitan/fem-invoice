@@ -1,4 +1,7 @@
 <div class="title-container">
   <h1 class="title">Invoices</h1>
-  <p class="invoice-count">7 invoices</p>
+  <p class="invoice-count" *ngIf="isNotMobile$ | async; else isMobile">There are 7 invoices</p>
+  <ng-template #isMobile>
+    <p class="invoice-count">7 invoices</p>
+  </ng-template>
 </div>
