@@ -1,7 +1,7 @@
 @media only screen and (min-width: 1440px){
   :host{
     display: grid;
-    grid-template-columns: 6.4375rem auto;
+    grid-template-columns: 6.4375rem 1fr;
     grid-template-rows: auto;
     grid-template-areas:
     "left right";
@@ -20,8 +20,16 @@
 
   }
 
+  .logo{
+    height: inherit;
+  }
+
+  .logo-design{
+    height: 3.21875rem;
+  }
+
   .logo-container{
-    height: 6.4375rem;
+    height: 103px;
     width: inherit;
   }
 

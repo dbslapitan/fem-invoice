@@ -6,6 +6,14 @@
     margin: auto 2rem;
   }
 
+  .logo{
+    height: inherit;
+  }
+
+  .logo-design{
+    height: 2.5rem;
+  }
+
   .theme{
     margin: auto 2rem auto 0;
   }

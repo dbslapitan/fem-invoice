@@ -1,25 +1,30 @@
+:host{
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 4.5rem 1fr;
+}
+
 header{
   background-color: var(--header-bkg);
   display: flex;
-  height: 4.5rem;
+  height: inherit;
   justify-content: space-between;
 }
 
 .logo-container{
   background-color: #7C5DFA;
   border-radius: 0 1.25rem 1.25rem 0;
-  display: block;
   height: inherit;
   position: relative;
   width: 4.5rem;
-  z-index: 1;
+  z-index: 100;
 }
 
 .logo{
   background-image: url("../assets/logo.svg");
   background-position: center;
   background-repeat: no-repeat;
-  height: inherit;
+  height: 4.5rem;
   width: inherit;
   z-index: 3000;
 }
