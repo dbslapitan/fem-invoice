@@ -1,9 +1,17 @@
 .invoice-count{
   color: var(--invoices-count);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.15385;
+  letter-spacing: -0.00625rem;
 }
 
 .title{
   color: var(--invoices-title);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 0.91667;
+  letter-spacing: -0.046875rem;
 }
 
 .title-container{
