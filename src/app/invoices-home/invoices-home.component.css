@@ -73,6 +73,7 @@
   display: inline-flex;
   justify-content: flex-end;
   flex-direction: column;
+  gap: 3px;
   height: inherit;
   width: fit-content;
 }
