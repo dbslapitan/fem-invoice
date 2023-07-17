@@ -29,7 +29,7 @@
   color: var(--invoices-count);
   font-size: 0.8125rem;
   font-weight: 500;
-  line-height: 1.15385;
+  line-height: 1.153846;
   letter-spacing: -0.00625rem;
 }
 
@@ -39,6 +39,10 @@
   background-color: #7C5DFA;
   border-radius: 1.5rem;
   color: #FFFFFF;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.015625rem;
   margin-left: 1.15875rem;
   width: 5.625rem;
 }
@@ -60,14 +64,13 @@
   display: flex;
   font-size: 1.5rem;
   font-weight: 700;
-  line-height: 0.91667;
+  line-height: normal;
   letter-spacing: -0.046875rem;
 }
 
 .title-container{
   align-items: flex-start;
   display: inline-flex;
-  gap: 3px;
   justify-content: flex-end;
   flex-direction: column;
   height: inherit;

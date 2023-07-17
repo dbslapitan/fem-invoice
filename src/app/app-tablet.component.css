@@ -2,9 +2,6 @@
   header{
     height: 5rem;
   }
-  .profile-picture{
-    margin: auto 2rem;
-  }
 
   .logo{
     height: inherit;
@@ -12,6 +9,10 @@
 
   .logo-design{
     height: 2.5rem;
+  }
+
+  .profile-picture{
+    margin: auto 2rem;
   }
 
   .theme{
