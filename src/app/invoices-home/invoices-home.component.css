@@ -20,7 +20,7 @@
   display: flex;
 }
 
-.filter > span{
+.filter > .caret{
   content: url("../../assets/icon-arrow-down.svg");
   margin-left: 0.75rem;
 }

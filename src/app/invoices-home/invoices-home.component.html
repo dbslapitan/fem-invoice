@@ -6,12 +6,18 @@
   </ng-template>
 </div>
 <div class="filter-and-add">
-  <button class="filter" (click)="filterClicked()" *ngIf="isNotMobile$ | async; else filterByStatus">Filter by status<span></span></button>
-  <ng-template #filterByStatus>
-    <button class="filter" (click)="filterClicked()">Filter<span></span></button>
-  </ng-template>
-  <button class="new-invoice" *ngIf="isNotMobile$ | async; else newInvoice"><span class="new-invoice-design"></span>New Invoice</button>
-  <ng-template #newInvoice>
-    <button class="new-invoice"><span class="new-invoice-design"></span>New</button>
-  </ng-template>
+  <button class="filter" (click)="filterOpen()">
+      <span *ngIf="isNotMobile$ | async; else filterByStatus">Filter by status</span>
+    <ng-template #filterByStatus>
+      <span>Filter</span>
+    </ng-template>
+    <span class="caret"></span>
+  </button>
+
+  <button class="new-invoice"><span class="new-invoice-design"></span>
+    <span *ngIf="isNotMobile$ | async; else newInvoice">New Invoice</span>
+    <ng-template #newInvoice>
+      <span>New</span>
+    </ng-template>
+  </button>
 </div>

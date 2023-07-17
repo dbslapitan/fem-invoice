@@ -12,6 +12,7 @@ import {map, Observable} from "rxjs";
 export class InvoicesHomeComponent implements OnInit{
 
   isNotMobile$!: Observable<boolean>;
+  filterIsOpen = false;
 
   constructor(private breakPoint: BreakpointObserver) {
   }
@@ -22,6 +23,7 @@ export class InvoicesHomeComponent implements OnInit{
     );
   }
 
-  filterClicked(){
+  filterOpen(){
+    this.filterIsOpen = !this.filterIsOpen;
   }
 }
