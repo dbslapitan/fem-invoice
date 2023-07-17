@@ -1,0 +1,47 @@
+@media only screen and (min-width: 1440px){
+  :host{
+    display: grid;
+    grid-template-columns: 6.4375rem auto;
+    grid-template-rows: auto;
+    grid-template-areas:
+    "left right";
+  }
+
+  header{
+    border-radius: 0 1.25rem 1.25rem 0;
+    flex-direction: column;
+    grid-area: left;
+    width: 6.4375rem;
+    height: 100vh;
+  }
+
+  main{
+    grid-area: right;
+
+  }
+
+  .logo-container{
+    height: 6.4375rem;
+    width: inherit;
+  }
+
+  .profile-picture{
+    margin: 2rem auto;
+  }
+
+  .settings-container{
+    align-self: flex-end;
+    flex-direction: column;
+    height: inherit;
+    width: inherit;
+  }
+
+  .settings-divider{
+    width: inherit;
+    height: 1px;
+  }
+
+  .theme{
+    margin: auto auto 2rem auto;
+  }
+}
