@@ -1,0 +1,11 @@
+.invoice-count{
+  color: var(--invoices-count);
+}
+
+.title{
+  color: var(--invoices-title);
+}
+
+.title-container{
+  width: fit-content;
+}

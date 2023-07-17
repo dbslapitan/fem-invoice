@@ -4,10 +4,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {NgOptimizedImage} from "@angular/common";
+import { InvoicesHomeComponent } from './invoices-home/invoices-home.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    InvoicesHomeComponent
   ],
     imports: [
         BrowserModule,

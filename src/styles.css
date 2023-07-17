@@ -21,12 +21,16 @@ body{
   background-color: #F8F8FB;
   --header-bkg: #373B53;
   --theme-image: url("assets/icon-moon.svg");
+  --invoices-title: #0C0E16;
+  --invoices-count: #888EB0;
 }
 
 body.dark-mode{
   background-color: #141625;
   --header-bkg: #1E2139;
   --theme-image: url("assets/icon-sun.svg");
+  --invoices-title: #FFFFFF;
+  --invoices-count: #DFE3FA;
 }
 
 button {
@@ -37,6 +41,50 @@ button:hover{
   cursor: pointer;
 }
 
+/*Heading L  |  Spartan Bold  |  36px  |  33px Line  |  -1 Spacing*/
 .hl-b-36-33-n1{
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 0.91667;
+  letter-spacing: -0.0703125rem;
+}
 
+/*Heading M |  Spartan Bold  |  24px  |  22px Line  |  -0.75 Spacing*/
+.hm-b-24-22-n75p{
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 0.91667;
+  letter-spacing: -0.046875rem;
+}
+
+/*Heading S  |  Spartan Bold  |  15px  |  24px Line  |  -0.25 Spacing*/
+.hs-b-15-24-n25p{
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1.6;
+  letter-spacing: -0.015625rem;
+}
+
+/*Heading S (Variant)  |  Spartan Bold  |  15px  |  15px Line  |  -0.25 Spacing*/
+.hsv-b-15-15-n25p{
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.015625rem;
+}
+
+/*Body  |  Spartan Medium  |  13px  |  18px Line  |  -0.1 Spacing*/
+.b-m-13-18-n10p{
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.38462;
+  letter-spacing: -0.00625rem;
+}
+
+/*Body (Variant)  |  Spartan Medium  |  13px  |  15px Line  |  -0,25 Spacing*/
+.bv-m-13-15-n25p{
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.15385;
+  letter-spacing: -0.00625rem;
 }
