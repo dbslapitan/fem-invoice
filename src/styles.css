@@ -14,11 +14,13 @@ html{
 }
 
 body{
+  background-color: #F8F8FB;
   --header-bkg: #373B53;
   --theme-image: url("assets/icon-moon.svg");
 }
 
 body.dark-mode{
+  background-color: #141625;
   --header-bkg: #1E2139;
   --theme-image: url("assets/icon-sun.svg");
 }
