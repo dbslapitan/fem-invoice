@@ -1,3 +1,30 @@
+:host{
+  display: flex;
+  height: 2.75rem;
+  justify-content: space-between;
+  width: 20.4375rem;
+  margin: 2rem auto;
+}
+
+.filter{
+  background-color: inherit;
+  border: none;
+  color: var(--invoices-title);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.015625rem;
+}
+
+.filter-and-add{
+  display: flex;
+}
+
+.filter > span{
+  content: url("../../assets/icon-arrow-down.svg");
+  margin-left: 0.75rem;
+}
+
 .invoice-count{
   color: var(--invoices-count);
   font-size: 0.8125rem;
@@ -6,8 +33,31 @@
   letter-spacing: -0.00625rem;
 }
 
+.new-invoice{
+  align-items: center;
+  display: flex;
+  background-color: #7C5DFA;
+  border-radius: 1.5rem;
+  color: #FFFFFF;
+  margin-left: 1.15875rem;
+  width: 5.625rem;
+}
+
+.new-invoice-design{
+  background-color: #FFFFFF;
+  background-image: url("../../assets/icon-plus.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 1.5rem;
+  display: inline-block;
+  height: 2rem;
+  margin: 0.375rem 0.5rem 0.375rem 0.375rem;
+  width: 2rem;
+}
+
 .title{
   color: var(--invoices-title);
+  display: flex;
   font-size: 1.5rem;
   font-weight: 700;
   line-height: 0.91667;
@@ -15,5 +65,11 @@
 }
 
 .title-container{
+  align-items: flex-start;
+  display: inline-flex;
+  gap: 3px;
+  justify-content: flex-end;
+  flex-direction: column;
+  height: inherit;
   width: fit-content;
 }
