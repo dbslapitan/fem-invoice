@@ -5,11 +5,6 @@ header{
   justify-content: space-between;
 }
 
-.settings-divider{
-  width: 1px;
-  background-color: #494E6E;
-}
-
 .logo-container{
   background-color: #7C5DFA;
   border-radius: 0 1.25rem 1.25rem 0;
@@ -48,6 +43,15 @@ header{
   width: 2rem;
 }
 
+.settings-container{
+  display: flex;
+}
+
+.settings-divider{
+  width: 1px;
+  background-color: #494E6E;
+}
+
 .theme{
   align-self: center;
   background-color: #FFFFFF00;
@@ -56,8 +60,4 @@ header{
   height: 1.25rem;
   margin: auto 1.5rem auto 0;
   width: 1.25rem;
-}
-
-.settings-container{
-  display: flex;
 }
