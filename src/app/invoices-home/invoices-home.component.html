@@ -6,11 +6,12 @@
   </ng-template>
 </div>
 <div class="filter-and-add">
-  <button class="filter" (click)="filterOpen()" cdkOverlayOrigin #trigger="cdkOverlayOrigin">
+  <button class="filter" (click)="filterOpen(filterCheckbox)" cdkOverlayOrigin #trigger="cdkOverlayOrigin">
       <span *ngIf="isNotMobile$ | async; else filterByStatus">Filter by status</span>
     <ng-template #filterByStatus>
       <span>Filter</span>
     </ng-template>
+    <input class="filter-checkbox" type="checkbox" #filterCheckbox>
     <span class="caret"></span>
   </button>
 
@@ -21,9 +22,18 @@
     (overlayOutsideClick)="outsideOverlayClicked($event, trigger.elementRef)"
   >
     <ul class="filters-container">
-      <ul>Item 1</ul>
-      <ul>Item 2</ul>
-      <ul>Item 3</ul>
+      <li>
+          <input id="draft" type="checkbox">
+        <label for="draft">Draft</label>
+      </li>
+      <li>
+        <input id="pending" type="checkbox">
+        <label for="pending">Pending</label>
+      </li>
+      <li>
+        <input id="paid" type="checkbox">
+        <label for="paid">Paid</label>
+    </li>
     </ul>
   </ng-template>
 

@@ -23,7 +23,8 @@ export class InvoicesHomeComponent implements OnInit{
     );
   }
 
-  filterOpen(){
+  filterOpen(checkbox: HTMLInputElement){
+    checkbox.checked = !checkbox.checked;
     this.filterIsOpen = !this.filterIsOpen;
   }
 

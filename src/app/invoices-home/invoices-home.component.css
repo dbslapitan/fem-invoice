@@ -10,26 +10,28 @@
   background-color: inherit;
   border: none;
   color: var(--invoices-title);
+  content: url("../../assets/icon-arrow-down.svg");
   font-size: 0.9375rem;
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.015625rem;
 }
 
-.filter > .caret{
-  content: url("../../assets/icon-arrow-down.svg");
-  margin-left: 0.75rem;
-}
-
 .filter-and-add{
   display: flex;
 }
 
-.filters-container{
-  background-color: #252945;
-  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.25);
-  height: 8rem;
-  width: 12rem;
+.filter > input + .caret{
+  content: url("../../assets/icon-arrow-down.svg");
+  margin-left: 0.75rem;
+}
+
+.filter-checkbox{
+  display: none;
+}
+
+.filter > input:checked + .caret {
+  rotate: 180deg;
 }
 
 .filters-container{
@@ -39,7 +41,14 @@
   width: 12rem;
 }
 
-.filters-container > ul{
+.filters-container{
+  background-color: #252945;
+  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.25);
+  height: 8rem;
+  width: 12rem;
+}
+
+.filters-container > li{
   list-style-type: none;
 }
 
