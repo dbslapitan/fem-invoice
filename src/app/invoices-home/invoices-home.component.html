@@ -6,13 +6,26 @@
   </ng-template>
 </div>
 <div class="filter-and-add">
-  <button class="filter" (click)="filterOpen()">
+  <button class="filter" (click)="filterOpen()" cdkOverlayOrigin #trigger="cdkOverlayOrigin">
       <span *ngIf="isNotMobile$ | async; else filterByStatus">Filter by status</span>
     <ng-template #filterByStatus>
       <span>Filter</span>
     </ng-template>
     <span class="caret"></span>
   </button>
+
+  <ng-template
+    cdkConnectedOverlay
+    [cdkConnectedOverlayOrigin]="trigger"
+    [cdkConnectedOverlayOpen]="filterIsOpen"
+    (overlayOutsideClick)="outsideOverlayClicked($event, trigger.elementRef)"
+  >
+    <ul class="filters-container">
+      <ul>Item 1</ul>
+      <ul>Item 2</ul>
+      <ul>Item 3</ul>
+    </ul>
+  </ng-template>
 
   <button class="new-invoice"><span class="new-invoice-design"></span>
     <span *ngIf="isNotMobile$ | async; else newInvoice">New Invoice</span>

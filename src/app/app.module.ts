@@ -3,8 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {NgOptimizedImage} from "@angular/common";
 import { InvoicesHomeComponent } from './invoices-home/invoices-home.component';
+import { OverlayModule } from '@angular/cdk/overlay';
 
 @NgModule({
   declarations: [
@@ -12,9 +12,9 @@ import { InvoicesHomeComponent } from './invoices-home/invoices-home.component';
     InvoicesHomeComponent
   ],
     imports: [
-        BrowserModule,
-        AppRoutingModule,
-        NgOptimizedImage
+      BrowserModule,
+      AppRoutingModule,
+      OverlayModule
     ],
   providers: [],
   bootstrap: [AppComponent]

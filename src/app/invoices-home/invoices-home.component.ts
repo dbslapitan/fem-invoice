@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit} from '@angular/core';
 import {BreakpointObserver} from "@angular/cdk/layout";
 import {map, Observable} from "rxjs";
 
@@ -25,5 +25,9 @@ export class InvoicesHomeComponent implements OnInit{
 
   filterOpen(){
     this.filterIsOpen = !this.filterIsOpen;
+  }
+
+  outsideOverlayClicked(event: MouseEvent, element: ElementRef){
+    this.filterIsOpen = !this.filterIsOpen === true || element.nativeElement.contains(event.target);
   }
 }
