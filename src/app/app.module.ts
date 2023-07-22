@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InvoicesHomeComponent } from './invoices-home/invoices-home.component';
 import { OverlayModule } from '@angular/cdk/overlay';
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -14,9 +15,11 @@ import { OverlayModule } from '@angular/cdk/overlay';
     imports: [
       BrowserModule,
       AppRoutingModule,
-      OverlayModule
+      OverlayModule,
+      HttpClientModule
     ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
