@@ -10,7 +10,7 @@
   background-color: inherit;
   border: none;
   color: var(--invoices-title);
-  content: url("../../assets/icon-arrow-down.svg");
+  content: url("../../../assets/icon-arrow-down.svg");
   font-size: 0.9375rem;
   font-weight: 700;
   line-height: 1;
@@ -22,7 +22,7 @@
 }
 
 .filter > input + .caret{
-  content: url("../../assets/icon-arrow-down.svg");
+  content: url("../../../assets/icon-arrow-down.svg");
   margin-left: 0.75rem;
 }
 
@@ -76,7 +76,7 @@
 
 .new-invoice-design{
   background-color: #FFFFFF;
-  background-image: url("../../assets/icon-plus.svg");
+  background-image: url("../../../assets/icon-plus.svg");
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 1.5rem;

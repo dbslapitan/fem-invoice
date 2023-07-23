@@ -7,7 +7,7 @@
 </div>
 <div class="filter-and-add">
   <button class="filter" (click)="filterOpen(filterCheckbox)" cdkOverlayOrigin #trigger="cdkOverlayOrigin">
-      <span *ngIf="isNotMobile$ | async; else filterByStatus">Filter by status</span>
+    <span *ngIf="isNotMobile$ | async; else filterByStatus">Filter by status</span>
     <ng-template #filterByStatus>
       <span>Filter</span>
     </ng-template>
@@ -20,10 +20,11 @@
     [cdkConnectedOverlayOrigin]="trigger"
     [cdkConnectedOverlayOpen]="filterIsOpen"
     (overlayOutsideClick)="outsideOverlayClicked($event, trigger.elementRef)"
+    [cdkConnectedOverlayPositions] = positionStrategy
   >
     <ul class="filters-container">
       <li>
-          <input id="draft" type="checkbox">
+        <input id="draft" type="checkbox">
         <label for="draft">Draft</label>
       </li>
       <li>
@@ -33,7 +34,7 @@
       <li>
         <input id="paid" type="checkbox">
         <label for="paid">Paid</label>
-    </li>
+      </li>
     </ul>
   </ng-template>
 
@@ -44,3 +45,4 @@
     </ng-template>
   </button>
 </div>
+

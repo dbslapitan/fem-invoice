@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InvoicesHomeComponent } from './invoices-home/invoices-home.component';
 import { OverlayModule } from '@angular/cdk/overlay';
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import { HttpClientModule } from "@angular/common/http";
+import {InvoiceListComponent} from "./invoices-home/invoice-list/invoice-list.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    InvoicesHomeComponent
+    InvoicesHomeComponent,
+    InvoiceListComponent
   ],
     imports: [
       BrowserModule,
