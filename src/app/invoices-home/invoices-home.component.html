@@ -48,4 +48,4 @@
   </div>
 </div>
 
-<no-invoices></no-invoices>
+<no-invoices *ngIf="invoices$ | async"></no-invoices>

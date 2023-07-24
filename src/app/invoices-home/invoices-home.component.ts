@@ -2,6 +2,8 @@ import {Component, ElementRef, OnInit, Renderer2} from '@angular/core';
 import {BreakpointObserver} from "@angular/cdk/layout";
 import {map, Observable} from "rxjs";
 import {ConnectedPosition} from "@angular/cdk/overlay";
+import {Invoice} from "../models/invoice.model";
+import {InvoiceService} from "../services/invoice.service";
 
 @Component({
   selector: 'invoices-home',
@@ -12,6 +14,8 @@ import {ConnectedPosition} from "@angular/cdk/overlay";
 })
 export class InvoicesHomeComponent implements OnInit{
 
+  invoices$!: Observable<Invoice>;
+
   isNotMobile$!: Observable<boolean>;
   filterIsOpen = false;
 
@@ -21,13 +25,17 @@ export class InvoicesHomeComponent implements OnInit{
 
 
 
-  constructor(private breakPoint: BreakpointObserver, private renderer2: Renderer2) {
+  constructor(private breakPoint: BreakpointObserver,
+              private renderer2: Renderer2,
+              private invoiceService: InvoiceService) {
   }
 
   ngOnInit() {
     this.isNotMobile$ = this.breakPoint.observe('(min-width: 768px)').pipe(
       map(({ matches }) => matches)
     );
+    this.invoices$ = this.invoiceService.getAllInvoices();
+    this.invoices$.subscribe(console.log);
   }
 
   filterOpen(checkbox: HTMLInputElement){

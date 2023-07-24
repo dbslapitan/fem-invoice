@@ -7,6 +7,7 @@ import { InvoicesHomeComponent } from './invoices-home/invoices-home.component';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { NoInvoicesComponent } from './invoices-home/no-invoices/no-invoices.component';
 import { InvoiceCardComponent } from './invoices-home/invoice-card/invoice-card.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { InvoiceCardComponent } from './invoices-home/invoice-card/invoice-card.
     imports: [
       BrowserModule,
       AppRoutingModule,
-      OverlayModule
+      OverlayModule,
+      HttpClientModule
     ],
   providers: [],
   bootstrap: [AppComponent]
