@@ -10,7 +10,7 @@ import {Component, OnInit} from '@angular/core';
 export class AppComponent implements OnInit{
 
   isDarkMode: boolean = false;
-
+  title="";
   ngOnInit() {
     this.isDarkMode = localStorage.getItem('isDarkMode') === 'true';
   }
