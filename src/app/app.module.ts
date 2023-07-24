@@ -5,23 +5,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InvoicesHomeComponent } from './invoices-home/invoices-home.component';
 import { OverlayModule } from '@angular/cdk/overlay';
-import { HttpClientModule } from "@angular/common/http";
-import {InvoiceListComponent} from "./invoices-home/invoice-list/invoice-list.component";
+import { NoInvoicesComponent } from './invoices-home/no-invoices/no-invoices.component';
+import { InvoiceCardComponent } from './invoices-home/invoice-card/invoice-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InvoicesHomeComponent,
-    InvoiceListComponent
+    NoInvoicesComponent,
+    InvoiceCardComponent
   ],
     imports: [
       BrowserModule,
       AppRoutingModule,
-      OverlayModule,
-      HttpClientModule
+      OverlayModule
     ],
-  providers: [
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

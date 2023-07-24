@@ -1,8 +1,6 @@
-import {Component, ElementRef, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, Renderer2} from '@angular/core';
 import {BreakpointObserver} from "@angular/cdk/layout";
 import {map, Observable} from "rxjs";
-import {Invoice} from "../models/invoice.model";
-import {InvoiceService} from "../services/invoice.service";
 import {ConnectedPosition} from "@angular/cdk/overlay";
 
 @Component({
@@ -14,27 +12,22 @@ import {ConnectedPosition} from "@angular/cdk/overlay";
 })
 export class InvoicesHomeComponent implements OnInit{
 
-  invoices$!: Observable<Invoice[]>
   isNotMobile$!: Observable<boolean>;
   filterIsOpen = false;
 
-  positionStrategy: ConnectedPosition[] = [
-    {
-      originX: 'center',
-      originY: 'bottom',
-      overlayX: 'center',
-      overlayY: 'top'
-    }
-  ]
+  connectedPositions: ConnectedPosition[] = [
+    {overlayX: 'center', overlayY: "top", originY: 'bottom', originX: 'center'}
+  ];
 
-  constructor(private invoiceService: InvoiceService, private breakPoint: BreakpointObserver) {
+
+
+  constructor(private breakPoint: BreakpointObserver, private renderer2: Renderer2) {
   }
 
   ngOnInit() {
     this.isNotMobile$ = this.breakPoint.observe('(min-width: 768px)').pipe(
       map(({ matches }) => matches)
     );
-    this.invoices$ = this.invoiceService.getAllInvoices();
   }
 
   filterOpen(checkbox: HTMLInputElement){
@@ -42,7 +35,12 @@ export class InvoicesHomeComponent implements OnInit{
     this.filterIsOpen = !this.filterIsOpen;
   }
 
-  outsideOverlayClicked(event: MouseEvent, element: ElementRef){
-    this.filterIsOpen = !this.filterIsOpen || element.nativeElement.contains(event.target);
+  outsideOverlayClicked(event: MouseEvent, elementButton: ElementRef, childElement: HTMLDivElement){
+    const mainElement = document.getElementById("main") as HTMLElement;
+    const logo = document.getElementById("logo-container") as HTMLElement;
+    const target = event.target as HTMLElement;
+    if((mainElement).contains(target) || logo.contains(target)){
+      this.filterIsOpen = !this.filterIsOpen || elementButton.nativeElement.contains(event.target);
+    }
   }
 }

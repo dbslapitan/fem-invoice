@@ -1,2 +1,10 @@
 @media only screen and (min-width: 1440px){
+  .count-and-filters{
+    margin: 4.8125rem auto auto 15.75rem;
+    width: 45.625rem;
+  }
+
+  .new-invoice{
+    margin-left: 2.53375rem;
+  }
 }

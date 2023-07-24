@@ -1,0 +1,14 @@
+@media only screen and (min-width: 768px){
+  .empty-bkg{
+    width: 15.0838125rem;
+    height: 12.5rem;
+    margin-left: 16.4375rem;
+    margin-top: 13.0625rem;
+  }
+
+  .empty-text{
+    margin-left: 16.4375rem;
+    margin-top: 4.125rem;
+    width: 15.0838125rem;;
+  }
+}

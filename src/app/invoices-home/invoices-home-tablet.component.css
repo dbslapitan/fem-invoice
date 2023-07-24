@@ -1,5 +1,5 @@
 @media only screen and (min-width: 768px){
-  :host{
+  .count-and-filters{
     height: 3.4375rem;
     margin-top: 3.8125rem;
     width: 42rem;

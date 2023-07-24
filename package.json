@@ -2,11 +2,11 @@
   "name": "invoices",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "ng": "../../../../../Desktop/client/node_modules/.bin/ng",
+    "start": "../../../../../Desktop/client/node_modules/.bin/ng serve",
+    "build": "../../../../../Desktop/client/node_modules/.bin/ng build",
+    "watch": "../../../../../Desktop/client/node_modules/.bin/ng build --watch --configuration development",
+    "test": "../../../../../Desktop/client/node_modules/.bin/ng test"
   },
   "private": true,
   "dependencies": {

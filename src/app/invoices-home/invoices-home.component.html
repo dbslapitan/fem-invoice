@@ -1,48 +1,51 @@
-<div class="title-container">
-  <h1 class="title">Invoices</h1>
-  <p class="invoice-count" *ngIf="isNotMobile$ | async; else isMobile">There are 7 invoices</p>
-  <ng-template #isMobile>
-    <p class="invoice-count">7 invoices</p>
-  </ng-template>
-</div>
-<div class="filter-and-add">
-  <button class="filter" (click)="filterOpen(filterCheckbox)" cdkOverlayOrigin #trigger="cdkOverlayOrigin">
-    <span *ngIf="isNotMobile$ | async; else filterByStatus">Filter by status</span>
-    <ng-template #filterByStatus>
-      <span>Filter</span>
+<div class="count-and-filters">
+  <div class="title-container">
+    <h1 class="title">Invoices</h1>
+    <p class="invoice-count" *ngIf="isNotMobile$ | async; else isMobile">There are 7 invoices</p>
+    <ng-template #isMobile>
+      <p class="invoice-count">7 invoices</p>
     </ng-template>
-    <input class="filter-checkbox" type="checkbox" #filterCheckbox>
-    <span class="caret"></span>
-  </button>
+  </div>
+  <div class="filter-and-add" #childPointer>
+    <button class="filter" (click)="filterOpen(filterCheckbox)" cdkOverlayOrigin #trigger="cdkOverlayOrigin">
+      <span *ngIf="isNotMobile$ | async; else filterByStatus">Filter by status</span>
+      <ng-template #filterByStatus>
+        <span>Filter</span>
+      </ng-template>
+      <input class="filter-checkbox" type="checkbox" #filterCheckbox>
+      <span class="caret"></span>
+    </button>
 
-  <ng-template
-    cdkConnectedOverlay
-    [cdkConnectedOverlayOrigin]="trigger"
-    [cdkConnectedOverlayOpen]="filterIsOpen"
-    (overlayOutsideClick)="outsideOverlayClicked($event, trigger.elementRef)"
-    [cdkConnectedOverlayPositions] = positionStrategy
-  >
-    <ul class="filters-container">
-      <li>
-        <input id="draft" type="checkbox">
-        <label for="draft">Draft</label>
-      </li>
-      <li>
-        <input id="pending" type="checkbox">
-        <label for="pending">Pending</label>
-      </li>
-      <li>
-        <input id="paid" type="checkbox">
-        <label for="paid">Paid</label>
-      </li>
-    </ul>
-  </ng-template>
-
-  <button class="new-invoice"><span class="new-invoice-design"></span>
-    <span *ngIf="isNotMobile$ | async; else newInvoice">New Invoice</span>
-    <ng-template #newInvoice>
-      <span>New</span>
+    <ng-template
+      cdkConnectedOverlay
+      [cdkConnectedOverlayOrigin]="trigger"
+      [cdkConnectedOverlayOpen]="filterIsOpen"
+      (overlayOutsideClick)="outsideOverlayClicked($event, trigger.elementRef, childPointer)"
+      [cdkConnectedOverlayPositions]="connectedPositions"
+    >
+      <ul class="filters-container">
+        <li>
+          <input id="draft" type="checkbox">
+          <label for="draft">Draft</label>
+        </li>
+        <li>
+          <input id="pending" type="checkbox">
+          <label for="pending">Pending</label>
+        </li>
+        <li>
+          <input id="paid" type="checkbox">
+          <label for="paid">Paid</label>
+        </li>
+      </ul>
     </ng-template>
-  </button>
+
+    <button class="new-invoice"><span class="new-invoice-design"></span>
+      <span *ngIf="isNotMobile$ | async; else newInvoice">New Invoice</span>
+      <ng-template #newInvoice>
+        <span>New</span>
+      </ng-template>
+    </button>
+  </div>
 </div>
 
+<no-invoices></no-invoices>

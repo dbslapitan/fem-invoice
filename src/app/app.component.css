@@ -2,13 +2,21 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 4.5rem 1fr;
+  grid-template-areas:
+    "up"
+    "down";
 }
 
 header{
   background-color: var(--header-bkg);
   display: flex;
+  grid-area: up;
   height: inherit;
   justify-content: space-between;
+}
+
+main{
+  height: calc(100vh - 72px);
 }
 
 .logo-container{
@@ -21,7 +29,7 @@ header{
 }
 
 .logo{
-  background-image: url("../assets/logo.svg");
+  background-image: url("/assets/logo.svg");
   background-position: center;
   background-repeat: no-repeat;
   height: 4.5rem;

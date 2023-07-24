@@ -1,0 +1,38 @@
+.bold{
+  font-weight: 700;
+}
+
+.create-new{
+  color: var(--invoices-count);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.15385;
+  margin: 1.4375rem auto 0 auto;
+  text-align: center;
+  width: 11rem;
+}
+
+.empty-bkg{
+  background-image: url("/assets/illustration-empty.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 10rem;
+  margin: 6.375rem auto auto 5.6875rem;
+  width: 12.066875rem;
+}
+
+.empty-text{
+  margin: 2.625rem auto 0 5.6875rem;
+  width: 12.9375rem;
+}
+
+.nothing{
+  color: var(--invoices-title);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.046875rem;
+  line-height: normal;
+  margin: 0 auto;
+  width: 12.9375rem;
+}
