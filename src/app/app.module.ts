@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { InvoicesHomeComponent } from './invoices-home/invoices-home.component';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { NoInvoicesComponent } from './invoices-home/no-invoices/no-invoices.component';
-import { InvoiceCardComponent } from './invoices-home/invoice-card/invoice-card.component';
 import {HttpClientModule} from "@angular/common/http";
 import {InvoiceListComponent} from "./invoices-home/invoice-list/invoice-list.component";
 
@@ -15,7 +14,6 @@ import {InvoiceListComponent} from "./invoices-home/invoice-list/invoice-list.co
     AppComponent,
     InvoicesHomeComponent,
     NoInvoicesComponent,
-    InvoiceCardComponent,
     InvoiceListComponent
   ],
     imports: [

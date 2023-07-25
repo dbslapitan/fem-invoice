@@ -1,0 +1,62 @@
+h3{
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1.6;
+  letter-spacing: -0.015625rem;
+}
+
+h4{
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.015625rem;
+}
+
+p{
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.15385;
+  letter-spacing: -0.00625rem;
+}
+
+.card-container{
+  background-color: var(--card-bkg);
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 10px -10px rgba(72, 84, 159, 0.10);;
+  height: 8.375rem;
+  margin: 0 auto 1rem 1.5rem;
+  width: 20.4375rem;
+}
+
+.card-container > *{
+  display: inline-flex;
+}
+
+.client-name{
+  color: var(--client-name);
+}
+
+.invoice-total{
+  color: var(--invoices-title);
+}
+
+.invoice-total:before{
+  content: "£";
+}
+
+.payment-due{
+  color: var(--due-date);
+}
+
+.payment-due > span{
+  color: var(--invoices-count);
+}
+
+.string-id{
+  color: var(--invoices-title);
+}
+
+.string-id:before{
+  content: "#";
+  color: #7E88C3;
+}
