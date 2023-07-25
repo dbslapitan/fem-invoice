@@ -22,7 +22,7 @@ body{
   background-color: #F8F8FB;
   height: 100vh;
   --header-bkg: #373B53;
-  --theme-image: url("icon-moon.svg");
+  --theme-image: url("assets/icon-moon.svg");
   --invoices-title: #0C0E16;
   --invoices-count: #888EB0;
   --filters-container-bkg: #FFFFFF;
@@ -32,7 +32,7 @@ body{
 body.dark-mode{
   background-color: #141625;
   --header-bkg: #1E2139;
-  --theme-image: url("icon-sun.svg");
+  --theme-image: url("assets/icon-sun.svg");
   --invoices-title: #FFFFFF;
   --invoices-count: #DFE3FA;
   --filters-container-bkg: #252945;

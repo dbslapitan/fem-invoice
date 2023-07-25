@@ -14,7 +14,8 @@ import {InvoiceService} from "../services/invoice.service";
 })
 export class InvoicesHomeComponent implements OnInit{
 
-  invoices$!: Observable<Invoice>;
+  invoices$!: Observable<Invoice[]>;
+  emptyInvoice: Invoice[] = [];
 
   isNotMobile$!: Observable<boolean>;
   filterIsOpen = false;
@@ -34,7 +35,9 @@ export class InvoicesHomeComponent implements OnInit{
     this.isNotMobile$ = this.breakPoint.observe('(min-width: 768px)').pipe(
       map(({ matches }) => matches)
     );
-    this.invoices$ = this.invoiceService.getAllInvoices();
+    this.invoices$ = this.invoiceService.getAllInvoices().pipe(
+
+    );
     this.invoices$.subscribe(console.log);
   }
 

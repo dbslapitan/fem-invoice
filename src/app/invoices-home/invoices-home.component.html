@@ -48,4 +48,8 @@
   </div>
 </div>
 
-<no-invoices *ngIf="invoices$ | async"></no-invoices>
+<invoice-list *ngIf="(invoices$ | async); else noInvoice" [invoices]="(invoices$ | async) ?? []"></invoice-list>
+
+<ng-template #noInvoice>
+  <no-invoices></no-invoices>
+</ng-template>
