@@ -25,19 +25,25 @@ p{
   box-shadow: 0 10px 10px -10px rgba(72, 84, 159, 0.10);;
   height: 8.375rem;
   margin: 0 auto 1rem 1.5rem;
+  position: relative;
   width: 20.4375rem;
 }
 
 .card-container > *{
   display: inline-flex;
+  position: absolute;
 }
 
 .client-name{
   color: var(--client-name);
+  right: 1.5rem;
+  top: 1.5625rem;
 }
 
 .invoice-total{
+  bottom: 1.375rem;
   color: var(--invoices-title);
+  left: 1.5rem;
 }
 
 .invoice-total:before{
@@ -45,14 +51,32 @@ p{
 }
 
 .payment-due{
+  bottom: 3.4375rem;
   color: var(--due-date);
+  left: 1.5rem;
 }
 
 .payment-due > span{
   color: var(--invoices-count);
 }
 
+.round{
+  height: 0.5rem;
+  width: 0.5rem;
+}
+
+.status-container{
+  align-items: center;
+  justify-content: center;
+  bottom: 1.75rem;
+  height: 2.5rem;
+  right: 1.5rem;
+  width: 6.5rem;
+}
+
 .string-id{
+  left: 1.5rem;
+  top: 1.5625rem;
   color: var(--invoices-title);
 }
 

@@ -3,7 +3,8 @@
   <p class="payment-due"><span>Due &nbsp;</span>{{invoice.paymentDue | date: 'dd MMM yyyy'}}</p>
   <p class="client-name">{{invoice.clientName}}</p>
   <h3 class="invoice-total">&nbsp;{{invoice.total}}</h3>
-  <div>
-    <h4>{{invoice.status}}</h4>
+  <div class="status-container">
+    <div class="round"></div>
+    <h4 class="status">{{invoice.status | titlecase}}</h4>
   </div>
 </div>
