@@ -66,12 +66,17 @@ p{
 }
 
 .status-container{
+  border-radius: 0.375rem;
   align-items: center;
   justify-content: center;
   bottom: 1.75rem;
   height: 2.5rem;
   right: 1.5rem;
   width: 6.5rem;
+}
+
+.status-container.paid {
+  background-color: #33D69F;
 }
 
 .string-id{
