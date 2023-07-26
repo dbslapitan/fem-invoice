@@ -2,7 +2,7 @@
   <h4 class="string-id">{{invoice.stringId}}</h4>
   <p class="payment-due"><span>Due &nbsp;</span>{{invoice.paymentDue | date: 'dd MMM yyyy'}}</p>
   <p class="client-name">{{invoice.clientName}}</p>
-  <h3 class="invoice-total">{{0 | currency: 'GBP' | slice:0:1}} {{invoice.total | currency}}</h3>
+  <h3 class="invoice-total">{{0 | currency: 'GBP' | slice:0:1}} {{invoice.total | currency: 'GBP': ''}}</h3>
   <div class="status-container" [ngClass]="invoice.status">
     <div class="round"></div>
     <h4 class="status">{{invoice.status | titlecase}}</h4>

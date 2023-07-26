@@ -1,7 +1,7 @@
 import {Component, ElementRef, OnInit, Renderer2} from '@angular/core';
 import {BreakpointObserver} from "@angular/cdk/layout";
 import {map, mapTo, Observable, shareReplay} from "rxjs";
-import {ConnectedPosition} from "@angular/cdk/overlay";
+import {ConnectedPosition, OverlayContainer, ScrollStrategyOptions} from "@angular/cdk/overlay";
 import {Invoice} from "../models/invoice.model";
 import {InvoiceService} from "../services/invoice.service";
 
@@ -10,10 +10,12 @@ import {InvoiceService} from "../services/invoice.service";
   templateUrl: './invoices-home.component.html',
   styleUrls: ['./invoices-home.component.css',
     './invoices-home-tablet.component.css',
-    './invoices-home-desktop.component.css']
+    './invoices-home-desktop.component.css'],
 })
 export class InvoicesHomeComponent implements OnInit{
 
+
+  scrollStrategy = this.scrollStrategyOptions.reposition();
   invoices$!: Observable<Invoice[]>;
   invoicesCount$!: Observable<number>;
 
@@ -28,7 +30,9 @@ export class InvoicesHomeComponent implements OnInit{
 
   constructor(private breakPoint: BreakpointObserver,
               private renderer2: Renderer2,
-              private invoiceService: InvoiceService) {
+              private invoiceService: InvoiceService,
+              private scrollStrategyOptions: ScrollStrategyOptions) {
+
   }
 
   ngOnInit() {
@@ -44,7 +48,7 @@ export class InvoicesHomeComponent implements OnInit{
   }
 
   filterOpen(checkbox: HTMLInputElement){
-    checkbox.checked = !checkbox.checked;
+    //checkbox.checked = !checkbox.checked;
     this.filterIsOpen = !this.filterIsOpen;
   }
 

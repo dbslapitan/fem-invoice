@@ -12,7 +12,7 @@
       <ng-template #filterByStatus>
         <span>Filter</span>
       </ng-template>
-      <input class="filter-checkbox" type="checkbox" #filterCheckbox>
+      <input class="filter-checkbox" type="checkbox" #filterCheckbox [checked]="filterIsOpen">
       <span class="caret"></span>
     </button>
 
@@ -22,6 +22,7 @@
       [cdkConnectedOverlayOpen]="filterIsOpen"
       (overlayOutsideClick)="outsideOverlayClicked($event, trigger.elementRef, childPointer)"
       [cdkConnectedOverlayPositions]="connectedPositions"
+      [cdkConnectedOverlayScrollStrategy]="scrollStrategy"
     >
       <ul class="filters-container">
         <li>
