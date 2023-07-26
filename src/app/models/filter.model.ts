@@ -1,5 +1,5 @@
 export interface Filter{
-  paid: boolean;
-  pending: boolean;
-  draft: boolean;
+  'paid': boolean;
+  'pending': boolean;
+  'draft': boolean;
 }

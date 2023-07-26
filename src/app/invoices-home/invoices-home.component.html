@@ -26,15 +26,15 @@
     >
       <ul class="filters-container">
         <li>
-          <input id="draft" type="checkbox">
+          <input id="draft" type="checkbox" [checked]="filter.draft" (click)="filterChange(draft)" #draft [disabled]="!pending.checked && !paid.checked">
           <label for="draft">Draft</label>
         </li>
         <li>
-          <input id="pending" type="checkbox">
+          <input id="pending" type="checkbox" [checked]="filter.pending" (click)="filterChange(pending)" #pending [disabled]="!draft.checked && !paid.checked">
           <label for="pending">Pending</label>
         </li>
         <li>
-          <input id="paid" type="checkbox">
+          <input id="paid" type="checkbox" [checked]="filter.paid" (click)="filterChange(paid)" #paid [disabled]="!draft.checked && !pending.checked">
           <label for="paid">Paid</label>
         </li>
       </ul>
@@ -49,7 +49,7 @@
   </div>
 </div>
 
-<invoice-list *ngIf="(invoices$ | async); else noInvoice" [invoices]="(invoices$ | async) ?? []"></invoice-list>
+<invoice-list *ngIf="(filteredInvoice$ | async); else noInvoice" [invoices]="(filteredInvoice$ | async) ?? []"></invoice-list>
 
 <ng-template #noInvoice>
   <no-invoices></no-invoices>

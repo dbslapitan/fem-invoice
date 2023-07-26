@@ -35,6 +35,18 @@ li > input:checked + label::before {
   left: -1.625rem;
 }
 
+li > input:disabled{
+  opacity: 50%;
+}
+
+li > input:disabled + label{
+  opacity: 50%;
+}
+
+li > input:disabled + label::before{
+  opacity: 50%;
+}
+
 .filter{
   background-color: inherit;
   border: none;
