@@ -50,9 +50,6 @@ export class InvoicesHomeComponent implements OnInit{
     this.invoices$ = this.invoiceService.getAllInvoices().pipe(
       shareReplay()
     );
-    this.invoicesCount$ = this.invoices$.pipe(
-      map(invoices => invoices.length)
-    );
 
     if(localStorage.getItem('filters')){
       try {
@@ -76,6 +73,9 @@ export class InvoicesHomeComponent implements OnInit{
     this.filteredInvoice$ = this.invoices$.pipe(
       map(invoices => invoices.filter(invoice => this.filter[invoice.status as keyof Filter])
       ));
+    this.invoicesCount$ = this.filteredInvoice$.pipe(
+      map(invoices => invoices.length)
+    );
   }
 
   filterOpen(checkbox: HTMLInputElement){
@@ -99,5 +99,8 @@ export class InvoicesHomeComponent implements OnInit{
     this.filteredInvoice$ = this.invoices$.pipe(
       map(invoices => invoices.filter(invoice => this.filter[invoice.status as keyof Filter])
     ));
+    this.invoicesCount$ = this.filteredInvoice$.pipe(
+      map(invoices => invoices.length)
+    );
   }
 }
