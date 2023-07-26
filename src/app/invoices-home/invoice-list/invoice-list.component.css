@@ -29,6 +29,8 @@ p{
   width: 20.4375rem;
 }
 
+
+
 .card-container > *{
   display: inline-flex;
   position: absolute;
@@ -46,8 +48,9 @@ p{
   left: 1.5rem;
 }
 
-.invoice-total:before{
-  content: "£";
+.margin-gap{
+  height: 5.5625rem;
+  width: 100%;
 }
 
 .payment-due{
@@ -61,7 +64,9 @@ p{
 }
 
 .round{
+  border-radius: 0.25rem;
   height: 0.5rem;
+  margin-right: 0.5rem;
   width: 0.5rem;
 }
 
@@ -76,7 +81,39 @@ p{
 }
 
 .status-container.paid {
+  background-color: rgba(51, 214, 159, 0.0570882149040699);
+}
+
+.status-container.paid  > .status{
+  color: #33D69F;
+}
+
+.status-container.paid  > .round{
   background-color: #33D69F;
+}
+
+.status-container.pending {
+  background-color: rgba(255, 143, 0, 0.0570882149040699);
+}
+
+.status-container.pending > .status{
+  color: #FF8F00;
+}
+
+.status-container.pending > .round{
+  background-color: #FF8F00;
+}
+
+.status-container.draft {
+  background-color: rgba(223, 227, 250, 0.0570882149040699);
+}
+
+.status-container.draft > .status{
+  color: #DFE3FA;
+}
+
+.status-container.draft > .round{
+  background-color: #DFE3FA;
 }
 
 .string-id{

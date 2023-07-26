@@ -1,9 +1,9 @@
 <div class="count-and-filters">
   <div class="title-container">
     <h1 class="title">Invoices</h1>
-    <p class="invoice-count" *ngIf="isNotMobile$ | async; else isMobile">There are 7 invoices</p>
+    <p class="invoice-count" *ngIf="isNotMobile$ | async; else isMobile">There are {{invoicesCount$ | async}} invoices</p>
     <ng-template #isMobile>
-      <p class="invoice-count">7 invoices</p>
+      <p class="invoice-count">{{invoicesCount$ | async}} invoices</p>
     </ng-template>
   </div>
   <div class="filter-and-add" #childPointer>
@@ -53,3 +53,5 @@
 <ng-template #noInvoice>
   <no-invoices></no-invoices>
 </ng-template>
+
+<div></div>

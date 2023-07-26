@@ -20,7 +20,6 @@ html{
 
 body{
   background-color: #F8F8FB;
-  height: 100vh;
   --header-bkg: #373B53;
   --theme-image: url("assets/icon-moon.svg");
   --invoices-title: #0C0E16;

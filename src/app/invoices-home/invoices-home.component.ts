@@ -1,6 +1,6 @@
 import {Component, ElementRef, OnInit, Renderer2} from '@angular/core';
 import {BreakpointObserver} from "@angular/cdk/layout";
-import {map, Observable} from "rxjs";
+import {map, mapTo, Observable, shareReplay} from "rxjs";
 import {ConnectedPosition} from "@angular/cdk/overlay";
 import {Invoice} from "../models/invoice.model";
 import {InvoiceService} from "../services/invoice.service";
@@ -15,7 +15,7 @@ import {InvoiceService} from "../services/invoice.service";
 export class InvoicesHomeComponent implements OnInit{
 
   invoices$!: Observable<Invoice[]>;
-  emptyInvoice: Invoice[] = [];
+  invoicesCount$!: Observable<number>;
 
   isNotMobile$!: Observable<boolean>;
   filterIsOpen = false;
@@ -36,9 +36,11 @@ export class InvoicesHomeComponent implements OnInit{
       map(({ matches }) => matches)
     );
     this.invoices$ = this.invoiceService.getAllInvoices().pipe(
-
+      shareReplay()
     );
-    this.invoices$.subscribe(console.log);
+    this.invoicesCount$ = this.invoices$.pipe(
+      map(invoices => invoices.length)
+    );
   }
 
   filterOpen(checkbox: HTMLInputElement){
