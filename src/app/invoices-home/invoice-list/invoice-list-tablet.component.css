@@ -1,0 +1,46 @@
+@media only screen and (min-width: 768px){
+
+  .card-container{
+    height: 4.5rem;
+    margin-left: 3rem;
+    width: 42rem;
+  }
+
+  .card-container > *:not(.status-container) {
+    margin: auto 0;
+    bottom: 0;
+    height: min-content;
+    left: unset;
+    right: unset;
+    top: 0;
+  }
+
+  .card-container > .arrow-right{
+    display: inline;
+    height: revert;
+    right: 1.5rem;
+  }
+
+  .card-container > .client-name{
+    left: 15.875rem;
+  }
+
+  .card-container > .invoice-total{
+    right: 12rem;
+  }
+
+  .card-container > .payment-due{
+    left: 6.9375rem;
+  }
+
+  .card-container > .status-container {
+    margin: auto 0;
+    bottom: 0;
+    right: 3rem;
+    top: 0;
+  }
+
+  .card-container > .string-id{
+    left: 1.5rem;
+  }
+}

@@ -19,6 +19,8 @@ p{
   letter-spacing: -0.00625rem;
 }
 
+
+
 .card-container{
   background-color: var(--card-bkg);
   border-radius: 0.5rem;
@@ -29,11 +31,18 @@ p{
   width: 20.4375rem;
 }
 
-
-
 .card-container > *{
   display: inline-flex;
   position: absolute;
+}
+
+.card-container > .arrow-right{
+  display: none;
+  background-image: url("/assets/icon-arrow-right.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 0.5rem;
+  width: 0.25rem;
 }
 
 .client-name{

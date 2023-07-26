@@ -4,7 +4,8 @@ import {Invoice} from "../../models/invoice.model";
 @Component({
   selector: 'invoice-list',
   templateUrl: './invoice-list.component.html',
-  styleUrls: ['./invoice-list.component.css']
+  styleUrls: ['./invoice-list.component.css',
+    './invoice-list-tablet.component.css']
 })
 export class InvoiceListComponent {
 
