@@ -16,6 +16,10 @@ label{
   position: relative;
 }
 
+li > *:hover {
+  cursor: pointer;
+}
+
 li > input {
   appearance: none;
   background-color: var(--checkbox-bkg);

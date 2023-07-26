@@ -16,9 +16,9 @@
   }
 
   main{
-    height: 100%;
+    height: 100vh;
     grid-area: right;
-
+    overflow: auto;
   }
 
   .logo{
