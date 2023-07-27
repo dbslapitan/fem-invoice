@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Invoice} from "../../models/invoice.model";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'invoice-list',
@@ -11,4 +12,11 @@ import {Invoice} from "../../models/invoice.model";
 export class InvoiceListComponent {
 
   @Input() invoices!: Invoice[];
+
+  constructor(private activatedRoute: ActivatedRoute, private router: Router) {
+  }
+
+  invoiceClick(invoice: Invoice){
+    this.router.navigate(['invoices', invoice.stringId]);
+  }
 }

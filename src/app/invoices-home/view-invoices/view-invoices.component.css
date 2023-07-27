@@ -1,0 +1,15 @@
+.go-back{
+  color: var(--invoices-title);
+  display: inline-flex;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.015625rem;
+  margin: 2.0625rem 0 0 1.506875rem;
+  text-decoration: none;
+}
+
+.go-back:before{
+  content: url("/assets/icon-arrow-left.svg");
+  margin-right: 1.47875rem;
+}

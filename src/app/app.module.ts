@@ -8,15 +8,21 @@ import { OverlayModule} from '@angular/cdk/overlay';
 import { NoInvoicesComponent } from './invoices-home/no-invoices/no-invoices.component';
 import {HttpClientModule} from "@angular/common/http";
 import {InvoiceListComponent} from "./invoices-home/invoice-list/invoice-list.component";
+import {ViewInvoicesComponent} from "./invoices-home/view-invoices/view-invoices.component";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    InvoicesHomeComponent,
+    NoInvoicesComponent,
+    InvoiceListComponent,
+    ViewInvoicesComponent
   ],
     imports: [
       BrowserModule,
       AppRoutingModule,
-      HttpClientModule
+      HttpClientModule,
+      OverlayModule
     ],
   providers: [],
   bootstrap: [AppComponent]

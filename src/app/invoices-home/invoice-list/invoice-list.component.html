@@ -1,4 +1,4 @@
-<div class="card-container" *ngFor="let invoice of invoices">
+<div class="card-container" *ngFor="let invoice of invoices" (click)="invoiceClick(invoice)">
   <h4 class="string-id">{{invoice.stringId}}</h4>
   <p class="payment-due"><span>Due &nbsp;</span>{{invoice.paymentDue | date: 'dd MMM yyyy'}}</p>
   <p class="client-name">{{invoice.clientName}}</p>
