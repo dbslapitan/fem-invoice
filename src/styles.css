@@ -29,6 +29,7 @@ body{
   --due-date: #7E88C3;
   --client-name: #858BB2;
   --card-bkg: #FFFFFF;
+  --view-pending: #858BB2;
 }
 
 body.dark-mode{
@@ -42,6 +43,7 @@ body.dark-mode{
   --due-date: #DFE3FA;
   --client-name: #FFFFFF;
   --card-bkg: #1E2139;
+  --view-pending: #DFE3FA;
 }
 
 button {

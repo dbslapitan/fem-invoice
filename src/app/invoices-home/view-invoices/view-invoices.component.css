@@ -13,3 +13,18 @@
   content: url("/assets/icon-arrow-left.svg");
   margin-right: 1.47875rem;
 }
+
+.status-design{
+  align-items: center;
+  background-color: var(--card-bkg);
+  border-radius: 0.5rem;
+  display: flex;
+  height: 5.6875rem;
+  margin: 1.9375rem auto 1rem 1.5rem;
+  padding: 0 1.5rem;
+  width: 20.4375rem;
+}
+
+.status-design > p {
+  color: var(--view-pending);
+}

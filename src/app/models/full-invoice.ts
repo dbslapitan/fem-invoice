@@ -1,4 +1,7 @@
-export interface Invoice{
+import {Address} from "./address.model";
+import {Item} from "./item.model";
+
+export interface FullInvoice{
   id: number;
   stringId: string;
   createdAt: Date;
@@ -9,4 +12,7 @@ export interface Invoice{
   clientEmail: string;
   status: string;
   total: number;
+  client: Address;
+  sender: Address;
+  items: Item[];
 }
