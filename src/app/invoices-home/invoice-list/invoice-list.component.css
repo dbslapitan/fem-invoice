@@ -31,6 +31,10 @@ p{
   width: 20.4375rem;
 }
 
+.card-container:hover{
+  cursor: pointer;
+}
+
 .card-container > *{
   display: inline-flex;
   position: absolute;

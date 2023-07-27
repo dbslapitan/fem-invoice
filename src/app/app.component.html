@@ -1,5 +1,5 @@
 <header>
-  <a href="#" class="logo-container" id="logo-container">
+  <a routerLink="/invoices" class="logo-container" id="logo-container">
     <div class="logo-design"></div>
     <div class="logo"></div>
   </a>
@@ -11,5 +11,5 @@
 </header>
 
 <main id="main" cdk-scrollable>
-  <invoices-home></invoices-home>
+  <router-outlet></router-outlet>
 </main>

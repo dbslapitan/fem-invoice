@@ -11,15 +11,11 @@ import {InvoiceListComponent} from "./invoices-home/invoice-list/invoice-list.co
 
 @NgModule({
   declarations: [
-    AppComponent,
-    InvoicesHomeComponent,
-    NoInvoicesComponent,
-    InvoiceListComponent
+    AppComponent
   ],
     imports: [
       BrowserModule,
       AppRoutingModule,
-      OverlayModule,
       HttpClientModule
     ],
   providers: [],
