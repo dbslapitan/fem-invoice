@@ -14,12 +14,71 @@
   margin-right: 1.47875rem;
 }
 
+.round{
+  border-radius: 0.25rem;
+  height: 0.5rem;
+  margin-right: 0.5rem;
+  width: 0.5rem;
+}
+
+.status-container{
+  align-items: center;
+  border-radius: 0.375rem;
+  bottom: 1.75rem;
+  display: flex;
+  height: 2.5rem;
+  justify-content: center;
+  right: 1.5rem;
+  width: 6.5rem;
+}
+
+.status-container > * {
+  display: inline-block;
+}
+
+.status-container.paid {
+  background-color: rgba(51, 214, 159, 0.0570882149040699);
+}
+
+.status-container.paid  > .status{
+  color: #33D69F;
+}
+
+.status-container.paid  > .round{
+  background-color: #33D69F;
+}
+
+.status-container.pending {
+  background-color: rgba(255, 143, 0, 0.0570882149040699);
+}
+
+.status-container.pending > .status{
+  color: #FF8F00;
+}
+
+.status-container.pending > .round{
+  background-color: #FF8F00;
+}
+
+.status-container.draft {
+  background-color: rgba(223, 227, 250, 0.0570882149040699);
+}
+
+.status-container.draft > .status{
+  color: #DFE3FA;
+}
+
+.status-container.draft > .round{
+  background-color: #DFE3FA;
+}
+
 .status-design{
   align-items: center;
   background-color: var(--card-bkg);
   border-radius: 0.5rem;
   display: flex;
   height: 5.6875rem;
+  justify-content: space-between;
   margin: 1.9375rem auto 1rem 1.5rem;
   padding: 0 1.5rem;
   width: 20.4375rem;

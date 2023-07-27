@@ -2,4 +2,8 @@
 
 <div class="status-design">
   <p>Status</p>
+  <div class="status-container" [ngClass]="invoice.status">
+    <div class="round"></div>
+    <h4 class="status">{{invoice.status | titlecase}}</h4>
+  </div>
 </div>
