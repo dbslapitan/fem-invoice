@@ -55,7 +55,7 @@ button:hover{
 }
 
 /*Heading L  |  Spartan Bold  |  36px  |  33px Line  |  -1 Spacing*/
-.hl-b-36-33-n1{
+h1{
   font-size: 2.25rem;
   font-weight: 700;
   line-height: 0.91667;
@@ -63,7 +63,7 @@ button:hover{
 }
 
 /*Heading M |  Spartan Bold  |  24px  |  22px Line  |  -0.75 Spacing*/
-.hm-b-24-22-n75p{
+h2{
   font-size: 1.5rem;
   font-weight: 700;
   line-height: 0.91667;
@@ -71,7 +71,7 @@ button:hover{
 }
 
 /*Heading S  |  Spartan Bold  |  15px  |  24px Line  |  -0.25 Spacing*/
-.hs-b-15-24-n25p{
+h3{
   font-size: 0.9375rem;
   font-weight: 700;
   line-height: 1.6;
@@ -79,7 +79,7 @@ button:hover{
 }
 
 /*Heading S (Variant)  |  Spartan Bold  |  15px  |  15px Line  |  -0.25 Spacing*/
-.hsv-b-15-15-n25p{
+h4{
   font-size: 0.9375rem;
   font-weight: 700;
   line-height: 1;
@@ -87,7 +87,7 @@ button:hover{
 }
 
 /*Body  |  Spartan Medium  |  13px  |  18px Line  |  -0.1 Spacing*/
-.b-m-13-18-n10p{
+h5{
   font-size: 0.8125rem;
   font-weight: 500;
   line-height: 1.38462;
@@ -95,7 +95,7 @@ button:hover{
 }
 
 /*Body (Variant)  |  Spartan Medium  |  13px  |  15px Line  |  -0,25 Spacing*/
-.bv-m-13-15-n25p{
+h6{
   font-size: 0.8125rem;
   font-weight: 500;
   line-height: 1.15385;

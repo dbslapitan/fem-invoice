@@ -23,8 +23,8 @@ export class ViewInvoicesComponent implements OnInit{
 
   ngOnInit() {
     const fullInvoice = this.activatedRoute.snapshot.data['fullInvoice'];
-    this.invoice = fullInvoice.invoice;
-    this.addresses = fullInvoice.addresses;
+    console.log(fullInvoice)
+    this.invoice = fullInvoice.newInvoice;
     this.items = fullInvoice.items;
   }
 }

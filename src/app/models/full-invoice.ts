@@ -3,7 +3,6 @@ import {Item} from "./item.model";
 import {Invoice} from "./invoice.model";
 
 export interface FullInvoice{
-  invoice: Invoice,
-  items: Item[],
-  addresses: Address[]
+  newInvoice: Invoice,
+  items: Item[]
 }

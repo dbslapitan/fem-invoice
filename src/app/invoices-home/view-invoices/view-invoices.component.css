@@ -1,3 +1,26 @@
+.invoice-container{
+  background-color: var(--card-bkg);
+  border-radius: 0.5rem;
+  box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.10);
+  margin: 1.9375rem auto 1rem 1.5rem;
+  padding: 1.5rem;
+  width: 20.4375rem;
+}
+
+.invoice-description{
+  color: var(--due-date);
+  margin-top: 0.25rem;
+}
+
+.invoice-id{
+  color: var(--invoices-title);
+}
+
+.invoice-id:before{
+  content: "#";
+  color: #7E88C3;
+}
+
 .go-back{
   color: var(--invoices-title);
   display: inline-flex;
@@ -76,6 +99,7 @@
   align-items: center;
   background-color: var(--card-bkg);
   border-radius: 0.5rem;
+  box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.10);;
   display: flex;
   height: 5.6875rem;
   justify-content: space-between;

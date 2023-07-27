@@ -1,3 +1,5 @@
+import {Address} from "./address.model";
+
 export interface Invoice{
   id: number;
   stringId: string;
@@ -9,4 +11,6 @@ export interface Invoice{
   clientEmail: string;
   status: string;
   total: number;
+  clientAddress: Address;
+  senderAddress: Address;
 }
