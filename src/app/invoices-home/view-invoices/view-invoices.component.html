@@ -11,4 +11,10 @@
 <div class="invoice-container">
   <h4 class="invoice-id">{{invoice.stringId}}</h4>
   <h6 class="invoice-description">{{invoice.description}}</h6>
+  <div class="sender-address">
+    <h5>{{invoice.senderAddress.street}}</h5>
+    <h5>{{invoice.senderAddress.city}}</h5>
+    <h5>{{invoice.senderAddress.postCode}}</h5>
+    <h5>{{invoice.senderAddress.country}}</h5>
+  </div>
 </div>
