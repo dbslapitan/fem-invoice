@@ -1,3 +1,7 @@
+:host{
+  position: relative;
+}
+
 div > h3{
   color: var(--invoices-title);
   margin-top: 0.8125rem;
@@ -11,6 +15,18 @@ h5{
   color: var(--due-date);
 }
 
+.action-btns{
+  align-items: center;
+  background-color: var(--card-bkg);
+  bottom: 0;
+  box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.10);
+  display: flex;
+  height: 5.6875rem;
+  left: 0;
+  position: absolute;
+  width: 100%;
+}
+
 .address{
   margin-top: 0.4375rem;
 }
@@ -21,8 +37,42 @@ h5{
   margin-top: 1.9375rem;
 }
 
+.bottom-spacer{
+  height: 9.1875rem;
+}
+
 .due-label{
   margin-top: 1.9375rem;
+}
+
+.edit{
+  align-items: center;
+  display: flex;
+  background-color: var(--items-container-bkg);
+  border-radius: 1.5rem;
+  color: var(--due-date);
+  height: 3rem;
+  justify-content: center;
+  margin-left: 1.5rem;
+  width: 4.5625rem;
+}
+
+.edit:hover{
+  background-color: var(--hover-edit);
+  cursor: pointer;
+}
+
+.delete{
+  background-color: #EC5757;
+  border-radius: 1.5rem;
+  color: #FFFFFF;
+  height: 3rem;
+  margin-left: 0.5rem;
+  width: 5.5625rem;
+}
+
+.delete:hover{
+  background-color: #FF9797;
 }
 
 .go-back{
@@ -44,7 +94,7 @@ h5{
 .invoice-container{
    background-color: var(--card-bkg);
    border-radius: 0.5rem;
-   box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.10);
+   box-shadow: 0 10px 10px -10px rgba(72, 84, 159, 0.10);
    margin: 1.9375rem auto 1rem 1.5rem;
    padding: 1.5rem;
    width: 20.4375rem;
@@ -107,6 +157,19 @@ h5{
 
 .items-total > * {
   color: #FFFFFF;
+}
+
+.mark{
+  color: #FFFFFF;
+  background-color: #7C5DFA;
+  border-radius: 1.5rem;
+  height: 3rem;
+  margin-left: 0.5rem;
+  width: 9.3125rem;
+}
+
+.mark:hover{
+  background-color: #9277FF;
 }
 
 .sender-address{
@@ -183,7 +246,7 @@ h5{
   align-items: center;
   background-color: var(--card-bkg);
   border-radius: 0.5rem;
-  box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.10);;
+  box-shadow: 0 10px 10px -10px rgba(72, 84, 159, 0.10);;
   display: flex;
   height: 5.6875rem;
   justify-content: space-between;
