@@ -81,7 +81,7 @@ h5{
 
 .items-container{
   background-color: var(--items-container-bkg);
-  border-radius: 0.5rem;
+  border-radius: 0.5rem 0.5rem 0 0;
   margin-top: 2.375rem;
   padding: 1.5rem;
 }
@@ -93,6 +93,20 @@ h5{
 
 .item-name{
   color: var(--invoices-title);
+}
+
+.items-total{
+  align-items: center;
+  background-color: var(--items-total-bkg);
+  border-radius: 0 0 0.5rem 0.5rem;
+  display: flex;
+  height: 5rem;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+}
+
+.items-total > * {
+  color: #FFFFFF;
 }
 
 .sender-address{

@@ -30,7 +30,6 @@ export class ViewInvoicesComponent implements OnInit{
       map(({ matches }) => matches)
     );
     const fullInvoice = this.activatedRoute.snapshot.data['fullInvoice'];
-    console.log(fullInvoice)
     this.invoice = fullInvoice.newInvoice;
     this.items = fullInvoice.items;
   }
