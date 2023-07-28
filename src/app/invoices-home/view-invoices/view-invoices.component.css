@@ -1,3 +1,30 @@
+div > h3{
+  color: var(--invoices-title);
+  margin-top: 0.8125rem;
+}
+
+h3{
+  line-height: 1.33333;
+}
+
+h5{
+  color: var(--due-date);
+}
+
+.address{
+  margin-top: 0.4375rem;
+}
+
+.billto-container{
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 1.9375rem;
+}
+
+.due-label{
+  margin-top: 1.9375rem;
+}
+
 .go-back{
   color: var(--invoices-title);
   display: inline-flex;
@@ -22,6 +49,10 @@
    padding: 1.5rem;
    width: 20.4375rem;
  }
+
+.invoice-date{
+  margin-right: 3.75rem;
+}
 
 .invoice-description{
   color: var(--due-date);
@@ -51,6 +82,10 @@
   height: 0.5rem;
   margin-right: 0.5rem;
   width: 0.5rem;
+}
+
+.sent-to{
+  margin-top: 2.1875rem;
 }
 
 .status-container{
