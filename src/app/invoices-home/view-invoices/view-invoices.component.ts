@@ -6,6 +6,7 @@ import {map, Observable} from "rxjs";
 import {Invoice} from "../../models/invoice.model";
 import {Address} from "../../models/address.model";
 import {Item} from "../../models/item.model";
+import {BreakpointObserver} from "@angular/cdk/layout";
 
 @Component({
   selector: 'view-invoices',
@@ -15,13 +16,19 @@ import {Item} from "../../models/item.model";
 export class ViewInvoicesComponent implements OnInit{
 
   invoice!: Invoice;
-  addresses!: Address[];
   items!: Item[];
 
-  constructor(private invoiceService: InvoiceService, private activatedRoute: ActivatedRoute) {
+  isNotMobile$!: Observable<boolean>;
+
+  constructor(private invoiceService: InvoiceService,
+              private activatedRoute: ActivatedRoute,
+              private breakPoint: BreakpointObserver) {
   }
 
   ngOnInit() {
+    this.isNotMobile$ = this.breakPoint.observe('(min-width: 768px)').pipe(
+      map(({ matches }) => matches)
+    );
     const fullInvoice = this.activatedRoute.snapshot.data['fullInvoice'];
     console.log(fullInvoice)
     this.invoice = fullInvoice.newInvoice;

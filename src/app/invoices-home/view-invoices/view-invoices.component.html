@@ -39,6 +39,20 @@
       <h3>{{invoice.clientEmail}}</h3>
     </div>
   </div>
+
+  <div *ngIf="isNotMobile$ | async; else mobileItems"></div>
+
+  <ng-template #mobileItems>
+    <div class="items-container">
+      <div class="items" *ngFor="let item of items">
+        <div class="name-count">
+          <h4 class="item-name">{{item.name}}</h4>
+          <h4 class="item-count">{{item.quantity}} x {{0 | currency: 'GBP' | slice:0:1}} {{item.price | currency: 'GBP': ''}}</h4>
+        </div>
+        <h4 class="item-name">{{0 | currency: 'GBP' | slice:0:1}} {{ item.total | currency: 'GBP': ''}}</h4>
+      </div>
+    </div>
+  </ng-template>
 </div>
 
 

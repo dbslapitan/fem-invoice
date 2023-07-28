@@ -69,6 +69,32 @@ h5{
   color: #7E88C3;
 }
 
+.items{
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.items:not(:first-of-type){
+  margin-top: 1.5rem;
+}
+
+.items-container{
+  background-color: var(--items-container-bkg);
+  border-radius: 0.5rem;
+  margin-top: 2.375rem;
+  padding: 1.5rem;
+}
+
+.item-count{
+  color: var(--item-name);
+  margin-top: 0.5rem;
+}
+
+.item-name{
+  color: var(--invoices-title);
+}
+
 .sender-address{
   margin-top: 1.875rem;
 }
