@@ -1,0 +1,30 @@
+@media only screen and (min-width: 768px){
+
+  :host{
+    position: static;
+  }
+
+  .action-btns{
+    height: fit-content;
+    position: relative;
+    margin-left: auto;
+    width: fit-content;
+  }
+
+  .go-back{
+    margin: 3.0625rem auto 0 2.506875rem;
+  }
+
+  .status-container{
+    margin-left: 1.25rem;
+  }
+
+  .status-design{
+    justify-content: left;
+    height: 5.5rem;
+    margin: 1.9375rem auto 1.5rem 2.5rem;
+    padding: 0 2rem;
+    position: relative;
+    width: 43rem;
+  }
+}

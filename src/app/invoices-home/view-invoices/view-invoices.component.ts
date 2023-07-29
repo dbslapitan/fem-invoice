@@ -11,7 +11,8 @@ import {BreakpointObserver} from "@angular/cdk/layout";
 @Component({
   selector: 'view-invoices',
   templateUrl: './view-invoices.component.html',
-  styleUrls: ['./view-invoices.component.css']
+  styleUrls: ['./view-invoices.component.css',
+    './view-invoices-tablet.component.css']
 })
 export class ViewInvoicesComponent implements OnInit{
 
