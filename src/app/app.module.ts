@@ -9,6 +9,7 @@ import { NoInvoicesComponent } from './invoices-home/no-invoices/no-invoices.com
 import {HttpClientModule} from "@angular/common/http";
 import {InvoiceListComponent} from "./invoices-home/invoice-list/invoice-list.component";
 import {ViewInvoicesComponent} from "./invoices-home/view-invoices/view-invoices.component";
+import { ItemsListComponent } from './invoices-home/items-list/items-list.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {ViewInvoicesComponent} from "./invoices-home/view-invoices/view-invoices
     InvoicesHomeComponent,
     NoInvoicesComponent,
     InvoiceListComponent,
-    ViewInvoicesComponent
+    ViewInvoicesComponent,
+    ItemsListComponent
   ],
     imports: [
       BrowserModule,
