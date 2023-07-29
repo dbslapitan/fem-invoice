@@ -4,3 +4,8 @@
   margin-top: 2.9375rem;
   padding: 2.0625rem 2.125rem 2.4375rem 2rem;
 }
+
+table{
+  table-layout: fixed;
+  border-collapse: collapse;
+}
