@@ -33,6 +33,7 @@ h5{
 
 .billto-container{
   display: flex;
+  gap: 3.75rem 2.1875rem;
   flex-wrap: wrap;
   margin-top: 1.9375rem;
 }
@@ -99,10 +100,6 @@ h5{
    padding: 1.5rem;
    width: 20.4375rem;
  }
-
-.invoice-date{
-  margin-right: 3.75rem;
-}
 
 .invoice-description{
   color: var(--due-date);
@@ -185,10 +182,6 @@ h5{
   height: 0.5rem;
   margin-right: 0.5rem;
   width: 0.5rem;
-}
-
-.sent-to{
-  margin-top: 2.1875rem;
 }
 
 .status-container{

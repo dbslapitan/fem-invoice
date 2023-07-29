@@ -11,8 +11,27 @@
     width: fit-content;
   }
 
+  .billto-container{
+    gap: 0 7.3125rem;
+    margin-top: 3.0625rem;
+  }
+
   .go-back{
     margin: 3.0625rem auto 0 2.506875rem;
+  }
+
+  .invoice-container{
+    padding: 2rem;
+    position: relative;
+    margin: 1.5rem auto 0 2.5rem;
+    width: 43rem;
+  }
+
+  .sender-address{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 2rem 2rem 0 0 ;
   }
 
   .status-container{
