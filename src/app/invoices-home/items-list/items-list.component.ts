@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {Item} from "../../models/item.model";
 
 @Component({
   selector: 'items-list',
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
 })
 export class ItemsListComponent {
 
+  @Input()
+  items!: Item[];
 }

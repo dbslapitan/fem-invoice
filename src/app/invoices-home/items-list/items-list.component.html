@@ -13,4 +13,12 @@
       <th>Total</th>
     </tr>
   </thead>
+  <tbody>
+    <tr *ngFor="let item of items">
+      <td>{{item.name}}</td>
+      <td>{{item.quantity}}</td>
+      <td>{{0 | currency: 'GBP' | slice:0:1}} {{ item.price | currency: 'GBP': ''}}</td>
+      <td>{{0 | currency: 'GBP' | slice:0:1}} {{ item.total | currency: 'GBP': ''}}</td>
+    </tr>
+  </tbody>
 </table>

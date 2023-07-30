@@ -2,7 +2,7 @@
   background-color: var(--items-container-bkg);
   display: inherit;
   margin-top: 2.9375rem;
-  padding: 2.0625rem 2.125rem 2.4375rem 2rem;
+  padding: 2.0625rem 2rem 2.4375rem 2rem;
 }
 
 tr > th{
@@ -39,6 +39,23 @@ th:nth-child(1), td:nth-child(1){
   text-align: left;
 }
 
+th:nth-child(2), td:nth-child(2){
+  text-align: center;
+}
+
+th:nth-child(4){
+  padding-right: 0.125rem;
+}
+
 th:nth-child(4), td:nth-child(4), th:nth-child(3), td:nth-child(3){
   text-align: right;
+}
+
+tr > td{
+  color: var(--invoices-title);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.015625rem;
+  padding-top: 2rem;
 }
