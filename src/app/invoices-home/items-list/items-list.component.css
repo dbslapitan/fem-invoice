@@ -5,7 +5,40 @@
   padding: 2.0625rem 2.125rem 2.4375rem 2rem;
 }
 
+tr > th{
+  color: var(--due-date);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.38462;
+  letter-spacing: -0.00625rem;
+}
+
+.col-item-name{
+  width: 16.3125rem;
+}
+
+.col-price{
+  width: 6.4375rem;
+}
+
+.col-total{
+  text-align: right;
+}
+
+.col-quantity{
+  width: 3.5rem;
+}
+
 table{
+  width: 100%;
   table-layout: fixed;
   border-collapse: collapse;
+}
+
+th:nth-child(1), td:nth-child(1){
+  text-align: left;
+}
+
+th:nth-child(4), td:nth-child(4), th:nth-child(3), td:nth-child(3){
+  text-align: right;
 }
