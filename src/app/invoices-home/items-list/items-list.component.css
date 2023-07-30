@@ -1,8 +1,8 @@
 :host{
   background-color: var(--items-container-bkg);
+  border-radius: 0.5rem;
   display: inherit;
   margin-top: 2.9375rem;
-  padding: 2.0625rem 2rem 2.4375rem 2rem;
 }
 
 tr > th{
@@ -13,26 +13,11 @@ tr > th{
   letter-spacing: -0.00625rem;
 }
 
-.col-item-name{
-  width: 16.3125rem;
-}
-
-.col-price{
-  width: 6.4375rem;
-}
-
-.col-total{
-  text-align: right;
-}
-
-.col-quantity{
-  width: 3.5rem;
-}
-
 table{
-  width: 100%;
-  table-layout: fixed;
   border-collapse: collapse;
+  padding: 2.0625rem 2rem 2.4375rem 2rem;
+  table-layout: fixed;
+  width: 100%;
 }
 
 th:nth-child(1), td:nth-child(1){
@@ -58,4 +43,41 @@ tr > td{
   line-height: 1;
   letter-spacing: -0.015625rem;
   padding-top: 2rem;
+}
+
+.col-item-name{
+   width: 16.3125rem;
+ }
+
+.col-price{
+  width: 6.4375rem;
+}
+
+.col-total{
+  text-align: right;
+}
+
+.col-quantity{
+  width: 3.5rem;
+}
+
+.table-container{
+  padding: 2.0625rem 2rem 2.4375rem 2rem;
+}
+
+.total-container{
+  align-items: center;
+  background-color: var(--items-total-bkg);
+  border-radius: 0 0 0.5rem 0.5rem;
+  color: #FFFFFF;
+  display: flex;
+  height: 5rem;
+  justify-content: space-between;
+  padding: 0 2rem;
+  width: 100%;
+}
+
+.total-container > h2{
+  letter-spacing: -0.03125rem;
+  line-height: 1.33333;
 }

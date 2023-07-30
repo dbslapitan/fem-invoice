@@ -46,7 +46,7 @@
   </div>
 
   <div *ngIf="isNotMobile$ | async; else mobileItems">
-    <items-list [items]="items"></items-list>
+    <items-list [items]="items" [total]="invoice.total"></items-list>
   </div>
 
   <ng-template #mobileItems>

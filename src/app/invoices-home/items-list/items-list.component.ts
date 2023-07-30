@@ -10,4 +10,7 @@ export class ItemsListComponent {
 
   @Input()
   items!: Item[];
+
+  @Input()
+  total!: number;
 }

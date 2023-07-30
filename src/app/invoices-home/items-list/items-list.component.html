@@ -1,24 +1,30 @@
-<table>
-  <colgroup>
-    <col class="col-item-name">
-    <col class="col-quantity">
-    <col class="col-price">
-    <col class="col-total">
-  </colgroup>
-  <thead>
-    <tr>
-      <th>Item Name</th>
-      <th>QTY.</th>
-      <th>Price</th>
-      <th>Total</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let item of items">
-      <td>{{item.name}}</td>
-      <td>{{item.quantity}}</td>
-      <td>{{0 | currency: 'GBP' | slice:0:1}} {{ item.price | currency: 'GBP': ''}}</td>
-      <td>{{0 | currency: 'GBP' | slice:0:1}} {{ item.total | currency: 'GBP': ''}}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="table-container">
+  <table>
+    <colgroup>
+      <col class="col-item-name">
+      <col class="col-quantity">
+      <col class="col-price">
+      <col class="col-total">
+    </colgroup>
+    <thead>
+      <tr>
+        <th>Item Name</th>
+        <th>QTY.</th>
+        <th>Price</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of items">
+        <td>{{item.name}}</td>
+        <td>{{item.quantity}}</td>
+        <td>{{0 | currency: 'GBP' | slice:0:1}} {{ item.price | currency: 'GBP': ''}}</td>
+        <td>{{0 | currency: 'GBP' | slice:0:1}} {{ item.total | currency: 'GBP': ''}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="total-container">
+  <h5>Amount Due</h5>
+  <h2>{{0 | currency: 'GBP' | slice:0:1}} {{ total | currency: 'GBP': ''}}</h2>
+</div>
