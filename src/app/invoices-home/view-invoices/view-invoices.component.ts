@@ -1,10 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {InvoiceService} from "../../services/invoice.service";
 import {ActivatedRoute} from "@angular/router";
-import {FullInvoice} from "../../models/full-invoice";
 import {map, Observable} from "rxjs";
 import {Invoice} from "../../models/invoice.model";
-import {Address} from "../../models/address.model";
 import {Item} from "../../models/item.model";
 import {BreakpointObserver} from "@angular/cdk/layout";
 
@@ -12,7 +10,8 @@ import {BreakpointObserver} from "@angular/cdk/layout";
   selector: 'view-invoices',
   templateUrl: './view-invoices.component.html',
   styleUrls: ['./view-invoices.component.css',
-    './view-invoices-tablet.component.css']
+    './view-invoices-tablet.component.css',
+    './view-invoices-desktop.component.css']
 })
 export class ViewInvoicesComponent implements OnInit{
 

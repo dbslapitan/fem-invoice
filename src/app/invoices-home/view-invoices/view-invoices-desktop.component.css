@@ -1,0 +1,22 @@
+@media only screen and (min-width: 1440px){
+
+  .invoice-container{
+    margin: 1.5rem auto auto 15.756875rem;
+    padding: 3.125rem 3rem 3rem 3rem;
+    width: 45.625rem;
+  }
+
+  .go-back{
+    margin: 4.0625rem 0 1.9375rem 15.756875rem;
+  }
+
+  .sender-address{
+    margin: 3.0625rem 3rem 0 0;
+  }
+
+  .status-design{
+    height: 5.5rem;
+    margin: 1.9375rem auto 1.5rem 15.756875rem;
+    width: 45.625rem;
+  }
+}
