@@ -10,6 +10,8 @@ import {HttpClientModule} from "@angular/common/http";
 import {InvoiceListComponent} from "./invoices-home/invoice-list/invoice-list.component";
 import {ViewInvoicesComponent} from "./invoices-home/view-invoices/view-invoices.component";
 import { ItemsListComponent } from './invoices-home/items-list/items-list.component';
+import {DialogModule} from "@angular/cdk/dialog";
+import { EditInvoiceDialogComponent } from './invoices-home/edit-invoice-dialog/edit-invoice-dialog.component';
 
 @NgModule({
   declarations: [
@@ -18,13 +20,15 @@ import { ItemsListComponent } from './invoices-home/items-list/items-list.compon
     NoInvoicesComponent,
     InvoiceListComponent,
     ViewInvoicesComponent,
-    ItemsListComponent
+    ItemsListComponent,
+    EditInvoiceDialogComponent
   ],
     imports: [
       BrowserModule,
       AppRoutingModule,
       HttpClientModule,
-      OverlayModule
+      OverlayModule,
+      DialogModule
     ],
   providers: [],
   bootstrap: [AppComponent]

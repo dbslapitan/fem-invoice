@@ -5,6 +5,9 @@ import {map, Observable} from "rxjs";
 import {Invoice} from "../../models/invoice.model";
 import {Item} from "../../models/item.model";
 import {BreakpointObserver} from "@angular/cdk/layout";
+import {Dialog, DialogConfig} from "@angular/cdk/dialog";
+import {EditInvoiceDialogComponent} from "../edit-invoice-dialog/edit-invoice-dialog.component";
+import {BasePortalOutlet, CdkPortalOutlet, Portal, PortalOutlet} from "@angular/cdk/portal";
 
 @Component({
   selector: 'view-invoices',
@@ -14,15 +17,16 @@ import {BreakpointObserver} from "@angular/cdk/layout";
     './view-invoices-desktop.component.css']
 })
 export class ViewInvoicesComponent implements OnInit{
-
   invoice!: Invoice;
   items!: Item[];
+
 
   isNotMobile$!: Observable<boolean>;
 
   constructor(private invoiceService: InvoiceService,
               private activatedRoute: ActivatedRoute,
-              private breakPoint: BreakpointObserver) {
+              private breakPoint: BreakpointObserver,
+              private dialog: Dialog) {
   }
 
   ngOnInit() {
@@ -32,5 +36,14 @@ export class ViewInvoicesComponent implements OnInit{
     const fullInvoice = this.activatedRoute.snapshot.data['fullInvoice'];
     this.invoice = fullInvoice.newInvoice;
     this.items = fullInvoice.items;
+  }
+
+  openEditInvoiceDialog(portalOutlet: PortalOutlet){
+    /*const dialogConfig: DialogConfig = {
+      hasBackdrop: true,
+    }*/
+    const header = document.getElementById('header');
+    header!.scrollIntoView();
+    this.dialog.open(EditInvoiceDialogComponent, {data: {invoice: this.invoice, items: this.items}});
   }
 }
