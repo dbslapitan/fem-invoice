@@ -2,7 +2,6 @@
   display: inherit;
   width: 100vw;
   height: calc(100vh - 72px);
-  padding: 2.0625rem 1.5rem 1.5rem 1.5rem;
   margin-top: 72px;
   margin-bottom: 0;
 }

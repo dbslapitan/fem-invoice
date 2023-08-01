@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-edit-invoice-dialog',
+  selector: 'edit-invoice-dialog',
   templateUrl: './edit-invoice-dialog.component.html',
   styleUrls: ['./edit-invoice-dialog.component.css']
 })

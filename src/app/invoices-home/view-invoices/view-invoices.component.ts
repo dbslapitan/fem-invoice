@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit} from '@angular/core';
 import {InvoiceService} from "../../services/invoice.service";
 import {ActivatedRoute} from "@angular/router";
 import {map, Observable} from "rxjs";
@@ -8,13 +8,16 @@ import {BreakpointObserver} from "@angular/cdk/layout";
 import {Dialog, DialogConfig} from "@angular/cdk/dialog";
 import {EditInvoiceDialogComponent} from "../edit-invoice-dialog/edit-invoice-dialog.component";
 import {BasePortalOutlet, CdkPortalOutlet, Portal, PortalOutlet} from "@angular/cdk/portal";
+import {Overlay} from "@angular/cdk/overlay";
+import {DialogService} from "../../services/dialog.service";
 
 @Component({
   selector: 'view-invoices',
   templateUrl: './view-invoices.component.html',
   styleUrls: ['./view-invoices.component.css',
     './view-invoices-tablet.component.css',
-    './view-invoices-desktop.component.css']
+    './view-invoices-desktop.component.css'],
+  providers: [DialogService]
 })
 export class ViewInvoicesComponent implements OnInit{
   invoice!: Invoice;
@@ -26,7 +29,8 @@ export class ViewInvoicesComponent implements OnInit{
   constructor(private invoiceService: InvoiceService,
               private activatedRoute: ActivatedRoute,
               private breakPoint: BreakpointObserver,
-              private dialog: Dialog) {
+              private dialogService: DialogService,
+              private elementRef: ElementRef) {
   }
 
   ngOnInit() {
@@ -38,12 +42,17 @@ export class ViewInvoicesComponent implements OnInit{
     this.items = fullInvoice.items;
   }
 
-  openEditInvoiceDialog(portalOutlet: PortalOutlet){
-    /*const dialogConfig: DialogConfig = {
-      hasBackdrop: true,
-    }*/
+  openEditInvoiceDialog(){
+
+    this.dialogService.openDialogOnElementRef(this.elementRef, EditInvoiceDialogComponent, {})
+    /*const positionStrategy = this.overlay
+      .position()
+      .flexibleConnectedTo(this.elementRef);
+
+    const overlayRef = this.overlay
+      .create({positionStrategy, hasBackdrop: true})
     const header = document.getElementById('header');
     header!.scrollIntoView();
-    this.dialog.open(EditInvoiceDialogComponent, {data: {invoice: this.invoice, items: this.items}});
+    this.dialog.open(EditInvoiceDialogComponent, {data: {invoice: this.invoice, items: this.items}});*/
   }
 }
