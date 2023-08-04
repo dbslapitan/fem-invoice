@@ -1,1 +1,26 @@
 <button class="go-back" (click)="goBackClicked()"><h4>Go back</h4></button>
+<h2 class="string-id">Edit <span>#</span>{{invoice.stringId}}</h2>
+
+<form [formGroup]="editForm">
+
+  <legend>Bill From</legend>
+  <fieldset formGroupName="senderAddress">
+
+    <label for="senderStreet">Street Address</label>
+    <input id="senderStreet" type="text" formControlName="street">
+
+    <label for="senderCity">City</label>
+    <input id="senderCity" type="text" formControlName="city">
+
+    <label for="senderPostCode">Post Code</label>
+    <input id="senderPostCode" type="text" formControlName="postCode">
+
+    <label for="senderCountry">Post Code</label>
+    <input id="senderCountry" type="text" formControlName="country">
+  </fieldset>
+
+    <legend>Bill To</legend>
+    <label for="name">Client's Name</label>
+    <input id="name" type="text" formControlName="name">
+
+</form>

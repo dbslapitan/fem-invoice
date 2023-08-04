@@ -19,3 +19,13 @@
   content: url("/assets/icon-arrow-left.svg");
   margin-right: 1.47875rem;
 }
+
+.string-id{
+  color: var(--invoices-title);
+  line-height: 1.33333rem;
+  margin-top: 1.625rem;
+}
+
+.string-id > span{
+  color: var(--edit-hash);
+}

@@ -35,6 +35,7 @@ body{
   --items-total-bkg: #373B53;
   --hover-edit: #DFE3FA;
   --edit-bkg: #FFFFFF;
+  --edit-hash: #888EB0;
 }
 
 body.dark-mode{
@@ -54,6 +55,7 @@ body.dark-mode{
   --items-total-bkg: #0C0E16;
   --hover-edit: #FFFFFF;
   --edit-bkg: #141625;
+  --edit-hash: #777F98;
 }
 
 button {

@@ -12,6 +12,7 @@ import {ViewInvoicesComponent} from "./invoices-home/view-invoices/view-invoices
 import { ItemsListComponent } from './invoices-home/items-list/items-list.component';
 import {DialogModule} from "@angular/cdk/dialog";
 import { EditInvoiceDialogComponent } from './invoices-home/edit-invoice-dialog/edit-invoice-dialog.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { EditInvoiceDialogComponent } from './invoices-home/edit-invoice-dialog/
       AppRoutingModule,
       HttpClientModule,
       OverlayModule,
-      DialogModule
+      DialogModule,
+      ReactiveFormsModule
     ],
   providers: [],
   bootstrap: [AppComponent]
