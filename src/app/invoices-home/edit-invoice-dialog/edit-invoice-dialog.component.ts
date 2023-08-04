@@ -8,4 +8,12 @@ import {Dialog} from "@angular/cdk/dialog";
 })
 export class EditInvoiceDialogComponent {
 
+  constructor(private dialog: Dialog) {
+  }
+
+  goBackClicked(){
+    this.dialog.getDialogById("editInvoice")?.close();
+    const header = document.getElementById("header");
+    header!.scrollIntoView();
+  }
 }
