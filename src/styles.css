@@ -34,6 +34,7 @@ body{
   --item-name: #7E88C3;
   --items-total-bkg: #373B53;
   --hover-edit: #DFE3FA;
+  --edit-bkg: #FFFFFF;
 }
 
 body.dark-mode{
@@ -52,6 +53,7 @@ body.dark-mode{
   --item-name: #888EB0;
   --items-total-bkg: #0C0E16;
   --hover-edit: #FFFFFF;
+  --edit-bkg: #141625;
 }
 
 button {

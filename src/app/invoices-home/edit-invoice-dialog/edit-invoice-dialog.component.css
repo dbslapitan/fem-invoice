@@ -1,7 +1,21 @@
 :host{
-  display: inherit;
+  background-color: var(--edit-bkg);
+  display: block;
   width: 100vw;
   height: calc(100vh - 72px);
-  margin-top: 72px;
+  margin-top: 4.5rem;
   margin-bottom: 0;
+  padding: 2.0625rem 1.5rem 1.5rem 1.5rem;
+}
+
+.go-back{
+  background-color: inherit;
+  color: var(--invoices-title);
+  display: flex;
+}
+
+
+.go-back::before{
+  content: url("/assets/icon-arrow-left.svg");
+  margin-right: 1.47875rem;
 }
