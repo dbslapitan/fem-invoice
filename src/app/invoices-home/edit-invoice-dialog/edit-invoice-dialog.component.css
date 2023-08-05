@@ -13,6 +13,30 @@ h4{
   color: #7C5DFA;
 }
 
+h4 + .input-container{
+  margin-top: 0;
+}
+
+input{
+  background-color: var(--card-bkg);
+  border: 1px solid var(--checkbox-bkg);
+  border-radius: 0.25rem;
+  color: var(--invoices-title);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  height: 3rem;
+  line-height: 1;
+  letter-spacing: -0.015625rem;
+  padding-left: 1.25rem;
+  width: 100%;
+}
+
+form{
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 1.4375rem;
+}
+
 form > h4:first-of-type{
   margin: 1.375rem 0 1.5625rem;
 }
@@ -35,7 +59,13 @@ form > h4:last-of-type{
 
 .input-container{
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 1.5625rem;
+}
+
+.input-container.short{
+  width: 9.5rem;
 }
 
 .input-container > label{
@@ -44,7 +74,7 @@ form > h4:last-of-type{
   font-weight: 500;
   line-height: 1.15385;
   letter-spacing: -0.00625rem;
-  margin: 1.5625rem 0 0.5625rem 0;
+  margin: 0 0 0.5625rem 0;
 }
 
 .string-id{
