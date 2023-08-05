@@ -27,20 +27,16 @@ export class EditInvoiceDialogComponent implements OnInit{
     this.items = this.data.items;
 
     this.editForm = this.fb.group({
-      senderAddress: this.fb.group({
-        street: [this.invoice.senderAddress.street, Validators.required],
-        city: [this.invoice.senderAddress.city, Validators.required],
-        postCode: [this.invoice.senderAddress.postCode, Validators.required],
-        country: [this.invoice.senderAddress.country, Validators.required]
-      }),
+      senderStreet: [this.invoice.senderAddress.street, Validators.required],
+      senderCity: [this.invoice.senderAddress.city, Validators.required],
+      senderPostCode: [this.invoice.senderAddress.postCode, Validators.required],
+      senderCountry: [this.invoice.senderAddress.country, Validators.required],
       name: [this.invoice.clientName, Validators.required],
-      email: [this.invoice.clientEmail, Validators.required],
-      clintAddress: this.fb.group({
-        street: [this.invoice.clientAddress.street, Validators.required],
-        city: [this.invoice.clientAddress.city, Validators.required],
-        postCode: [this.invoice.clientAddress.postCode, Validators.required],
-        country: [this.invoice.clientAddress.country, Validators.required]
-      }),
+      email: [this.invoice.clientEmail, [Validators.required, Validators.email]],
+      clientStreet: [this.invoice.clientAddress.street, Validators.required],
+      clientCity: [this.invoice.clientAddress.city, Validators.required],
+      clientPostCode: [this.invoice.clientAddress.postCode, Validators.required],
+      clientCountry: [this.invoice.clientAddress.country, Validators.required],
       invoiceDate: [this.invoice.createdAt, Validators.required],
       paymentTerm: [this.invoice.paymentTerms, Validators.required],
       projectDescription: [this.invoice.description, Validators.required]

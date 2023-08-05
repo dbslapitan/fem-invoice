@@ -59,6 +59,11 @@ export class ViewInvoicesComponent implements OnInit{
       .create({positionStrategy, hasBackdrop: true})*/
     const header = document.getElementById('header');
     header!.scrollIntoView();
-    this.dialog.open(EditInvoiceDialogComponent, {data: {invoice: this.invoice, items: this.items}, id: "editInvoice"});
+    this.dialog.open(EditInvoiceDialogComponent, {
+      data: {invoice: this.invoice,
+        items: this.items},
+      id: "editInvoice",
+
+    });
   }
 }
