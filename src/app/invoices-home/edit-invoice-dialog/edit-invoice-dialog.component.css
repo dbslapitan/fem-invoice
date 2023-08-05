@@ -37,6 +37,10 @@ input:focus{
   border: 1px solid var(--input-outline);
 }
 
+input[id="paymentTerm"]{
+
+}
+
 form{
   display: flex;
   flex-wrap: wrap;
