@@ -21,6 +21,7 @@ input{
   background-color: var(--card-bkg);
   border: 1px solid var(--checkbox-bkg);
   border-radius: 0.25rem;
+  caret-color: #7C5DFA;
   color: var(--invoices-title);
   font-size: 0.9375rem;
   font-weight: 700;
@@ -29,6 +30,11 @@ input{
   letter-spacing: -0.015625rem;
   padding-left: 1.25rem;
   width: 100%;
+}
+
+input:focus{
+  outline: none;
+  border: 1px solid var(--input-outline);
 }
 
 form{

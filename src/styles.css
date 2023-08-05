@@ -36,6 +36,8 @@ body{
   --hover-edit: #DFE3FA;
   --edit-bkg: #FFFFFF;
   --edit-hash: #888EB0;
+  --input-outline: #9277FF;
+  --outline-style: inherit;
 }
 
 body.dark-mode{
@@ -56,6 +58,8 @@ body.dark-mode{
   --hover-edit: #FFFFFF;
   --edit-bkg: #141625;
   --edit-hash: #777F98;
+  --input-outline: #252945;
+  --outline-style: none;
 }
 
 button {
