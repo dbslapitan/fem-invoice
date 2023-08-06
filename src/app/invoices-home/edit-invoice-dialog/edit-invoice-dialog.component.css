@@ -1,4 +1,4 @@
-:host{
+.scrollable{
   background-color: var(--edit-bkg);
   display: block;
   width: 100vw;
@@ -85,6 +85,19 @@ form > h4:last-of-type{
   line-height: 1.15385;
   letter-spacing: -0.00625rem;
   margin: 0 0 0.5625rem 0;
+}
+
+.menu-container{
+  width: 20.458125rem;
+}
+
+.menu-container > *{
+  width: 100%;
+  height: 2.984375rem;
+}
+
+.payment-term-menu{
+  width: 100%;
 }
 
 .string-id{

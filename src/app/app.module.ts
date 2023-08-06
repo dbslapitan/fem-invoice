@@ -13,6 +13,7 @@ import { ItemsListComponent } from './invoices-home/items-list/items-list.compon
 import {DialogModule} from "@angular/cdk/dialog";
 import { EditInvoiceDialogComponent } from './invoices-home/edit-invoice-dialog/edit-invoice-dialog.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import {CdkMenuModule} from "@angular/cdk/menu";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {ReactiveFormsModule} from "@angular/forms";
       HttpClientModule,
       OverlayModule,
       DialogModule,
-      ReactiveFormsModule
+      ReactiveFormsModule,
+      CdkMenuModule
     ],
   providers: [],
   bootstrap: [AppComponent]

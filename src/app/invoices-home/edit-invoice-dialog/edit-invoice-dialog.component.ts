@@ -1,8 +1,11 @@
-import {Component, HostListener, Inject, OnInit} from '@angular/core';
+import {Component, ElementRef, HostListener, Inject, OnInit} from '@angular/core';
 import {Dialog, DIALOG_DATA} from "@angular/cdk/dialog";
 import {Invoice} from "../../models/invoice.model";
 import {Item} from "../../models/item.model";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {CDK_MENU} from "@angular/cdk/menu";
+import {CdkScrollable, ScrollDispatcher} from "@angular/cdk/overlay";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'edit-invoice-dialog',
@@ -17,8 +20,8 @@ export class EditInvoiceDialogComponent implements OnInit{
 
   constructor(private dialog: Dialog,
               @Inject(DIALOG_DATA) private data: {invoice: Invoice, items: Item[]},
-              private fb: FormBuilder) {
-
+              private fb: FormBuilder,
+              private scrollDispatcher: ScrollDispatcher) {
 
   }
 
@@ -47,5 +50,9 @@ export class EditInvoiceDialogComponent implements OnInit{
     this.dialog.getDialogById("editInvoice")?.close();
     const header = document.getElementById("header");
     header!.scrollIntoView();
+  }
+
+  paymentTermClicked(day: number){
+    this.editForm.patchValue({paymentTerm: day});
   }
 }

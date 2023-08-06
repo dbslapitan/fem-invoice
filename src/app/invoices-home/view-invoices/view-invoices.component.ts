@@ -32,7 +32,8 @@ export class ViewInvoicesComponent implements OnInit{
               private breakPoint: BreakpointObserver,
               private dialogService: DialogService,
               private elementRef: ElementRef,
-              private dialog: Dialog) {
+              private dialog: Dialog,
+              private overlay: Overlay) {
   }
 
   ngOnInit() {
@@ -63,7 +64,6 @@ export class ViewInvoicesComponent implements OnInit{
       data: {invoice: this.invoice,
         items: this.items},
       id: "editInvoice",
-
     });
   }
 }
