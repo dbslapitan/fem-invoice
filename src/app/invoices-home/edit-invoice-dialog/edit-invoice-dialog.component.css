@@ -92,6 +92,12 @@ li > label:hover{
   margin-top: 1.5625rem;
 }
 
+.input-container.dropdown > .payment-term-menu:hover,
+.input-container.dropdown > .menu-flag:checked + .payment-term-menu
+{
+  border: 1px solid var(--payment-term-hover);
+}
+
 .input-container.short{
   width: 9.5rem;
 }
