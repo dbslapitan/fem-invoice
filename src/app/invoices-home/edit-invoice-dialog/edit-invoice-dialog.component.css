@@ -37,10 +37,6 @@ input:focus{
   border: 1px solid var(--input-outline);
 }
 
-input[id="paymentTerm"]{
-
-}
-
 form{
   display: flex;
   flex-wrap: wrap;
@@ -53,6 +49,14 @@ form > h4:first-of-type{
 
 form > h4:last-of-type{
   margin: 2.5625rem 0 1.5rem;
+}
+
+li > label{
+  color: var(--invoices-title);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.015625rem;
 }
 
 .go-back{
@@ -88,12 +92,27 @@ form > h4:last-of-type{
 }
 
 .menu-container{
+  background-color: var(--filters-container-bkg);
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.25);;
   width: 20.458125rem;
 }
 
-.menu-container > *{
-  width: 100%;
+.menu-container > li{
+  align-items: center;
+  border-bottom: 1px solid var(--checkbox-bkg);
+  display: flex;
   height: 2.984375rem;
+  padding-left: 1.5rem;
+  width: 100%;
+}
+
+.menu-container > li > input[type="radio"]{
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  visibility: hidden;
+  width: fit-content;
 }
 
 .payment-term-menu{

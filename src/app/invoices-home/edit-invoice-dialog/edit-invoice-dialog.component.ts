@@ -17,6 +17,7 @@ export class EditInvoiceDialogComponent implements OnInit{
   invoice!: Invoice;
   items!: Item[];
   editForm!: FormGroup;
+  menuIsOpen = false;
 
   constructor(private dialog: Dialog,
               @Inject(DIALOG_DATA) private data: {invoice: Invoice, items: Item[]},
