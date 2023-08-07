@@ -4,7 +4,7 @@ import {Invoice} from "../../models/invoice.model";
 import {Item} from "../../models/item.model";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {CDK_MENU} from "@angular/cdk/menu";
-import {CdkScrollable, ScrollDispatcher} from "@angular/cdk/overlay";
+import {CdkScrollable, ConnectedPosition, ScrollDispatcher} from "@angular/cdk/overlay";
 import {Observable} from "rxjs";
 
 @Component({
@@ -18,6 +18,23 @@ export class EditInvoiceDialogComponent implements OnInit{
   items!: Item[];
   editForm!: FormGroup;
   menuIsOpen = false;
+
+  connectedPositions: ConnectedPosition[] = [
+    {
+      overlayX: 'center',
+      overlayY: "top",
+      originY: 'bottom',
+      originX: 'center',
+      offsetY: 24
+    },
+    {
+      overlayX: 'center',
+      overlayY: "bottom",
+      originY: 'top',
+      originX: 'center',
+      offsetY: -24
+    }
+  ];
 
   constructor(private dialog: Dialog,
               @Inject(DIALOG_DATA) private data: {invoice: Invoice, items: Item[]},
@@ -60,6 +77,5 @@ export class EditInvoiceDialogComponent implements OnInit{
   menuClicked(flag: HTMLInputElement){
     this.menuIsOpen = !this.menuIsOpen;
     flag.checked = this.menuIsOpen;
-    console.log(flag.checked)
   }
 }
