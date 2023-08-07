@@ -115,8 +115,33 @@ li > label{
   width: fit-content;
 }
 
+.menu-flag{
+  display: none;
+}
+
 .payment-term-menu{
+  align-items: center;
+  background-color: var(--card-bkg);
+  border: 1px solid var(--checkbox-bkg);
+  border-radius: 0.25rem;
+  color: var(--invoices-title);
+  display: flex;
+  height: 3rem;
+  justify-content: space-between;
+  line-height: 1;
+  letter-spacing: -0.015625rem;
+  padding: 0 0.97125rem 0 1.25rem;
+  text-align: left;
   width: 100%;
+}
+
+.menu-flag + .payment-term-menu:after{
+  content: url("/assets/icon-arrow-down.svg");
+}
+
+.menu-flag:checked + .payment-term-menu:after{
+  display: inline-block;
+  rotate: 180deg;
 }
 
 .string-id{

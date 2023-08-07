@@ -56,4 +56,10 @@ export class EditInvoiceDialogComponent implements OnInit{
   paymentTermClicked(day: number){
     this.editForm.patchValue({paymentTerm: day});
   }
+
+  menuClicked(flag: HTMLInputElement){
+    this.menuIsOpen = !this.menuIsOpen;
+    flag.checked = this.menuIsOpen;
+    console.log(flag.checked)
+  }
 }
