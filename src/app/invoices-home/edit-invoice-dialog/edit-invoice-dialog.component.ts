@@ -77,5 +77,13 @@ export class EditInvoiceDialogComponent implements OnInit{
   menuClicked(flag: HTMLInputElement){
     this.menuIsOpen = !this.menuIsOpen;
     flag.checked = this.menuIsOpen;
+    console.log(flag.checked)
+  }
+
+  clickedOutsideOverlay(event: Event, flag: HTMLInputElement, triggerRef: ElementRef){
+    if(!triggerRef.nativeElement.contains(event.target)){
+      this.menuIsOpen = !this.menuIsOpen;
+      flag.checked = this.menuIsOpen;
+    }
   }
 }
