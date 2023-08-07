@@ -71,7 +71,7 @@
               cdkOverlayOrigin
               #trigger="cdkOverlayOrigin"
       >
-        Net {{invoice.paymentTerms}} Day<ng-container *ngIf="invoice.paymentTerms !== 1">s</ng-container>
+        Net {{paymentTerm}} Day<ng-container *ngIf="invoice.paymentTerms !== 1">s</ng-container>
       </button>
       <ng-template cdkConnectedOverlay
                    [cdkConnectedOverlayOrigin]="trigger"
@@ -80,10 +80,10 @@
                    (overlayOutsideClick)="clickedOutsideOverlay($event, menuFlag, trigger.elementRef)"
       >
         <ul class="menu-container" cdkMenu>
-          <li><input type="radio" id="one"><label for="one">Net 1 Day</label></li>
-          <li><input type="radio" id="seven"><label for="seven">Net 7 Days</label></li>
-          <li><input type="radio" id="fourteen"><label for="fourteen">Net 14 Days</label></li>
-          <li><input type="radio" id="thirty"><label for="thirty">Net 30 Days</label></li>
+          <li><input type="radio" name="paymentTerm" [value]="1" id="one" [checked]="paymentTerm === 1" (change)="paymentTermClicked(1, menuFlag)"><label for="one">Net 1 Day</label></li>
+          <li><input type="radio" name="paymentTerm" [value]="7" id="seven" [checked]="paymentTerm === 7" (change)="paymentTermClicked(7, menuFlag)"><label for="seven">Net 7 Days</label></li>
+          <li><input type="radio" name="paymentTerm" [value]="14" id="fourteen" [checked]="paymentTerm === 14" (change)="paymentTermClicked(14, menuFlag)"><label for="fourteen">Net 14 Days</label></li>
+          <li><input type="radio" name="paymentTerm" [value]="30" id="thirty" [checked]="paymentTerm === 30" (change)="paymentTermClicked(30, menuFlag)"><label for="thirty">Net 30 Days</label></li>
 
         </ul>
       </ng-template>

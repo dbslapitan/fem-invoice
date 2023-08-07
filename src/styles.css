@@ -38,6 +38,7 @@ body{
   --edit-hash: #888EB0;
   --input-outline: #9277FF;
   --outline-style: inherit;
+  --payment-term-checked: #7C5DFA;
 }
 
 body.dark-mode{
@@ -60,6 +61,7 @@ body.dark-mode{
   --edit-hash: #777F98;
   --input-outline: #252945;
   --outline-style: none;
+  --payment-term-checked: #9277FF;
 }
 
 button {

@@ -18,6 +18,7 @@ export class EditInvoiceDialogComponent implements OnInit{
   items!: Item[];
   editForm!: FormGroup;
   menuIsOpen = false;
+  paymentTerm = 1;
 
   connectedPositions: ConnectedPosition[] = [
     {
@@ -47,6 +48,8 @@ export class EditInvoiceDialogComponent implements OnInit{
     this.invoice = this.data.invoice;
     this.items = this.data.items;
 
+    this.paymentTerm = this.invoice.paymentTerms;
+
     this.editForm = this.fb.group({
       senderStreet: [this.invoice.senderAddress.street, Validators.required],
       senderCity: [this.invoice.senderAddress.city, Validators.required],
@@ -70,14 +73,16 @@ export class EditInvoiceDialogComponent implements OnInit{
     header!.scrollIntoView();
   }
 
-  paymentTermClicked(day: number){
+  paymentTermClicked(day: number, flag: HTMLInputElement){
     this.editForm.patchValue({paymentTerm: day});
+    this.paymentTerm = day;
+    this.menuIsOpen = false;
+    flag.checked = false;
   }
 
   menuClicked(flag: HTMLInputElement){
     this.menuIsOpen = !this.menuIsOpen;
     flag.checked = this.menuIsOpen;
-    console.log(flag.checked)
   }
 
   clickedOutsideOverlay(event: Event, flag: HTMLInputElement, triggerRef: ElementRef){
