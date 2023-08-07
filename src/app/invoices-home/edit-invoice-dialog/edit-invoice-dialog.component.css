@@ -111,6 +111,18 @@ li > label:hover{
   margin: 0 0 0.5625rem 0;
 }
 
+.item-title{
+  color: #777F98;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.77778rem;
+  letter-spacing: -0.0234375rem;
+}
+
+.item-list-container{
+  margin-top: 4.3125rem;
+}
+
 .menu-container{
   background-color: var(--filters-container-bkg);
   border-radius: 0.5rem;

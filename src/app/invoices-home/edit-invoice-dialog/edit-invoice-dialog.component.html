@@ -94,6 +94,20 @@
       <input id="projectDescription" type="text" formControlName="projectDescription">
     </div>
 
+    <div class="item-list-container" formArrayName="items">
+      <h3 class="item-title">Item List</h3>
+
+      <ng-container  *ngFor="let itemForm of items">
+        <div class="item-container">
+          <div class="input-container">
+            <label for="itemName">Item Name</label>
+            <input id="itemName" type="text" formControlName="name">
+          </div>
+        </div>
+      </ng-container>
+
+    </div>
+
   </form>
 </div>
 
