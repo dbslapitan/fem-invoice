@@ -2,10 +2,11 @@ import {Component, ElementRef, HostListener, Inject, OnInit} from '@angular/core
 import {Dialog, DIALOG_DATA} from "@angular/cdk/dialog";
 import {Invoice} from "../../models/invoice.model";
 import {Item} from "../../models/item.model";
-import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AbstractControl, FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {CDK_MENU} from "@angular/cdk/menu";
 import {CdkScrollable, ConnectedPosition, ScrollDispatcher} from "@angular/cdk/overlay";
 import {Observable} from "rxjs";
+import {DecimalPipe, formatNumber} from "@angular/common";
 
 @Component({
   selector: 'edit-invoice-dialog',
@@ -15,7 +16,7 @@ import {Observable} from "rxjs";
 export class EditInvoiceDialogComponent implements OnInit{
 
   invoice!: Invoice;
-  items!: Item[];
+  inputItems!: Item[];
   editForm!: FormGroup;
   menuIsOpen = false;
   paymentTerm = 1;
@@ -40,13 +41,15 @@ export class EditInvoiceDialogComponent implements OnInit{
   constructor(private dialog: Dialog,
               @Inject(DIALOG_DATA) private data: {invoice: Invoice, items: Item[]},
               private fb: FormBuilder,
-              private scrollDispatcher: ScrollDispatcher) {
+              private decimalPipe: DecimalPipe) {
 
   }
 
   ngOnInit() {
     this.invoice = this.data.invoice;
-    this.items = this.data.items;
+    this.inputItems = this.data.items;
+
+    console.log(this.inputItems)
 
     this.paymentTerm = this.invoice.paymentTerms;
 
@@ -67,6 +70,7 @@ export class EditInvoiceDialogComponent implements OnInit{
       items: this.fb.array([])
     });
     this.addItems();
+    console.log(this.editForm.getRawValue());
   }
 
   get getItems(){
@@ -75,11 +79,11 @@ export class EditInvoiceDialogComponent implements OnInit{
 
   addItems(){
 
-    for(let item of this.items){
+    for(let item of this.inputItems){
       const itemForm = this.fb.group({
         name: [item.name, Validators.required],
         quantity: [item.quantity, Validators.required],
-        price: [item.price, Validators.required],
+        price: [ this.decimalPipe.transform(item.price, ".2"), Validators.required],
         total: [item.total, Validators.required]
       });
       this.getItems.push(itemForm);
@@ -111,5 +115,11 @@ export class EditInvoiceDialogComponent implements OnInit{
     }
   }
 
-  protected readonly FormGroup = FormGroup;
+  setDecimal(index: number){
+    const arrayPoint = this.editForm.controls["items"] as FormArray;
+    const groupPoint = arrayPoint.controls[index] as FormGroup;
+    const arraySplit = groupPoint.controls['price'].value.split(',');
+    const commaRemoved = arraySplit.join('');
+    groupPoint.controls['price'].setValue(this.decimalPipe.transform(commaRemoved, ".2"))
+  }
 }

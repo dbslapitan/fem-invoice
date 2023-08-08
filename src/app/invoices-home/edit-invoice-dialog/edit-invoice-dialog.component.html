@@ -97,11 +97,22 @@
     <div class="item-list-container" formArrayName="items">
       <h3 class="item-title">Item List</h3>
 
-      <ng-container  *ngFor="let itemForm of items">
-        <div class="item-container">
+      <ng-container  *ngFor="let itemForm of getItems.controls; let item=index">
+        <div class="item-container" [formGroupName]="item">
           <div class="input-container">
             <label for="itemName">Item Name</label>
             <input id="itemName" type="text" formControlName="name">
+          </div>
+          <div class="input-container quantity">
+            <label for="itemqty">Qty.</label>
+            <input id="itemqty" type="number" formControlName="quantity">
+          </div>
+          <div class="input-container price">
+            <label for="itemPrice">Price</label>
+            <input id="itemPrice" type="text" formControlName="price" (change)="setDecimal(item)">
+          </div>
+          <div class="input-container total">
+
           </div>
         </div>
       </ng-container>

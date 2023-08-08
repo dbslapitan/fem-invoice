@@ -14,6 +14,7 @@ import {DialogModule} from "@angular/cdk/dialog";
 import { EditInvoiceDialogComponent } from './invoices-home/edit-invoice-dialog/edit-invoice-dialog.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {CdkMenuModule} from "@angular/cdk/menu";
+import {DecimalPipe} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import {CdkMenuModule} from "@angular/cdk/menu";
       ReactiveFormsModule,
       CdkMenuModule
     ],
-  providers: [],
+  providers: [DecimalPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
