@@ -109,10 +109,11 @@
           </div>
           <div class="input-container price">
             <label for="itemPrice">Price</label>
-            <input id="itemPrice" type="text" formControlName="price" (change)="setDecimal(item)">
+            <input id="itemPrice" type="text" [value]="getPriceWithDecimal(item)" (change)="updatePrice(item, priceDisplay, totalDisplay)" #priceDisplay>
           </div>
           <div class="input-container total">
-
+            <h6>Total</h6>
+            <h4 #totalDisplay>{{getTotal(item)}}</h4>
           </div>
         </div>
       </ng-container>

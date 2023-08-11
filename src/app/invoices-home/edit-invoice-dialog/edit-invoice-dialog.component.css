@@ -110,7 +110,20 @@ li > label:hover{
   width: 6.25rem;
 }
 
+.input-container.total{
+  width: fit-content;
+}
+
 .input-container > label{
+  color: var(--item-name);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.15385;
+  letter-spacing: -0.00625rem;
+  margin: 0 0 0.5625rem 0;
+}
+
+.input-container.total > h6{
   color: var(--item-name);
   font-size: 0.8125rem;
   font-weight: 500;
@@ -184,7 +197,9 @@ li > label:hover{
   width: 100%;
 }
 
-
+.price-input{
+  display: none;
+}
 
 .menu-flag + .payment-term-menu:after{
   content: url("/assets/icon-arrow-down.svg");

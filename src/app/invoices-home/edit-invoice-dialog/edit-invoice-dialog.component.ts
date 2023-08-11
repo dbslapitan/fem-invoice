@@ -1,4 +1,4 @@
-import {Component, ElementRef, HostListener, Inject, OnInit} from '@angular/core';
+import {Component, ContentChild, ElementRef, HostListener, Inject, OnInit} from '@angular/core';
 import {Dialog, DIALOG_DATA} from "@angular/cdk/dialog";
 import {Invoice} from "../../models/invoice.model";
 import {Item} from "../../models/item.model";
@@ -49,8 +49,6 @@ export class EditInvoiceDialogComponent implements OnInit{
     this.invoice = this.data.invoice;
     this.inputItems = this.data.items;
 
-    console.log(this.inputItems)
-
     this.paymentTerm = this.invoice.paymentTerms;
 
     this.editForm = this.fb.group({
@@ -68,9 +66,8 @@ export class EditInvoiceDialogComponent implements OnInit{
       paymentTerm: [this.invoice.paymentTerms, Validators.required],
       projectDescription: [this.invoice.description, Validators.required],
       items: this.fb.array([])
-    });
+    }, {updateOn: "blur"});
     this.addItems();
-    console.log(this.editForm.getRawValue());
   }
 
   get getItems(){
@@ -83,7 +80,7 @@ export class EditInvoiceDialogComponent implements OnInit{
       const itemForm = this.fb.group({
         name: [item.name, Validators.required],
         quantity: [item.quantity, Validators.required],
-        price: [ this.decimalPipe.transform(item.price, ".2"), Validators.required],
+        price: [item.price, Validators.required],
         total: [item.total, Validators.required]
       });
       this.getItems.push(itemForm);
@@ -115,11 +112,26 @@ export class EditInvoiceDialogComponent implements OnInit{
     }
   }
 
-  setDecimal(index: number){
-    const arrayPoint = this.editForm.controls["items"] as FormArray;
-    const groupPoint = arrayPoint.controls[index] as FormGroup;
-    const arraySplit = groupPoint.controls['price'].value.split(',');
-    const commaRemoved = arraySplit.join('');
-    groupPoint.controls['price'].setValue(this.decimalPipe.transform(commaRemoved, ".2"))
+  updatePrice(index: number, priceDisplay: HTMLInputElement, total: HTMLElement){
+    const priceSplit = priceDisplay.value.split(',');
+    const price = (this.getItems.controls[index] as FormGroup).controls['price'];
+    const quantity = (this.getItems.controls[index] as FormGroup).controls['quantity'];
+    const totalAmt = (this.getItems.controls[index] as FormGroup).controls['total'];
+    price.setValue(priceSplit.join(''));
+    totalAmt.setValue(price.value * quantity.value);
+    priceDisplay.value = this.decimalPipe.transform(price.value, ".2") as string;
+  }
+
+  getTotal(item: number){
+    const qty = ((this.editForm.controls["items"] as FormArray).controls[item] as FormGroup).controls['quantity'].value;
+    const price = ((this.editForm.controls["items"] as FormArray).controls[item] as FormGroup).controls['price'].value;
+    const total = qty * price;
+    ((this.editForm.controls["items"] as FormArray).controls[item] as FormGroup).controls['total'].setValue(total);
+    return total;
+  }
+
+  getPriceWithDecimal(item: number){
+    const price = ((this.editForm.controls['items'] as FormArray).controls[item] as FormGroup).controls['price'].value;
+    return this.decimalPipe.transform(price, ".2");
   }
 }

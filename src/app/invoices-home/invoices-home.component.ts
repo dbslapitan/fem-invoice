@@ -37,7 +37,6 @@ export class InvoicesHomeComponent implements OnInit{
 
 
   constructor(private breakPoint: BreakpointObserver,
-              private renderer2: Renderer2,
               private invoiceService: InvoiceService,
               private scrollStrategyOptions: ScrollStrategyOptions) {
 
