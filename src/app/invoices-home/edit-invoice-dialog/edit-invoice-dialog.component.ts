@@ -119,6 +119,7 @@ export class EditInvoiceDialogComponent implements OnInit{
     const totalAmt = (this.getItems.controls[index] as FormGroup).controls['total'];
     price.setValue(priceSplit.join(''));
     totalAmt.setValue(price.value * quantity.value);
+    console.log(this.getItems.controls[index].getRawValue())
     priceDisplay.value = this.decimalPipe.transform(price.value, ".2") as string;
   }
 
@@ -133,5 +134,12 @@ export class EditInvoiceDialogComponent implements OnInit{
   getPriceWithDecimal(item: number){
     const price = ((this.editForm.controls['items'] as FormArray).controls[item] as FormGroup).controls['price'].value;
     return this.decimalPipe.transform(price, ".2");
+  }
+
+  checkQuantity(input: HTMLInputElement, index: number){
+    if(isNaN(parseInt(input.value)) || parseInt(input.value) <= 0){
+      input.value = "1";
+      (this.getItems.controls[index] as FormGroup).controls['quantity'].setValue(1);
+    }
   }
 }

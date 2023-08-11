@@ -105,7 +105,7 @@
           </div>
           <div class="input-container quantity">
             <label for="itemqty">Qty.</label>
-            <input id="itemqty" type="number" formControlName="quantity">
+            <input id="itemqty" type="number" formControlName="quantity" #quantity (change)="checkQuantity(quantity, item)">
           </div>
           <div class="input-container price">
             <label for="itemPrice">Price</label>
