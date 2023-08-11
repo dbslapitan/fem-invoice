@@ -113,7 +113,7 @@
           </div>
           <div class="input-container total">
             <h6>Total</h6>
-            <h4 #totalDisplay>{{getTotal(item)}}</h4>
+            <h4 #totalDisplay>{{getTotal(item) | number: '.2'}}</h4>
           </div>
         </div>
       </ng-container>

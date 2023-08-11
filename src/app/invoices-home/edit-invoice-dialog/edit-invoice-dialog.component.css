@@ -114,6 +114,14 @@ li > label:hover{
   width: fit-content;
 }
 
+.input-container.total > h6{
+  width: 100%;
+}
+
+.input-container.total > h4{
+  color: #888EB0;
+}
+
 .input-container > label{
   color: var(--item-name);
   font-size: 0.8125rem;
