@@ -73,11 +73,21 @@ li > label:hover{
   opacity: 0.7;
 }
 
+.delete-btn{
+  background-color: inherit;
+  background-image: url("/assets/icon-delete.svg");
+  background-size: cover;
+  height: 1rem;
+  margin: 2.5rem 0.4725rem auto auto;
+  width: 0.77777625rem;
+}
+
 .go-back{
   background-color: inherit;
   color: var(--invoices-title);
   display: flex;
 }
+
 
 
 .go-back::before{
@@ -142,8 +152,9 @@ li > label:hover{
 
 .item-container{
   display: flex;
-  flex-wrap: wrap;
   column-gap: 1rem;
+  flex-wrap: wrap;
+  row-gap: 1.5625rem;
   width: 20.4375rem;
 }
 
