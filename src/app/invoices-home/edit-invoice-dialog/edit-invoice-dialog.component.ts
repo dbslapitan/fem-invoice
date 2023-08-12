@@ -108,6 +108,14 @@ export class EditInvoiceDialogComponent implements OnInit, DoCheck{
     }
   }
 
+  cancelChanges(){
+    this.dialog.getDialogById("editInvoice")?.close();
+  }
+
+  saveChanges(){
+
+  }
+
   deleteItem(index: number){
     this.getItems.removeAt(index);
   }
