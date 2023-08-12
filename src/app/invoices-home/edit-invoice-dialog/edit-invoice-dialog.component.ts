@@ -87,6 +87,10 @@ export class EditInvoiceDialogComponent implements OnInit{
     }
   }
 
+  deleteItem(index: number){
+    this.getItems.removeAt(index);
+  }
+
   goBackClicked(){
     this.dialog.getDialogById("editInvoice")?.close();
     const header = document.getElementById("header");

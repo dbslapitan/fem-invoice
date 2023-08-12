@@ -115,8 +115,10 @@
             <h6>Total</h6>
             <h4 #totalDisplay>{{getTotal(item) | number: '.2'}}</h4>
           </div>
-          <button class="delete-btn"></button>
+          <button class="delete-btn" (click)="deleteItem(item)"></button>
         </div>
+
+        <button class="add-item-btn">+ Add New Item</button>
       </ng-container>
 
     </div>
