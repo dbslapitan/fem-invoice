@@ -1,4 +1,4 @@
-import {Component, ContentChild, ElementRef, HostListener, Inject, OnInit} from '@angular/core';
+import {AfterViewInit, Component, ContentChild, DoCheck, ElementRef, HostListener, Inject, OnInit} from '@angular/core';
 import {Dialog, DIALOG_DATA} from "@angular/cdk/dialog";
 import {Invoice} from "../../models/invoice.model";
 import {Item} from "../../models/item.model";
@@ -13,13 +13,14 @@ import {DecimalPipe, formatNumber} from "@angular/common";
   templateUrl: './edit-invoice-dialog.component.html',
   styleUrls: ['./edit-invoice-dialog.component.css']
 })
-export class EditInvoiceDialogComponent implements OnInit{
+export class EditInvoiceDialogComponent implements OnInit, DoCheck{
 
   invoice!: Invoice;
   inputItems!: Item[];
   editForm!: FormGroup;
   menuIsOpen = false;
   paymentTerm = 1;
+  isAddBtnClicked = false;
 
   connectedPositions: ConnectedPosition[] = [
     {
@@ -70,8 +71,28 @@ export class EditInvoiceDialogComponent implements OnInit{
     this.addItems();
   }
 
+  ngDoCheck() {
+
+    if(this.isAddBtnClicked){
+      const addItemBtn = document.getElementById("addItemBtn");
+      addItemBtn!.scrollIntoView({behavior: "smooth"});
+    }
+  }
+
   get getItems(){
     return this.editForm.controls['items'] as FormArray;
+  }
+
+  addItem(){
+    const newItem = this.fb.group({
+      name: ["", Validators.required],
+      quantity: [1, Validators.required],
+      price: [0, Validators.required],
+      total: [0, Validators.required]
+    });
+
+    this.getItems.push(newItem);
+    this.isAddBtnClicked = true;
   }
 
   addItems(){

@@ -73,6 +73,19 @@ li > label:hover{
   opacity: 0.7;
 }
 
+.add-item-btn{
+  background-color: var(--items-container-bkg);
+  border-radius: 1.5rem;
+  color: var(--item-name);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  height: 3rem;
+  line-height: 1;
+  letter-spacing: -0.015625rem;
+  margin-top: 3rem;
+  width: 100%;
+}
+
 .delete-btn{
   background-color: inherit;
   background-image: url("/assets/icon-delete.svg");
