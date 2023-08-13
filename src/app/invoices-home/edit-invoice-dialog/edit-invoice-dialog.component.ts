@@ -40,7 +40,7 @@ export class EditInvoiceDialogComponent implements OnInit, DoCheck{
   ];
 
   constructor(private dialog: Dialog,
-              @Inject(DIALOG_DATA) private data: {invoice: Invoice, items: Item[]},
+              @Inject(DIALOG_DATA) private data: {invoice: Invoice, items: Item[], isEdit: boolean},
               private fb: FormBuilder,
               private decimalPipe: DecimalPipe) {
 
@@ -63,7 +63,7 @@ export class EditInvoiceDialogComponent implements OnInit, DoCheck{
       clientCity: [this.invoice.clientAddress.city, Validators.required],
       clientPostCode: [this.invoice.clientAddress.postCode, Validators.required],
       clientCountry: [this.invoice.clientAddress.country, Validators.required],
-      invoiceDate: [this.invoice.createdAt, Validators.required],
+      invoiceDate: [{value: this.invoice.createdAt, disabled: this.data.isEdit}, Validators.required],
       paymentTerm: [this.invoice.paymentTerms, Validators.required],
       projectDescription: [this.invoice.description, Validators.required],
       items: this.fb.array([])

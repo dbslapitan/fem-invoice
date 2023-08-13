@@ -18,7 +18,7 @@ h4 + .input-container{
 
 input{
   background-color: var(--card-bkg);
-  border: 1px solid var(--checkbox-bkg);
+  border: 1px solid var(--input-outline);
   border-radius: 0.25rem;
   caret-color: #7C5DFA;
   color: var(--invoices-title);
@@ -178,6 +178,15 @@ li > label:hover{
 }
 
 .input-container > label{
+  color: var(--item-name);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.15385;
+  letter-spacing: -0.00625rem;
+  margin: 0 0 0.5625rem 0;
+}
+
+.input-container > h6{
   color: var(--item-name);
   font-size: 0.8125rem;
   font-weight: 500;

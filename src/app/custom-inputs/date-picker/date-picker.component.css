@@ -1,0 +1,23 @@
+:host{
+  width: 100%;
+}
+
+.custom-input{
+  color: var(--invoices-title);
+  background-color: var(--checkbox-bkg);
+  border: 1px solid var(--input-outline);
+  border-radius: 0.25rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  height: 3rem;
+  line-height: 1;
+  letter-spacing: -0.015625rem;
+  padding-left: 1.25rem;
+  text-align: left;
+  width: 100%;
+}
+
+.custom-input.disabled{
+  color: #FFFFFF;
+  opacity: 50%;
+}

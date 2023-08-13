@@ -15,6 +15,7 @@ import { EditInvoiceDialogComponent } from './invoices-home/edit-invoice-dialog/
 import {ReactiveFormsModule} from "@angular/forms";
 import {CdkMenuModule} from "@angular/cdk/menu";
 import {DecimalPipe} from "@angular/common";
+import { DatePickerComponent } from './custom-inputs/date-picker/date-picker.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {DecimalPipe} from "@angular/common";
     InvoiceListComponent,
     ViewInvoicesComponent,
     ItemsListComponent,
-    EditInvoiceDialogComponent
+    EditInvoiceDialogComponent,
+    DatePickerComponent
   ],
     imports: [
       BrowserModule,
