@@ -37,3 +37,12 @@
   padding: 1.625rem 1.1875rem 1.9375rem 1.25rem;
   width: 20.4375rem;
 }
+
+.month-year{
+
+}
+
+.next-month{
+  background-image: url("/assets/icon-arrow-right.svg");
+  width: fit-content;
+}

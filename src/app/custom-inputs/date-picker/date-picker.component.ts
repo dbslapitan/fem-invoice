@@ -1,6 +1,7 @@
 import {Component, ElementRef, Input, OnInit} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 import {ConnectedPosition} from "@angular/cdk/overlay";
+import {Month} from "../../models/enums";
 
 @Component({
   selector: 'date-picker',
@@ -15,6 +16,7 @@ import {ConnectedPosition} from "@angular/cdk/overlay";
 export class DatePickerComponent implements ControlValueAccessor{
 
   initialDate = new Date();
+  finalDate = new Date();
   touched = false;
   onChange = (date: Date) => {};
   onTouch = () => {};
@@ -38,6 +40,13 @@ export class DatePickerComponent implements ControlValueAccessor{
     }
   ];
 
+  get month(){
+    return Month[this.finalDate.getMonth()];
+  }
+
+  get year(){
+    return this.finalDate.getFullYear();
+  }
 
   registerOnChange(onChange: any): void {
     this.onChange = onChange;
