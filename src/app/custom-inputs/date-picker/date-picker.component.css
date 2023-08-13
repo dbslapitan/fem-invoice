@@ -31,7 +31,9 @@
 }
 
 .date-container{
-  background-color: red;
+  background-color: var(--filters-container-bkg);
+  border-radius: 0.5rem;
+  box-shadow: var(--date-box-shadow);
+  padding: 1.625rem 1.1875rem 1.9375rem 1.25rem;
   width: 20.4375rem;
-  height: 10rem;
 }

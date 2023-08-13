@@ -1,5 +1,6 @@
 import {Component, ElementRef, Input, OnInit} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
+import {ConnectedPosition} from "@angular/cdk/overlay";
 
 @Component({
   selector: 'date-picker',
@@ -19,6 +20,23 @@ export class DatePickerComponent implements ControlValueAccessor{
   onTouch = () => {};
   disabled = false;
   dateIsOpen = false;
+
+  connectedPositions: ConnectedPosition[] = [
+    {
+      overlayX: 'center',
+      overlayY: "top",
+      originY: 'bottom',
+      originX: 'center',
+      offsetY: 8
+    },
+    {
+      overlayX: 'center',
+      overlayY: "bottom",
+      originY: 'top',
+      originX: 'center',
+      offsetY: -8
+    }
+  ];
 
 
   registerOnChange(onChange: any): void {
