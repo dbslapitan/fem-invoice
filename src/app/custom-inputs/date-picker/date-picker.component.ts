@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, Input, OnInit} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 
 @Component({
@@ -18,6 +18,7 @@ export class DatePickerComponent implements ControlValueAccessor{
   onChange = (date: Date) => {};
   onTouch = () => {};
   disabled = false;
+  dateIsOpen = false;
 
 
   registerOnChange(onChange: any): void {
@@ -44,11 +45,18 @@ export class DatePickerComponent implements ControlValueAccessor{
   }
 
   onClick(){
+    this.dateIsOpen = !this.dateIsOpen;
     if(!this.disabled){
       if(!this.touched){
         this.onTouch();
         this.touched = true;
       }
+    }
+  }
+
+  clickedOutsideOverlay(event: Event, elementRef: ElementRef){
+    if(!elementRef.nativeElement.contains(event.target)){
+      this.dateIsOpen = !this.dateIsOpen;
     }
   }
 }

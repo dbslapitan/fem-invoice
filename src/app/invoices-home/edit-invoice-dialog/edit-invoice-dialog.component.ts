@@ -28,14 +28,14 @@ export class EditInvoiceDialogComponent implements OnInit, DoCheck{
       overlayY: "top",
       originY: 'bottom',
       originX: 'center',
-      offsetY: 24
+      offsetY: 8
     },
     {
       overlayX: 'center',
       overlayY: "bottom",
       originY: 'top',
       originX: 'center',
-      offsetY: -24
+      offsetY: -8
     }
   ];
 

@@ -1,1 +1,17 @@
-<button class="custom-input" [ngClass]="isDisabled()" (click)="onClick()">{{initialDate | date: 'dd MMM yyyy'}}</button>
+<button
+  class="custom-input"
+  [ngClass]="isDisabled()"
+  (click)="onClick()"
+  cdkOverlayOrigin
+  #trigger="cdkOverlayOrigin"
+>{{initialDate | date: 'dd MMM yyyy'}}</button>
+
+<ng-template
+  cdkConnectedOverlay
+  [cdkConnectedOverlayOrigin]="trigger"
+  [cdkConnectedOverlayOpen]="dateIsOpen"
+  (overlayOutsideClick)="clickedOutsideOverlay($event, trigger.elementRef)"
+>
+  <div class="date-container">
+  </div>
+</ng-template>

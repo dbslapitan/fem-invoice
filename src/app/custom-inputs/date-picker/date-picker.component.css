@@ -29,3 +29,9 @@
   display: inline-block;
   content: url("/assets/icon-calendar.svg");
 }
+
+.date-container{
+  background-color: red;
+  width: 20.4375rem;
+  height: 10rem;
+}
