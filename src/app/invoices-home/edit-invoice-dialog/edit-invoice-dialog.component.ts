@@ -76,6 +76,7 @@ export class EditInvoiceDialogComponent implements OnInit, DoCheck{
     if(this.isAddBtnClicked){
       const addItemBtn = document.getElementById("addItemBtn");
       addItemBtn!.scrollIntoView({behavior: "smooth"});
+      this.isAddBtnClicked = false;
     }
   }
 
