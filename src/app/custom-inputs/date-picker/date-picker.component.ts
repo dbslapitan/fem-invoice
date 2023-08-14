@@ -48,6 +48,33 @@ export class DatePickerComponent implements ControlValueAccessor{
     return this.finalDate.getFullYear();
   }
 
+  get numberOfDays(){
+    this.finalDate.setDate(-1)
+    return this.finalDate.getDate();
+  }
+
+  previousMonth(){
+    let currentMonth = this.finalDate.getMonth();
+    let currentYear = this.finalDate.getFullYear();
+    currentMonth--;
+    if(currentMonth === -1){
+      currentMonth = 11;
+      currentYear--;
+    }
+    this.finalDate.setFullYear(currentYear, currentMonth);
+  }
+
+  nextMonth(){
+    let currentMonth = this.finalDate.getMonth();
+    let currentYear = this.finalDate.getFullYear();
+    currentMonth++;
+    if(currentMonth === 12){
+      currentMonth = 0;
+      currentYear++;
+    }
+    this.finalDate.setFullYear(currentYear, currentMonth);
+  }
+
   registerOnChange(onChange: any): void {
     this.onChange = onChange;
   }

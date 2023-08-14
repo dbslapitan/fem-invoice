@@ -15,9 +15,12 @@
 >
   <div class="date-container">
     <div class="month-year">
-      <button class="previous-month"></button>
+      <button class="previous-month" (click)="previousMonth()"></button>
       <h4>{{month}} {{year}}</h4>
-      <button class="next-month"></button>
+      <button class="next-month" (click)="nextMonth()"></button>
+    </div>
+    <div class="dates">
+
     </div>
   </div>
 </ng-template>
