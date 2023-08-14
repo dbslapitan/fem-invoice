@@ -40,7 +40,8 @@ body{
   --outline-style: inherit;
   --payment-term-checked: #7C5DFA;
   --payment-term-hover: #7C5DFA;
-  --date-box-shadow: 0 10px 20px 0 rgba(72, 84, 159, 0.25);;
+  --date-box-shadow: 0 10px 20px 0 rgba(72, 84, 159, 0.25);
+  --date-color: #0C0E16;
 }
 
 body.dark-mode{
@@ -66,6 +67,7 @@ body.dark-mode{
   --payment-term-checked: #9277FF;
   --payment-term-hover: none;
   --date-box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.25);;
+  --date-color: #DFE3FA;
 }
 
 button {

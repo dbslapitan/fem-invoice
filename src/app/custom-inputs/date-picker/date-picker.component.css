@@ -38,10 +38,22 @@
   width: 20.4375rem;
 }
 
-.month-year{
+.previous-month{
+  background-image: url("/assets/icon-arrow-left.svg");
+  background-color: inherit;
+  height: 0.625rem;
+  width: 0.4375rem;
+}
 
+.month-year{
+  display: flex;
+  justify-content: space-between;
+  color: var(--date-color);
 }
 
 .next-month{
   background-image: url("/assets/icon-arrow-right.svg");
+  background-color: inherit;
+  height: 0.625rem;
+  width: 0.4375rem;
 }

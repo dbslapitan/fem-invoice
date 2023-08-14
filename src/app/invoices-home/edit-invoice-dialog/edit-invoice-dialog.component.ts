@@ -139,7 +139,8 @@ export class EditInvoiceDialogComponent implements OnInit, DoCheck{
   }
 
   clickedOutsideOverlay(event: Event, flag: HTMLInputElement, triggerRef: ElementRef){
-    if(!triggerRef.nativeElement.contains(event.target)){
+    if(!triggerRef.nativeElement.contains(event.target)
+      && !(event.target as HTMLElement).classList.contains('theme')){
       this.menuIsOpen = !this.menuIsOpen;
       flag.checked = this.menuIsOpen;
     }

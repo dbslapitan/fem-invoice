@@ -82,7 +82,8 @@ export class DatePickerComponent implements ControlValueAccessor{
   }
 
   clickedOutsideOverlay(event: Event, elementRef: ElementRef){
-    if(!elementRef.nativeElement.contains(event.target)){
+    if(!elementRef.nativeElement.contains(event.target)
+      && !(event.target as HTMLElement).classList.contains('theme')){
       this.dateIsOpen = !this.dateIsOpen;
     }
   }
