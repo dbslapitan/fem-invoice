@@ -170,6 +170,7 @@ li > label:hover{
 }
 
 .input-container.total > h6{
+  height: 1.5rem;
   width: 100%;
 }
 
