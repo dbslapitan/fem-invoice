@@ -64,6 +64,11 @@ input:checked + .day{
   letter-spacing: -0.015625rem;
 }
 
+.day:hover:not(:disabled){
+  color: var(--selected-day);
+  opacity: 65%;
+}
+
 .day:disabled{
   opacity: 0.0814;
 }

@@ -97,6 +97,13 @@ export class DatePickerComponent implements ControlValueAccessor, OnInit{
     }
   }
 
+  dayClicked(day: number){
+    this.finalDate.setDate(day);
+    this.onChange(this.finalDate);
+    this.initialDate = new Date(this.finalDate.getFullYear(), this.finalDate.getMonth(), day);
+    this.dateIsOpen = false;
+  }
+
   previousMonth(){
     let currentMonth = this.finalDate.getMonth();
     let currentYear = this.finalDate.getFullYear();
