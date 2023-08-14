@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 import {ConnectedPosition} from "@angular/cdk/overlay";
 import {Month} from "../../models/enums";
@@ -13,7 +13,7 @@ import {Month} from "../../models/enums";
     useExisting: DatePickerComponent
   }]
 })
-export class DatePickerComponent implements ControlValueAccessor{
+export class DatePickerComponent implements ControlValueAccessor, OnInit{
 
   initialDate = new Date();
   finalDate = new Date();
@@ -22,6 +22,7 @@ export class DatePickerComponent implements ControlValueAccessor{
   onTouch = () => {};
   disabled = false;
   dateIsOpen = false;
+  daysOfTheMonth: number[] = [];
 
   connectedPositions: ConnectedPosition[] = [
     {
@@ -40,12 +41,49 @@ export class DatePickerComponent implements ControlValueAccessor{
     }
   ];
 
+  ngOnInit() {
+    this.populateNumberOfDaysArray();
+  }
+
+
+
   get month(){
     return Month[this.finalDate.getMonth()];
   }
 
   get year(){
     return this.finalDate.getFullYear();
+  }
+
+  get initialDay(){
+    return 1;
+  }
+
+  get numberofDays(){
+    const nextMonth = this.finalDate.getMonth() + 1;
+    const thisYear = this.finalDate.getFullYear();
+    const tempDate = new Date();
+    tempDate.setFullYear(thisYear, nextMonth);
+    tempDate.setDate(-1);
+    return tempDate.getDate();
+  }
+
+  isCorrectDate(day: number){
+    return this.initialDate.getFullYear() === this.finalDate.getFullYear()
+      && this.initialDate.getMonth() === this.finalDate.getMonth()
+      && this.initialDate.getDate() === day;
+  }
+
+  populateNumberOfDaysArray(){
+    const daysInMonth = this.numberOfDays;
+    for(let i = 1; i <= 35; i++){
+      if(i <= daysInMonth){
+        this.daysOfTheMonth.push(i);
+      }
+      else{
+        this.daysOfTheMonth.push(i - daysInMonth);
+      }
+    }
   }
 
   get numberOfDays(){
@@ -84,7 +122,8 @@ export class DatePickerComponent implements ControlValueAccessor{
   }
 
   writeValue(date: Date): void {
-    this.initialDate = date;
+    this.initialDate = new Date(date);
+    this.finalDate = new Date(date);
   }
 
   setDisabledState(isDisabled: boolean) {

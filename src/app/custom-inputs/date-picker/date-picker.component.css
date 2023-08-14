@@ -2,6 +2,10 @@
   width: 100%;
 }
 
+input:checked + .day{
+  color: var(--selected-day);
+}
+
 .custom-input{
   align-items: center;
   color: var(--invoices-title);
@@ -36,6 +40,24 @@
   box-shadow: var(--date-box-shadow);
   padding: 1.625rem 1.1875rem 1.9375rem 1.25rem;
   width: 20.4375rem;
+}
+
+.dates{
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 0.9375rem;
+}
+
+.dates > input{
+  display: none;
+}
+
+.day{
+  background-color: inherit;
+  color: var(--date-color);
+  width: calc((100% - (0.9375rem * 6))/7);
+  height: 0.9375rem;
 }
 
 .previous-month{
