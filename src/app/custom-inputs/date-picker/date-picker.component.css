@@ -64,6 +64,10 @@ input:checked + .day{
   letter-spacing: -0.015625rem;
 }
 
+.day:disabled{
+  opacity: 0.0814;
+}
+
 .previous-month{
   background-image: url("/assets/icon-arrow-left.svg");
   background-color: inherit;

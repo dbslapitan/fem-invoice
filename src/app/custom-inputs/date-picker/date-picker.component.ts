@@ -76,7 +76,12 @@ export class DatePickerComponent implements ControlValueAccessor, OnInit{
   }
 
   isNextMonth(index: number){
-    return false;
+    let temp = this.finalDate.getMonth();
+    temp++;
+    const tempDate = new Date();
+    tempDate.setFullYear(this.finalDate.getFullYear(), temp, 1);
+    tempDate.setDate(0);
+    return index + 1 > tempDate.getDate();
   }
 
   populateNumberOfDaysArray(){
