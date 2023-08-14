@@ -58,6 +58,10 @@ input:checked + .day{
   color: var(--date-color);
   width: calc((100% - (0.9375rem * 6))/7);
   height: 0.9375rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.015625rem;
 }
 
 .previous-month{

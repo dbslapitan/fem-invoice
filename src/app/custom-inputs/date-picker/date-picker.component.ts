@@ -55,8 +55,9 @@ export class DatePickerComponent implements ControlValueAccessor, OnInit{
     return this.finalDate.getFullYear();
   }
 
-  get initialDay(){
-    return 1;
+  get numberOfDays(){
+    this.finalDate.setDate(0)
+    return this.finalDate.getDate();
   }
 
   get numberofDays(){
@@ -64,7 +65,7 @@ export class DatePickerComponent implements ControlValueAccessor, OnInit{
     const thisYear = this.finalDate.getFullYear();
     const tempDate = new Date();
     tempDate.setFullYear(thisYear, nextMonth);
-    tempDate.setDate(-1);
+    tempDate.setDate(0);
     return tempDate.getDate();
   }
 
@@ -74,8 +75,13 @@ export class DatePickerComponent implements ControlValueAccessor, OnInit{
       && this.initialDate.getDate() === day;
   }
 
+  isNextMonth(index: number){
+    return false;
+  }
+
   populateNumberOfDaysArray(){
-    const daysInMonth = this.numberOfDays;
+    this.daysOfTheMonth = [];
+    const daysInMonth = this.numberofDays;
     for(let i = 1; i <= 35; i++){
       if(i <= daysInMonth){
         this.daysOfTheMonth.push(i);
@@ -86,11 +92,6 @@ export class DatePickerComponent implements ControlValueAccessor, OnInit{
     }
   }
 
-  get numberOfDays(){
-    this.finalDate.setDate(-1)
-    return this.finalDate.getDate();
-  }
-
   previousMonth(){
     let currentMonth = this.finalDate.getMonth();
     let currentYear = this.finalDate.getFullYear();
@@ -99,7 +100,8 @@ export class DatePickerComponent implements ControlValueAccessor, OnInit{
       currentMonth = 11;
       currentYear--;
     }
-    this.finalDate.setFullYear(currentYear, currentMonth);
+    this.finalDate.setFullYear(currentYear, currentMonth, 1);
+    this.populateNumberOfDaysArray()
   }
 
   nextMonth(){
@@ -110,7 +112,8 @@ export class DatePickerComponent implements ControlValueAccessor, OnInit{
       currentMonth = 0;
       currentYear++;
     }
-    this.finalDate.setFullYear(currentYear, currentMonth);
+    this.finalDate.setFullYear(currentYear, currentMonth, 1);
+    this.populateNumberOfDaysArray();
   }
 
   registerOnChange(onChange: any): void {

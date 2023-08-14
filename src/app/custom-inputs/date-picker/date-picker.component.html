@@ -21,9 +21,9 @@
     </div>
     <div class="dates">
 
-      <ng-container *ngFor="let day of daysOfTheMonth; let index">
+      <ng-container *ngFor="let day of daysOfTheMonth; let index = index">
         <input type="checkbox" [checked]="isCorrectDate(day)">
-        <button class="day">{{day}}</button>
+        <button class="day" [disabled]="isNextMonth(index)">{{day}}</button>
       </ng-container>
     </div>
   </div>
