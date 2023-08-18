@@ -305,6 +305,10 @@ li > label:hover{
   color: #FFFFFF;
 }
 
+.save-changes:hover{
+  background-color: #9277FF;
+}
+
 .string-id{
   color: var(--invoices-title);
   line-height: 1.33333rem;

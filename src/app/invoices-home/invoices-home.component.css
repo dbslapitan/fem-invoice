@@ -116,6 +116,10 @@ li > input:disabled + label::before{
   width: 5.625rem;
 }
 
+.new-invoice:hover{
+  background-color: #9277FF;
+}
+
 .new-invoice-design{
   background-color: #FFFFFF;
   background-image: url("/assets/icon-plus.svg");
