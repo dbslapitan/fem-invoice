@@ -18,4 +18,8 @@ export class InvoiceService {
   getFullInvoice(stringId: string){
     return this.http.get<FullInvoice>(`${environment.baseUrl}/api/v1/invoices/${stringId}`);
   }
+
+  saveFullInvoiceChanges(invoice: FullInvoice){
+
+  }
 }

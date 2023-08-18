@@ -7,6 +7,7 @@ import {CDK_MENU} from "@angular/cdk/menu";
 import {CdkScrollable, ConnectedPosition, ScrollDispatcher} from "@angular/cdk/overlay";
 import {Observable} from "rxjs";
 import {DecimalPipe, formatNumber} from "@angular/common";
+import {InvoiceService} from "../../services/invoice.service";
 
 @Component({
   selector: 'edit-invoice-dialog',
@@ -42,7 +43,8 @@ export class EditInvoiceDialogComponent implements OnInit, DoCheck{
   constructor(private dialog: Dialog,
               @Inject(DIALOG_DATA) private data: {invoice: Invoice, items: Item[], isEdit: boolean},
               private fb: FormBuilder,
-              private decimalPipe: DecimalPipe) {
+              private decimalPipe: DecimalPipe,
+              private invoiceService: InvoiceService) {
 
   }
 
@@ -66,7 +68,7 @@ export class EditInvoiceDialogComponent implements OnInit, DoCheck{
       invoiceDate: [{value: this.invoice.createdAt, disabled: this.data.isEdit}, Validators.required],
       paymentTerm: [this.invoice.paymentTerms, Validators.required],
       projectDescription: [this.invoice.description, Validators.required],
-      items: this.fb.array([])
+      items: this.fb.array([], Validators.required)
     }, {updateOn: "submit"});
     this.addItems();
   }
@@ -85,6 +87,9 @@ export class EditInvoiceDialogComponent implements OnInit, DoCheck{
   }
 
   onSubmit(){
+    if(this.editForm.valid){
+      this.dialog.getDialogById('editInvoice')?.close();
+    }
   }
 
   addItem(){
@@ -114,10 +119,6 @@ export class EditInvoiceDialogComponent implements OnInit, DoCheck{
 
   cancelChanges(){
     this.dialog.getDialogById("editInvoice")?.close();
-  }
-
-  saveChanges(){
-
   }
 
   deleteItem(index: number){
