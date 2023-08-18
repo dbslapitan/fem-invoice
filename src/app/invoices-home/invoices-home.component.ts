@@ -5,6 +5,7 @@ import {ConnectedPosition, OverlayContainer, ScrollStrategyOptions} from "@angul
 import {Invoice} from "../models/invoice.model";
 import {InvoiceService} from "../services/invoice.service";
 import {Filter} from "../models/filter.model";
+import {LoadingService} from "../services/loading.service";
 
 @Component({
   selector: 'invoices-home',
@@ -38,7 +39,8 @@ export class InvoicesHomeComponent implements OnInit{
 
   constructor(private breakPoint: BreakpointObserver,
               private invoiceService: InvoiceService,
-              private scrollStrategyOptions: ScrollStrategyOptions) {
+              private scrollStrategyOptions: ScrollStrategyOptions,
+              private loadingService: LoadingService) {
 
   }
 
@@ -46,9 +48,12 @@ export class InvoicesHomeComponent implements OnInit{
     this.isNotMobile$ = this.breakPoint.observe('(min-width: 768px)').pipe(
       map(({ matches }) => matches)
     );
-    this.invoices$ = this.invoiceService.getAllInvoices().pipe(
-      shareReplay()
-    );
+
+    this.invoices$ = this.loadingService
+      .showLoaderUntilCompletion(this.invoiceService.getAllInvoices())
+      .pipe(
+        shareReplay()
+      );
 
     if(localStorage.getItem('filters')){
       try {

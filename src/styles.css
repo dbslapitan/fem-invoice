@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&display=swap');
 @import '@angular/cdk/overlay-prebuilt.css';
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
 
 html{
   box-sizing: border-box;
@@ -43,6 +44,7 @@ body{
   --date-box-shadow: 0 10px 20px 0 rgba(72, 84, 159, 0.25);
   --date-color: #0C0E16;
   --selected-day: #9277FF;
+  --loading-bkg: #F8F8FB;
 }
 
 body.dark-mode{
@@ -70,6 +72,7 @@ body.dark-mode{
   --date-box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.25);;
   --date-color: #DFE3FA;
   --selected-day: #7C5DFA;
+  --loading-bkg: #141625;
 }
 
 button {
@@ -127,3 +130,6 @@ h6{
   line-height: 1.15385;
   letter-spacing: -0.015625rem;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

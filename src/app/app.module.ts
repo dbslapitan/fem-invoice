@@ -16,6 +16,9 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {CdkMenuModule} from "@angular/cdk/menu";
 import {DecimalPipe} from "@angular/common";
 import { DatePickerComponent } from './custom-inputs/date-picker/date-picker.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,8 @@ import { DatePickerComponent } from './custom-inputs/date-picker/date-picker.com
     ViewInvoicesComponent,
     ItemsListComponent,
     EditInvoiceDialogComponent,
-    DatePickerComponent
+    DatePickerComponent,
+    LoadingComponent
   ],
     imports: [
       BrowserModule,
@@ -35,7 +39,9 @@ import { DatePickerComponent } from './custom-inputs/date-picker/date-picker.com
       OverlayModule,
       DialogModule,
       ReactiveFormsModule,
-      CdkMenuModule
+      CdkMenuModule,
+      MatProgressSpinnerModule,
+      BrowserAnimationsModule
     ],
   providers: [DecimalPipe],
   bootstrap: [AppComponent]

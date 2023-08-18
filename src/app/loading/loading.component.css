@@ -1,0 +1,12 @@
+.spinner-class{
+  align-items: center;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  background: var(--loading-bkg);
+  z-index: 2000;
+}
