@@ -67,7 +67,7 @@ export class EditInvoiceDialogComponent implements OnInit, DoCheck{
       paymentTerm: [this.invoice.paymentTerms, Validators.required],
       projectDescription: [this.invoice.description, Validators.required],
       items: this.fb.array([])
-    }, {updateOn: "blur"});
+    }, {updateOn: "submit"});
     this.addItems();
   }
 
@@ -82,6 +82,9 @@ export class EditInvoiceDialogComponent implements OnInit, DoCheck{
 
   get getItems(){
     return this.editForm.controls['items'] as FormArray;
+  }
+
+  onSubmit(){
   }
 
   addItem(){

@@ -2,7 +2,7 @@
   <button class="go-back" (click)="goBackClicked()"><h4>Go back</h4></button>
   <h2 class="string-id">Edit <span>#</span>{{invoice.stringId}}</h2>
 
-  <form [formGroup]="editForm">
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
 
     <h4>Bill From</h4>
     <div class="input-container">
@@ -121,14 +121,17 @@
       </ng-container>
 
       <button id="addItemBtn" class="add-item-btn" (click)="addItem()" #addBtn>+ Add New Item</button>
-
+      <button type="submit" class="submit-btn" #submitBtn></button>
     </div>
 
   </form>
-  <div class="bottom-spacer"></div>
+  <div class="bottom-spacer">
+    <p class="error-message" *ngIf="editForm.invalid">- All fields must be added</p>
+    <p class="error-message" *ngIf="editForm.controls['items'].getRawValue().length === 0">- An item must be added</p>
+  </div>
   <div class="action-container">
     <button class="cancel-changes" (click)="cancelChanges()">Cancel</button>
-    <button class="save-changes" (click)="saveChanges()">Save Changes</button>
+    <button class="save-changes" (click)="submitBtn.click()">Save Changes</button>
   </div>
 </div>
 
