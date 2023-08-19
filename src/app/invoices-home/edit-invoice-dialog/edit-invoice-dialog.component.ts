@@ -8,6 +8,7 @@ import {CdkScrollable, ConnectedPosition, ScrollDispatcher} from "@angular/cdk/o
 import {Observable} from "rxjs";
 import {DecimalPipe, formatNumber} from "@angular/common";
 import {InvoiceService} from "../../services/invoice.service";
+import {FullInvoice} from "../../models/full-invoice";
 
 @Component({
   selector: 'edit-invoice-dialog',
@@ -55,6 +56,7 @@ export class EditInvoiceDialogComponent implements OnInit, DoCheck{
     this.paymentTerm = this.invoice.paymentTerms;
 
     this.editForm = this.fb.group({
+      stringId: [this.invoice.stringId],
       senderStreet: [this.invoice.senderAddress.street, Validators.required],
       senderCity: [this.invoice.senderAddress.city, Validators.required],
       senderPostCode: [this.invoice.senderAddress.postCode, Validators.required],
@@ -88,7 +90,11 @@ export class EditInvoiceDialogComponent implements OnInit, DoCheck{
 
   onSubmit(){
     if(this.editForm.valid){
-      this.dialog.getDialogById('editInvoice')?.close();
+      const rawValue = this.editForm.getRawValue();
+      const {items, ...invoice} = rawValue;
+      const fullInvoice: FullInvoice = {items, newInvoice: invoice};
+      this.invoiceService.saveFullInvoiceChanges(fullInvoice).subscribe(console.log);
+      //this.dialog.getDialogById('editInvoice')?.close();
     }
   }
 

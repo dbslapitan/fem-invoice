@@ -19,7 +19,8 @@ export class InvoiceService {
     return this.http.get<FullInvoice>(`${environment.baseUrl}/api/v1/invoices/${stringId}`);
   }
 
-  saveFullInvoiceChanges(invoice: FullInvoice){
-
+  saveFullInvoiceChanges(fullInvoice: FullInvoice){
+    const {items, ...invoice} = fullInvoice;
+    return this.http.put(`${environment.baseUrl}/api/v1/invoices/${invoice.newInvoice.stringId}`, fullInvoice);
   }
 }
