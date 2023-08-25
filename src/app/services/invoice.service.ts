@@ -3,6 +3,8 @@ import {HttpClient} from "@angular/common/http";
 import {Invoice} from "../models/invoice.model";
 import { environment } from "../../environment/environment";
 import {FullInvoice} from "../models/full-invoice";
+import {Address} from "../models/address.model";
+import {Item} from "../models/item.model";
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +21,7 @@ export class InvoiceService {
     return this.http.get<FullInvoice>(`${environment.baseUrl}/api/v1/invoices/${stringId}`);
   }
 
-  saveFullInvoiceChanges(fullInvoice: FullInvoice){
-    const {items, ...invoice} = fullInvoice;
-    return this.http.put(`${environment.baseUrl}/api/v1/invoices/${invoice.newInvoice.stringId}`, fullInvoice);
+  saveFullInvoiceChanges(body: {invoice: Invoice, addresses: Address[], items: Item[]}){
+    return this.http.put(`${environment.baseUrl}/api/v1/invoices/${body.invoice.stringId}`, body);
   }
 }

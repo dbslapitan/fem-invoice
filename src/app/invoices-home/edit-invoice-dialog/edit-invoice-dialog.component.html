@@ -29,12 +29,12 @@
 
     <div class="input-container">
       <label for="name">Client's Name</label>
-      <input id="name" type="text" formControlName="name">
+      <input id="name" type="text" formControlName="clientName">
     </div>
 
     <div class="input-container">
       <label for="email">Client's Email</label>
-      <input id="email" type="email" formControlName="email">
+      <input id="email" type="email" formControlName="clientEmail">
     </div>
 
     <div class="input-container">
@@ -59,7 +59,7 @@
 
     <div class="input-container">
       <h6>Invoice Date</h6>
-      <date-picker formControlName="invoiceDate"></date-picker>
+      <date-picker formControlName="createdAt"></date-picker>
     </div>
 
     <div class="input-container dropdown">
@@ -92,7 +92,7 @@
 
     <div class="input-container">
       <label for="projectDescription">Project Description</label>
-      <input id="projectDescription" type="text" formControlName="projectDescription">
+      <input id="projectDescription" type="text" formControlName="description">
     </div>
 
     <div class="item-list-container" formArrayName="items">

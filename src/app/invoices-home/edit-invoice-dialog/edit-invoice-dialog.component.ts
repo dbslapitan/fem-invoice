@@ -1,4 +1,14 @@
-import {AfterViewInit, Component, ContentChild, DoCheck, ElementRef, HostListener, Inject, OnInit} from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ContentChild,
+  DoCheck,
+  ElementRef, EventEmitter,
+  HostListener,
+  Inject,
+  OnInit,
+  Output
+} from '@angular/core';
 import {Dialog, DIALOG_DATA} from "@angular/cdk/dialog";
 import {Invoice} from "../../models/invoice.model";
 import {Item} from "../../models/item.model";
@@ -9,6 +19,8 @@ import {Observable} from "rxjs";
 import {DecimalPipe, formatNumber} from "@angular/common";
 import {InvoiceService} from "../../services/invoice.service";
 import {FullInvoice} from "../../models/full-invoice";
+import {ActivatedRoute, Router} from "@angular/router";
+import {Address} from "../../models/address.model";
 
 @Component({
   selector: 'edit-invoice-dialog',
@@ -44,8 +56,7 @@ export class EditInvoiceDialogComponent implements OnInit, DoCheck{
   constructor(private dialog: Dialog,
               @Inject(DIALOG_DATA) private data: {invoice: Invoice, items: Item[], isEdit: boolean},
               private fb: FormBuilder,
-              private decimalPipe: DecimalPipe,
-              private invoiceService: InvoiceService) {
+              private decimalPipe: DecimalPipe) {
 
   }
 
@@ -61,15 +72,15 @@ export class EditInvoiceDialogComponent implements OnInit, DoCheck{
       senderCity: [this.invoice.senderAddress.city, Validators.required],
       senderPostCode: [this.invoice.senderAddress.postCode, Validators.required],
       senderCountry: [this.invoice.senderAddress.country, Validators.required],
-      name: [this.invoice.clientName, Validators.required],
-      email: [this.invoice.clientEmail, [Validators.required, Validators.email]],
+      clientName: [this.invoice.clientName, Validators.required],
+      clientEmail: [this.invoice.clientEmail, [Validators.required, Validators.email]],
       clientStreet: [this.invoice.clientAddress.street, Validators.required],
       clientCity: [this.invoice.clientAddress.city, Validators.required],
       clientPostCode: [this.invoice.clientAddress.postCode, Validators.required],
       clientCountry: [this.invoice.clientAddress.country, Validators.required],
-      invoiceDate: [{value: this.invoice.createdAt, disabled: this.data.isEdit}, Validators.required],
-      paymentTerm: [this.invoice.paymentTerms, Validators.required],
-      projectDescription: [this.invoice.description, Validators.required],
+      createdAt: [{value: this.invoice.createdAt, disabled: this.data.isEdit}, Validators.required],
+      paymentTerms: [this.invoice.paymentTerms, Validators.required],
+      description: [this.invoice.description, Validators.required],
       items: this.fb.array([], Validators.required)
     }, {updateOn: "submit"});
     this.addItems();
@@ -91,10 +102,34 @@ export class EditInvoiceDialogComponent implements OnInit, DoCheck{
   onSubmit(){
     if(this.editForm.valid){
       const rawValue = this.editForm.getRawValue();
-      const {items, ...invoice} = rawValue;
-      const fullInvoice: FullInvoice = {items, newInvoice: invoice};
-      this.invoiceService.saveFullInvoiceChanges(fullInvoice).subscribe(console.log);
-      //this.dialog.getDialogById('editInvoice')?.close();
+      const {items,
+        senderStreet,
+        senderCity,
+        senderPostCode,
+        senderCountry,
+        clientStreet,
+        clientCity,
+        clientPostCode,
+        clientCountry,
+        ...invoice} = rawValue;
+
+      const addresses: any = [];
+      const senderAddress = {street: senderStreet,
+        city: senderCity,
+        postCode: senderPostCode,
+        country: senderCountry,
+        attachedTo: "senderAddress"
+      };
+      const clientAddress = {street: clientStreet,
+        city: clientCity,
+        postCode: clientPostCode,
+        country: clientCountry,
+        attachedTo: "clientAddress"
+      }
+      addresses.push(senderAddress);
+      addresses.push(clientAddress);
+      const body = {items, invoice, addresses};
+      this.dialog.getDialogById('editInvoice')?.close(body);
     }
   }
 
@@ -103,7 +138,8 @@ export class EditInvoiceDialogComponent implements OnInit, DoCheck{
       name: ["", Validators.required],
       quantity: [1, Validators.required],
       price: [0, Validators.required],
-      total: [0, Validators.required]
+      total: [0, Validators.required],
+      id: [null]
     });
 
     this.getItems.push(newItem);
@@ -117,14 +153,15 @@ export class EditInvoiceDialogComponent implements OnInit, DoCheck{
         name: [item.name, Validators.required],
         quantity: [item.quantity, Validators.required],
         price: [item.price, Validators.required],
-        total: [item.total, Validators.required]
+        total: [item.total, Validators.required],
+        id: [item.id]
       });
       this.getItems.push(itemForm);
     }
   }
 
   cancelChanges(){
-    this.dialog.getDialogById("editInvoice")?.close();
+    this.dialog.closeAll();
   }
 
   deleteItem(index: number){
@@ -132,13 +169,13 @@ export class EditInvoiceDialogComponent implements OnInit, DoCheck{
   }
 
   goBackClicked(){
-    this.dialog.getDialogById("editInvoice")?.close();
+    this.dialog.getDialogById("editInvoice")?.close(null);
     const header = document.getElementById("header");
     header!.scrollIntoView();
   }
 
   paymentTermClicked(day: number, flag: HTMLInputElement){
-    this.editForm.patchValue({paymentTerm: day});
+    this.editForm.patchValue({paymentTerms: day});
     this.paymentTerm = day;
     this.menuIsOpen = false;
     flag.checked = false;
