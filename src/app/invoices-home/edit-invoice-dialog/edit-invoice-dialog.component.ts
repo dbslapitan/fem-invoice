@@ -82,7 +82,7 @@ export class EditInvoiceDialogComponent implements OnInit, DoCheck{
       paymentTerms: [this.invoice.paymentTerms, Validators.required],
       description: [this.invoice.description, Validators.required],
       items: this.fb.array([], Validators.required)
-    }, {updateOn: "submit"});
+    });
     this.addItems();
   }
 
