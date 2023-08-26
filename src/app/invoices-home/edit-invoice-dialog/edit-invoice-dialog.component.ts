@@ -80,6 +80,7 @@ export class EditInvoiceDialogComponent implements OnInit, DoCheck{
       clientCountry: [this.invoice.clientAddress.country, Validators.required],
       createdAt: [{value: this.invoice.createdAt, disabled: this.data.isEdit}, Validators.required],
       paymentTerms: [this.invoice.paymentTerms, Validators.required],
+      paymentDue: [this.invoice.paymentDue, Validators.required],
       description: [this.invoice.description, Validators.required],
       items: this.fb.array([], Validators.required)
     });
@@ -175,7 +176,9 @@ export class EditInvoiceDialogComponent implements OnInit, DoCheck{
   }
 
   paymentTermClicked(day: number, flag: HTMLInputElement){
-    this.editForm.patchValue({paymentTerms: day});
+    const createdAtDate = new Date(this.invoice.createdAt);
+    createdAtDate.setDate(createdAtDate.getDate() + day);
+    this.editForm.patchValue({paymentTerms: day, paymentDue: createdAtDate});
     this.paymentTerm = day;
     this.menuIsOpen = false;
     flag.checked = false;
