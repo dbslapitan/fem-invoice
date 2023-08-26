@@ -204,7 +204,6 @@ export class EditInvoiceDialogComponent implements OnInit, DoCheck{
     const totalAmt = (this.getItems.controls[index] as FormGroup).controls['total'];
     price.setValue(priceSplit.join(''));
     totalAmt.setValue(price.value * quantity.value);
-    console.log(this.getItems.controls[index].getRawValue())
     priceDisplay.value = this.decimalPipe.transform(price.value, ".2") as string;
   }
 
