@@ -1,7 +1,7 @@
 import {Component, ElementRef, OnInit} from '@angular/core';
 import {InvoiceService} from "../../services/invoice.service";
-import {ActivatedRoute} from "@angular/router";
-import {map, Observable, of, switchMap, timeout} from "rxjs";
+import {ActivatedRoute, Route, Router} from "@angular/router";
+import {map, Observable, of, switchMap, tap, timeout} from "rxjs";
 import {Invoice} from "../../models/invoice.model";
 import {Item} from "../../models/item.model";
 import {BreakpointObserver} from "@angular/cdk/layout";
@@ -30,7 +30,8 @@ export class ViewInvoicesComponent implements OnInit{
   constructor(private invoiceService: InvoiceService,
               private activatedRoute: ActivatedRoute,
               private breakPoint: BreakpointObserver,
-              private dialog: Dialog) {
+              private dialog: Dialog,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -40,6 +41,10 @@ export class ViewInvoicesComponent implements OnInit{
     const fullInvoice = this.activatedRoute.snapshot.data['fullInvoice'];
     this.invoice = fullInvoice.newInvoice;
     this.items = fullInvoice.items;
+    this.activatedRoute.data.subscribe(data => {
+      this.invoice = data["fullInvoice"].newInvoice;
+      this.items = data["fullInvoice"].items;
+    });
   }
 
   openEditInvoiceDialog(){
@@ -71,9 +76,10 @@ export class ViewInvoicesComponent implements OnInit{
           return this.invoiceService.saveFullInvoiceChanges(body);
         }
         else {
-          return of(null);
+          return of(null)
         }
-      })
-    ).subscribe(console.log);
+      }),
+      tap(() => this.router.navigate(['invoices', this.invoice.stringId] ))
+    ).subscribe();
   }
 }

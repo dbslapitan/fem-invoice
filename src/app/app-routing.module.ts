@@ -7,11 +7,11 @@ import {fullInvoiceResolver} from "./services/resolvers";
 const routes: Routes = [
   {path: '', redirectTo: '/invoices', pathMatch: 'full'},
   {path: 'invoices', component: InvoicesHomeComponent},
-  {path: 'invoices/:stringId', component: ViewInvoicesComponent, resolve:{fullInvoice: fullInvoiceResolver}}
+  {path: 'invoices/:stringId', component: ViewInvoicesComponent, resolve:{fullInvoice: fullInvoiceResolver}, runGuardsAndResolvers: "always"}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: "reload"})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
