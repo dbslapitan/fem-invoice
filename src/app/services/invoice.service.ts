@@ -18,7 +18,6 @@ export class InvoiceService {
   }
 
   getFullInvoice(stringId: string){
-    this.http.get<FullInvoice>(`${environment.baseUrl}/api/v1/invoices/${stringId}`).subscribe(console.log);
     return this.http.get<FullInvoice>(`${environment.baseUrl}/api/v1/invoices/${stringId}`);
   }
 

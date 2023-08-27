@@ -78,6 +78,8 @@ export class EditInvoiceDialogComponent implements OnInit, DoCheck{
       senderCity: [this.senderAddress!.city, Validators.required],
       senderPostCode: [this.senderAddress!.postCode, Validators.required],
       senderCountry: [this.senderAddress!.country, Validators.required],
+      clientAddressId: [this.clientAddress?.id],
+      senderAddressId: [this.senderAddress?.id],
       clientName: [this.invoice.clientName, Validators.required],
       clientEmail: [this.invoice.clientEmail, [Validators.required, Validators.email]],
       clientStreet: [this.clientAddress!.street, Validators.required],
@@ -114,6 +116,8 @@ export class EditInvoiceDialogComponent implements OnInit, DoCheck{
         senderCity,
         senderPostCode,
         senderCountry,
+        senderAddressId,
+        clientAddressId,
         clientStreet,
         clientCity,
         clientPostCode,
@@ -125,13 +129,15 @@ export class EditInvoiceDialogComponent implements OnInit, DoCheck{
         city: senderCity,
         postCode: senderPostCode,
         country: senderCountry,
-        attachedTo: "senderAddress"
+        attachedTo: "senderAddress",
+        id: senderAddressId
       };
       const clientAddress = {street: clientStreet,
         city: clientCity,
         postCode: clientPostCode,
         country: clientCountry,
-        attachedTo: "clientAddress"
+        attachedTo: "clientAddress",
+        id: clientAddressId
       }
       addresses.push(senderAddress);
       addresses.push(clientAddress);

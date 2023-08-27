@@ -46,7 +46,6 @@ export class ViewInvoicesComponent implements OnInit{
       this.invoice = data["fullInvoice"].newInvoice;
       this.items = data["fullInvoice"].items;
       this.addresses = data["fullInvoice"].addresses;
-      console.log(data["fullInvoice"].items)
       this.clientAddress = this.findAddress(this.addresses, "clientAddress");
       this.senderAddress = this.findAddress(this.addresses, "senderAddress");
     });
