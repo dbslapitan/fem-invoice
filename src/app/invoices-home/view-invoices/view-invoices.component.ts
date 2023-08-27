@@ -93,10 +93,12 @@ export class ViewInvoicesComponent implements OnInit{
         }
       }),
       tap(() => this.router.navigate(['invoices', this.invoice.stringId] ))
-    ).subscribe();
+    ).subscribe(console.log);
   }
 
   markAsPaid(){
-    this.invoiceService.markInvoiceAsPaid(this.invoice.stringId).subscribe(console.log);
+    this.invoiceService.markInvoiceAsPaid(this.invoice.stringId).pipe(
+      tap(() => this.router.navigate(['invoices', this.invoice.stringId]))
+    ).subscribe(console.log);
   }
 }
