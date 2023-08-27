@@ -24,4 +24,8 @@ export class InvoiceService {
   saveFullInvoiceChanges(body: {invoice: Invoice, addresses: Address[], items: Item[]}){
     return this.http.put(`${environment.baseUrl}/api/v1/invoices/${body.invoice.stringId}`, body);
   }
+
+  markInvoiceAsPaid(stringId: string){
+    return this.http.put(`${environment.baseUrl}/api/v1/invoices/mark-as-paid/${stringId}`, {});
+  }
 }

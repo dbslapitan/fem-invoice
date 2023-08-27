@@ -11,6 +11,7 @@ import {BasePortalOutlet, CdkPortalOutlet, Portal, PortalOutlet} from "@angular/
 import {Overlay, PositionStrategy} from "@angular/cdk/overlay";
 import {DialogService} from "../../services/dialog.service";
 import {Address} from "../../models/address.model";
+import {mark} from "@angular/compiler-cli/src/ngtsc/perf/src/clock";
 
 @Component({
   selector: 'view-invoices',
@@ -93,5 +94,9 @@ export class ViewInvoicesComponent implements OnInit{
       }),
       tap(() => this.router.navigate(['invoices', this.invoice.stringId] ))
     ).subscribe();
+  }
+
+  markAsPaid(){
+    this.invoiceService.markInvoiceAsPaid(this.invoice.stringId).subscribe(console.log);
   }
 }
