@@ -4,5 +4,6 @@ import {Invoice} from "./invoice.model";
 
 export interface FullInvoice{
   newInvoice: Invoice,
-  items: Item[]
+  items: Item[],
+  addresses: Address[]
 }

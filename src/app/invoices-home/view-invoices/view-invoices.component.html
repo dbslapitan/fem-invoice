@@ -19,10 +19,10 @@
   <h4 class="invoice-id">{{invoice.stringId}}</h4>
   <h6 class="invoice-description">{{invoice.description}}</h6>
   <div class="sender-address">
-    <h5>{{invoice.senderAddress.street}}</h5>
-    <h5>{{invoice.senderAddress.city}}</h5>
-    <h5>{{invoice.senderAddress.postCode}}</h5>
-    <h5>{{invoice.senderAddress.country}}</h5>
+    <h5>{{senderAddress.street}}</h5>
+    <h5>{{senderAddress.city}}</h5>
+    <h5>{{senderAddress.postCode}}</h5>
+    <h5>{{senderAddress.country}}</h5>
   </div>
   <div class="billto-container">
     <div class="invoice-date">
@@ -35,10 +35,10 @@
       <h5>Bill To</h5>
       <h3>{{invoice.clientName}}</h3>
       <div class="address">
-        <h5>{{invoice.clientAddress.street}}</h5>
-        <h5>{{invoice.clientAddress.city}}</h5>
-        <h5>{{invoice.clientAddress.postCode}}</h5>
-        <h5>{{invoice.clientAddress.country}}</h5>
+        <h5>{{clientAddress.street}}</h5>
+        <h5>{{clientAddress.city}}</h5>
+        <h5>{{clientAddress.postCode}}</h5>
+        <h5>{{clientAddress.country}}</h5>
       </div>
     </div>
     <div class="sent-to">

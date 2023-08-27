@@ -10,6 +10,7 @@ import {EditInvoiceDialogComponent} from "../edit-invoice-dialog/edit-invoice-di
 import {BasePortalOutlet, CdkPortalOutlet, Portal, PortalOutlet} from "@angular/cdk/portal";
 import {Overlay, PositionStrategy} from "@angular/cdk/overlay";
 import {DialogService} from "../../services/dialog.service";
+import {Address} from "../../models/address.model";
 
 @Component({
   selector: 'view-invoices',
@@ -22,6 +23,9 @@ import {DialogService} from "../../services/dialog.service";
 export class ViewInvoicesComponent implements OnInit{
   invoice!: Invoice;
   items!: Item[];
+  addresses!: Address[];
+  clientAddress!: Address;
+  senderAddress!: Address;
   editInvoiceOpen = false;
   editDialog!: DialogRef;
 
@@ -38,15 +42,23 @@ export class ViewInvoicesComponent implements OnInit{
     this.isNotMobile$ = this.breakPoint.observe('(min-width: 768px)').pipe(
       map(({ matches }) => matches)
     );
-    const fullInvoice = this.activatedRoute.snapshot.data['fullInvoice'];
-    this.invoice = fullInvoice.newInvoice;
-    this.items = fullInvoice.items;
     this.activatedRoute.data.subscribe(data => {
       this.invoice = data["fullInvoice"].newInvoice;
       this.items = data["fullInvoice"].items;
+      this.addresses = data["fullInvoice"].addresses;
+      console.log(data["fullInvoice"].items)
+      this.clientAddress = this.findAddress(this.addresses, "clientAddress");
+      this.senderAddress = this.findAddress(this.addresses, "senderAddress");
     });
   }
 
+  findAddress(addresses: Address[], attachedTo: string){
+    const address = addresses.find(address => address.attachedTo === attachedTo);
+    if(typeof address === undefined){
+      return {} as Address;
+    }
+    return {...address} as Address;
+  }
   openEditInvoiceDialog(){
 
     /*const header = document.getElementById('header');
@@ -66,6 +78,7 @@ export class ViewInvoicesComponent implements OnInit{
       data: {
         invoice: this.invoice,
         items: this.items,
+        addresses: this.addresses,
         isEdit: true
       },
       id: "editInvoice",

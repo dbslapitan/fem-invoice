@@ -35,6 +35,8 @@ export class EditInvoiceDialogComponent implements OnInit, DoCheck{
   menuIsOpen = false;
   paymentTerm = 1;
   isAddBtnClicked = false;
+  clientAddress!: Address | undefined;
+  senderAddress!: Address | undefined;
 
   connectedPositions: ConnectedPosition[] = [
     {
@@ -54,7 +56,7 @@ export class EditInvoiceDialogComponent implements OnInit, DoCheck{
   ];
 
   constructor(private dialog: Dialog,
-              @Inject(DIALOG_DATA) private data: {invoice: Invoice, items: Item[], isEdit: boolean},
+              @Inject(DIALOG_DATA) private data: {invoice: Invoice, items: Item[], addresses: Address[], isEdit: boolean},
               private fb: FormBuilder,
               private decimalPipe: DecimalPipe) {
 
@@ -64,20 +66,24 @@ export class EditInvoiceDialogComponent implements OnInit, DoCheck{
     this.invoice = this.data.invoice;
     this.inputItems = this.data.items;
 
+    const addresses = this.data.addresses;
+    this.clientAddress = addresses.find(address => address.attachedTo === "clientAddress");
+    this.senderAddress = addresses.find(address => address.attachedTo === "senderAddress");
+
     this.paymentTerm = this.invoice.paymentTerms;
 
     this.editForm = this.fb.group({
       stringId: [this.invoice.stringId],
-      senderStreet: [this.invoice.senderAddress.street, Validators.required],
-      senderCity: [this.invoice.senderAddress.city, Validators.required],
-      senderPostCode: [this.invoice.senderAddress.postCode, Validators.required],
-      senderCountry: [this.invoice.senderAddress.country, Validators.required],
+      senderStreet: [this.senderAddress!.street, Validators.required],
+      senderCity: [this.senderAddress!.city, Validators.required],
+      senderPostCode: [this.senderAddress!.postCode, Validators.required],
+      senderCountry: [this.senderAddress!.country, Validators.required],
       clientName: [this.invoice.clientName, Validators.required],
       clientEmail: [this.invoice.clientEmail, [Validators.required, Validators.email]],
-      clientStreet: [this.invoice.clientAddress.street, Validators.required],
-      clientCity: [this.invoice.clientAddress.city, Validators.required],
-      clientPostCode: [this.invoice.clientAddress.postCode, Validators.required],
-      clientCountry: [this.invoice.clientAddress.country, Validators.required],
+      clientStreet: [this.clientAddress!.street, Validators.required],
+      clientCity: [this.clientAddress!.city, Validators.required],
+      clientPostCode: [this.clientAddress!.postCode, Validators.required],
+      clientCountry: [this.clientAddress!.country, Validators.required],
       createdAt: [{value: this.invoice.createdAt, disabled: this.data.isEdit}, Validators.required],
       paymentTerms: [this.invoice.paymentTerms, Validators.required],
       paymentDue: [this.invoice.paymentDue, Validators.required],

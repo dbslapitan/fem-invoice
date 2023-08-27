@@ -11,6 +11,4 @@ export interface Invoice{
   clientEmail: string;
   status: string;
   total: number;
-  clientAddress: Address;
-  senderAddress: Address;
 }
