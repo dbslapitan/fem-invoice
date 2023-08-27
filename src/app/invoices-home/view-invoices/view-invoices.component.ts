@@ -12,6 +12,7 @@ import {Overlay, PositionStrategy} from "@angular/cdk/overlay";
 import {DialogService} from "../../services/dialog.service";
 import {Address} from "../../models/address.model";
 import {mark} from "@angular/compiler-cli/src/ngtsc/perf/src/clock";
+import {DeleteDialogComponent} from "../../delete-dialog/delete-dialog.component";
 
 @Component({
   selector: 'view-invoices',
@@ -100,5 +101,23 @@ export class ViewInvoicesComponent implements OnInit{
     this.invoiceService.markInvoiceAsPaid(this.invoice.stringId).pipe(
       tap(() => this.router.navigate(['invoices', this.invoice.stringId]))
     ).subscribe(console.log);
+  }
+
+  deleteClicked(){
+    const dialogRef = this.dialog.open(DeleteDialogComponent,
+      {
+        data: {stringId: this.invoice.stringId},
+        backdropClass: "delete-backdrop",
+        disableClose: true,
+        id: "deleteInvoice"
+      });
+    dialogRef.closed.pipe(
+      switchMap(isDelete => {
+        if(isDelete){
+          return of(null);
+        }
+        return of(null);
+      })
+    ).subscribe();
   }
 }

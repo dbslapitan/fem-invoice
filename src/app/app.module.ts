@@ -19,6 +19,7 @@ import { DatePickerComponent } from './custom-inputs/date-picker/date-picker.com
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import { LoadingComponent } from './loading/loading.component';
+import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { LoadingComponent } from './loading/loading.component';
     ItemsListComponent,
     EditInvoiceDialogComponent,
     DatePickerComponent,
-    LoadingComponent
+    LoadingComponent,
+    DeleteDialogComponent
   ],
     imports: [
       BrowserModule,

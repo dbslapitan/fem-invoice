@@ -133,3 +133,8 @@ h6{
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.cdk-overlay-backdrop.delete-backdrop.cdk-overlay-backdrop-showing{
+  background-color: #000000;
+  opacity: 0.4984;
+}
