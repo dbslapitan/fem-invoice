@@ -25,7 +25,8 @@ import {Address} from "../../models/address.model";
 @Component({
   selector: 'edit-invoice-dialog',
   templateUrl: './edit-invoice-dialog.component.html',
-  styleUrls: ['./edit-invoice-dialog.component.css']
+  styleUrls: ['./edit-invoice-dialog.component.css',
+  './edit-invoice-dialog-tablet.component.css']
 })
 export class EditInvoiceDialogComponent implements OnInit, DoCheck{
 

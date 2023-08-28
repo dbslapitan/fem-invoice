@@ -116,8 +116,12 @@ export class ViewInvoicesComponent implements OnInit{
         if(isDelete){
           return this.invoiceService.deleteInvoice(this.invoice.stringId);
         }
-        return of(null);
+        return of(false);
       }),
-    ).subscribe(response => this.router.navigate(['invoices']));
+    ).subscribe(response => {
+      if(response){
+        this.router.navigate(['invoices']);
+      }
+    });
   }
 }

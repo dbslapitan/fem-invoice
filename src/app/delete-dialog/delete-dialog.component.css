@@ -38,9 +38,17 @@ h5{
   padding: 1.125rem 1.5rem 0.9375rem 1.5rem;
 }
 
+.cancel:hover{
+  background-color: var(--hover-edit);
+}
+
 .delete{
   background-color: #EC5757;
   border-radius: 1.5rem;
   color: #FFFFFF;
   padding: 1.125rem 1.5625rem 0.9375rem 1.5rem;
+}
+
+.delete:hover{
+  background-color: #FF9797;
 }
