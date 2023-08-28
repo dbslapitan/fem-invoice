@@ -28,4 +28,8 @@ export class InvoiceService {
   markInvoiceAsPaid(stringId: string){
     return this.http.put(`${environment.baseUrl}/api/v1/invoices/mark-as-paid/${stringId}`, {});
   }
+
+  deleteInvoice(stringId: string){
+    return this.http.delete(`${environment.baseUrl}/api/v1/invoices/delete/${stringId}`);
+  }
 }

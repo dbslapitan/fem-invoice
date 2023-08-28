@@ -114,10 +114,10 @@ export class ViewInvoicesComponent implements OnInit{
     dialogRef.closed.pipe(
       switchMap(isDelete => {
         if(isDelete){
-          return of(null);
+          return this.invoiceService.deleteInvoice(this.invoice.stringId);
         }
         return of(null);
       })
-    ).subscribe();
+    ).subscribe(console.log);
   }
 }
