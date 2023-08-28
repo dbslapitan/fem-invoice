@@ -153,8 +153,8 @@ export class DatePickerComponent implements ControlValueAccessor, OnInit{
   }
 
   onClick(){
-    this.dateIsOpen = !this.dateIsOpen;
     if(!this.disabled){
+      this.dateIsOpen = !this.dateIsOpen;
       if(!this.touched){
         this.onTouch();
         this.touched = true;
