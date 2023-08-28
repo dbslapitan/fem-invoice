@@ -37,10 +37,12 @@ export class ViewInvoicesComponent implements OnInit{
               private activatedRoute: ActivatedRoute,
               private breakPoint: BreakpointObserver,
               private dialog: Dialog,
-              private router: Router) {
+              private router: Router,
+              private overlay: Overlay) {
   }
 
   ngOnInit() {
+
     this.isNotMobile$ = this.breakPoint.observe('(min-width: 768px)').pipe(
       map(({ matches }) => matches)
     );
@@ -83,6 +85,9 @@ export class ViewInvoicesComponent implements OnInit{
         isEdit: true
       },
       id: "editInvoice",
+      backdropClass: 'edit-backdrop',
+      positionStrategy:
+        this.overlay.position().global().left()
     });
     dialogRef.closed.pipe(
       switchMap((body: any) => {

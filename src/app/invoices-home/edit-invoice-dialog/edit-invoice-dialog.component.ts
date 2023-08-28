@@ -15,12 +15,13 @@ import {Item} from "../../models/item.model";
 import {AbstractControl, FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {CDK_MENU} from "@angular/cdk/menu";
 import {CdkScrollable, ConnectedPosition, ScrollDispatcher} from "@angular/cdk/overlay";
-import {Observable} from "rxjs";
+import {map, Observable} from "rxjs";
 import {DecimalPipe, formatNumber} from "@angular/common";
 import {InvoiceService} from "../../services/invoice.service";
 import {FullInvoice} from "../../models/full-invoice";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Address} from "../../models/address.model";
+import {BreakpointObserver} from "@angular/cdk/layout";
 
 @Component({
   selector: 'edit-invoice-dialog',
@@ -56,14 +57,20 @@ export class EditInvoiceDialogComponent implements OnInit, DoCheck{
     }
   ];
 
+  isNotMobile$!: Observable<boolean>;
+
   constructor(private dialog: Dialog,
               @Inject(DIALOG_DATA) private data: {invoice: Invoice, items: Item[], addresses: Address[], isEdit: boolean},
               private fb: FormBuilder,
-              private decimalPipe: DecimalPipe) {
+              private decimalPipe: DecimalPipe,
+              private breakPoint: BreakpointObserver) {
 
   }
 
   ngOnInit() {
+    this.isNotMobile$ = this.breakPoint.observe('(min-width: 768px)').pipe(
+      map(({ matches }) => matches)
+    );
     this.invoice = this.data.invoice;
     this.inputItems = this.data.items;
 

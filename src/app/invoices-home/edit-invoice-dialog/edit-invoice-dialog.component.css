@@ -166,6 +166,9 @@ li > label:hover{
   border: 1px solid var(--payment-term-hover);
 }
 
+input{
+}
+
 .input-container.short{
   width: 9.5rem;
 }
