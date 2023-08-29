@@ -44,7 +44,7 @@ form{
 }
 
 form > h4:first-of-type{
-  margin: 1.375rem 0 1.5625rem;
+  margin: 0 0 1.5625rem;
 }
 
 form > h4:last-of-type{
@@ -164,9 +164,6 @@ li > label:hover{
 .input-container.dropdown > .menu-flag:checked + .payment-term-menu
 {
   border: 1px solid var(--payment-term-hover);
-}
-
-input{
 }
 
 .input-container.short{

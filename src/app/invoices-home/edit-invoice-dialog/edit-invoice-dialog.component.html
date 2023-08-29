@@ -52,7 +52,7 @@
       <input id="clientPostCode" type="text" formControlName="clientPostCode">
     </div>
 
-    <div class="input-container">
+    <div class="input-container mobile-short">
       <label for="clientCountry">Country</label>
       <input id="clientCountry" type="text" formControlName="clientCountry">
     </div>
@@ -100,7 +100,7 @@
 
       <ng-container  *ngFor="let itemForm of getItems.controls; let item=index">
         <div class="item-container" [formGroupName]="item">
-          <div class="input-container">
+          <div class="input-container item-name">
             <label for="itemName">Item Name</label>
             <input id="itemName" type="text" formControlName="name">
           </div>
