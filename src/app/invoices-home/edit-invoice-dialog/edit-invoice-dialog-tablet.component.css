@@ -93,4 +93,12 @@
   .item-container:first-of-type > .delete-btn{
     margin: 2.625rem 0 auto auto;
   }
+
+  .invoice-date{
+      width: 15rem;
+  }
+
+  .payment-term{
+      width: 15rem;
+  }
 }
