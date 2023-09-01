@@ -27,7 +27,8 @@ import {BreakpointObserver} from "@angular/cdk/layout";
   selector: 'edit-invoice-dialog',
   templateUrl: './edit-invoice-dialog.component.html',
   styleUrls: ['./edit-invoice-dialog.component.css',
-  './edit-invoice-dialog-tablet.component.css']
+  './edit-invoice-dialog-tablet.component.css',
+  './edit-invoice-dialog-desktop.component.css']
 })
 export class EditInvoiceDialogComponent implements OnInit, DoCheck{
 

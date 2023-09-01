@@ -22,6 +22,7 @@
   }
 
   .scrollable {
+    border-radius: 0 1.25rem 1.25rem 0;
     width: 38.5rem;
     height: calc(100vh - 5rem);
     margin-top: 5rem;

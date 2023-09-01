@@ -33,6 +33,8 @@ export class ViewInvoicesComponent implements OnInit{
 
   isNotMobile$!: Observable<boolean>;
 
+  desktopSetting = "0px";
+
   constructor(private invoiceService: InvoiceService,
               private activatedRoute: ActivatedRoute,
               private breakPoint: BreakpointObserver,
@@ -46,6 +48,19 @@ export class ViewInvoicesComponent implements OnInit{
     this.isNotMobile$ = this.breakPoint.observe('(min-width: 768px)').pipe(
       map(({ matches }) => matches)
     );
+    /*
+    this.breakPoint.observe('(min-width: 1440px)').subscribe( breakPoint => {
+      console.log(breakPoint.matches)
+      if(breakPoint.matches){
+        if(this.desktopSetting === "0px"){
+          this.dialog.getDialogById("editInvoice")?.close(null);
+        }
+        this.desktopSetting = "6.4375rem";
+      }
+      else {
+        this.desktopSetting = "0px";
+      }
+    });*/
     this.activatedRoute.data.subscribe(data => {
       this.invoice = data["fullInvoice"].newInvoice;
       this.items = data["fullInvoice"].items;
@@ -87,7 +102,7 @@ export class ViewInvoicesComponent implements OnInit{
       id: "editInvoice",
       backdropClass: 'edit-backdrop',
       positionStrategy:
-        this.overlay.position().global().left()
+        this.overlay.position().global().left(this.desktopSetting)
     });
     dialogRef.closed.pipe(
       switchMap((body: any) => {
