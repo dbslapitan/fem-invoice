@@ -33,8 +33,6 @@ export class ViewInvoicesComponent implements OnInit{
 
   isNotMobile$!: Observable<boolean>;
 
-  desktopSetting = "0px";
-
   constructor(private invoiceService: InvoiceService,
               private activatedRoute: ActivatedRoute,
               private breakPoint: BreakpointObserver,
@@ -102,7 +100,7 @@ export class ViewInvoicesComponent implements OnInit{
       id: "editInvoice",
       backdropClass: 'edit-backdrop',
       positionStrategy:
-        this.overlay.position().global().left(this.desktopSetting)
+        this.overlay.position().global().left()
     });
     dialogRef.closed.pipe(
       switchMap((body: any) => {

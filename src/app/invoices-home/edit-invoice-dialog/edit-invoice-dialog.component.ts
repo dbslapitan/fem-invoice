@@ -15,7 +15,7 @@ import {Item} from "../../models/item.model";
 import {AbstractControl, FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {CDK_MENU} from "@angular/cdk/menu";
 import {CdkScrollable, ConnectedPosition, ScrollDispatcher} from "@angular/cdk/overlay";
-import {map, Observable} from "rxjs";
+import {map, Observable, onErrorResumeNextWith} from "rxjs";
 import {DecimalPipe, formatNumber} from "@angular/common";
 import {InvoiceService} from "../../services/invoice.service";
 import {FullInvoice} from "../../models/full-invoice";
@@ -32,14 +32,16 @@ import {BreakpointObserver} from "@angular/cdk/layout";
 })
 export class EditInvoiceDialogComponent implements OnInit, DoCheck{
 
-  invoice!: Invoice;
-  inputItems!: Item[];
+  invoice!: Invoice | null;
+  inputItems!: Item[] | null;
   editForm!: FormGroup;
   menuIsOpen = false;
   paymentTerm = 1;
   isAddBtnClicked = false;
   clientAddress!: Address | undefined;
   senderAddress!: Address | undefined;
+  isEdit = false;
+  createdAt = new Date();
 
   connectedPositions: ConnectedPosition[] = [
     {
@@ -72,36 +74,67 @@ export class EditInvoiceDialogComponent implements OnInit, DoCheck{
     this.isNotMobile$ = this.breakPoint.observe('(min-width: 768px)').pipe(
       map(({ matches }) => matches)
     );
-    this.invoice = this.data.invoice;
-    this.inputItems = this.data.items;
+    this.isEdit = this.data.isEdit;
+this.populateForm();
+  }
 
-    const addresses = this.data.addresses;
-    this.clientAddress = addresses.find(address => address.attachedTo === "clientAddress");
-    this.senderAddress = addresses.find(address => address.attachedTo === "senderAddress");
+  populateForm(){
+    if(this.data.isEdit){
+        this.invoice = this.data.invoice;
+        this.inputItems = this.data.items;
 
-    this.paymentTerm = this.invoice.paymentTerms;
+        this.createdAt = this.invoice.createdAt;
 
-    this.editForm = this.fb.group({
-      stringId: [this.invoice.stringId],
-      senderStreet: [this.senderAddress!.street, Validators.required],
-      senderCity: [this.senderAddress!.city, Validators.required],
-      senderPostCode: [this.senderAddress!.postCode, Validators.required],
-      senderCountry: [this.senderAddress!.country, Validators.required],
-      clientAddressId: [this.clientAddress?.id],
-      senderAddressId: [this.senderAddress?.id],
-      clientName: [this.invoice.clientName, Validators.required],
-      clientEmail: [this.invoice.clientEmail, [Validators.required, Validators.email]],
-      clientStreet: [this.clientAddress!.street, Validators.required],
-      clientCity: [this.clientAddress!.city, Validators.required],
-      clientPostCode: [this.clientAddress!.postCode, Validators.required],
-      clientCountry: [this.clientAddress!.country, Validators.required],
-      createdAt: [{value: this.invoice.createdAt, disabled: this.data.isEdit}, Validators.required],
-      paymentTerms: [this.invoice.paymentTerms, Validators.required],
-      paymentDue: [this.invoice.paymentDue, Validators.required],
-      description: [this.invoice.description, Validators.required],
-      items: this.fb.array([], Validators.required)
-    });
-    this.addItems();
+        const addresses = this.data.addresses;
+        this.clientAddress = addresses.find(address => address.attachedTo === "clientAddress");
+        this.senderAddress = addresses.find(address => address.attachedTo === "senderAddress");
+
+        this.paymentTerm = this.invoice.paymentTerms;
+
+        this.editForm = this.fb.group({
+            stringId: [this.invoice.stringId],
+            senderStreet: [this.senderAddress!.street, Validators.required],
+            senderCity: [this.senderAddress!.city, Validators.required],
+            senderPostCode: [this.senderAddress!.postCode, Validators.required],
+            senderCountry: [this.senderAddress!.country, Validators.required],
+            clientAddressId: [this.clientAddress?.id],
+            senderAddressId: [this.senderAddress?.id],
+            clientName: [this.invoice.clientName, Validators.required],
+            clientEmail: [this.invoice.clientEmail, [Validators.required, Validators.email]],
+            clientStreet: [this.clientAddress!.street, Validators.required],
+            clientCity: [this.clientAddress!.city, Validators.required],
+            clientPostCode: [this.clientAddress!.postCode, Validators.required],
+            clientCountry: [this.clientAddress!.country, Validators.required],
+            createdAt: [{value: this.createdAt, disabled: this.data.isEdit}, Validators.required],
+            paymentTerms: [this.invoice.paymentTerms, Validators.required],
+            paymentDue: [this.invoice.paymentDue, Validators.required],
+            description: [this.invoice.description, Validators.required],
+            items: this.fb.array([], Validators.required)
+        });
+        this.addItems();
+    }else{
+        this.editForm = this.fb.group({
+            stringId: [null],
+            senderStreet: [null, Validators.required],
+            senderCity: [null, Validators.required],
+            senderPostCode: [null, Validators.required],
+            senderCountry: [null, Validators.required],
+            clientAddressId: [null],
+            senderAddressId: [null],
+            clientName: [null, Validators.required],
+            clientEmail: [null, [Validators.required, Validators.email]],
+            clientStreet: [null, Validators.required],
+            clientCity: [null, Validators.required],
+            clientPostCode: [null, Validators.required],
+            clientCountry: [null, Validators.required],
+            createdAt: [{value: this.createdAt, disabled: this.data.isEdit}, Validators.required],
+            paymentTerms: [1, Validators.required],
+            paymentDue: [null, Validators.required],
+            description: [null, Validators.required],
+            items: this.fb.array([], Validators.required)
+        });
+    }
+
   }
 
   ngDoCheck() {
@@ -170,16 +203,19 @@ export class EditInvoiceDialogComponent implements OnInit, DoCheck{
 
   addItems(){
 
-    for(let item of this.inputItems){
-      const itemForm = this.fb.group({
-        name: [item.name, Validators.required],
-        quantity: [item.quantity, Validators.required],
-        price: [item.price, Validators.required],
-        total: [item.total, Validators.required],
-        id: [item.id]
-      });
-      this.getItems.push(itemForm);
+    if(this.inputItems !== null){
+        for(let item of this.inputItems){
+            const itemForm = this.fb.group({
+                name: [item.name, Validators.required],
+                quantity: [item.quantity, Validators.required],
+                price: [item.price, Validators.required],
+                total: [item.total, Validators.required],
+                id: [item.id]
+            });
+            this.getItems.push(itemForm);
+        }
     }
+
   }
 
   cancelChanges(){
@@ -197,12 +233,14 @@ export class EditInvoiceDialogComponent implements OnInit, DoCheck{
   }
 
   paymentTermClicked(day: number, flag: HTMLInputElement){
-    const createdAtDate = new Date(this.invoice.createdAt);
-    createdAtDate.setDate(createdAtDate.getDate() + day);
-    this.editForm.patchValue({paymentTerms: day, paymentDue: createdAtDate});
-    this.paymentTerm = day;
-    this.menuIsOpen = false;
-    flag.checked = false;
+    if(this.invoice !== null){
+        const createdAtDate = new Date(this.createdAt);
+        createdAtDate.setDate(createdAtDate.getDate() + day);
+        this.editForm.patchValue({paymentTerms: day, paymentDue: createdAtDate});
+        this.paymentTerm = day;
+        this.menuIsOpen = false;
+        flag.checked = false;
+    }
   }
 
   menuClicked(flag: HTMLInputElement){
@@ -247,4 +285,6 @@ export class EditInvoiceDialogComponent implements OnInit, DoCheck{
       (this.getItems.controls[index] as FormGroup).controls['quantity'].setValue(1);
     }
   }
+
+    protected readonly onErrorResumeNextWith = onErrorResumeNextWith;
 }

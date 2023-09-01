@@ -1,6 +1,9 @@
 <div class="scrollable" cdk-scrollable>
   <button class="go-back" (click)="goBackClicked()"  *ngIf="!(isNotMobile$ | async)"><h4>Go back</h4></button>
-  <h2 class="string-id">Edit <span>#</span>{{invoice.stringId}}</h2>
+  <h2 class="string-id" *ngIf="isEdit; else newInvoiceTitle">Edit <span>#</span>{{invoice ? invoice.stringId : ""}}</h2>
+  <ng-template #newInvoiceTitle>
+    <h2 class="string-id">New Invoice</h2>
+  </ng-template>
 
   <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
 
@@ -72,7 +75,7 @@
               cdkOverlayOrigin
               #trigger="cdkOverlayOrigin"
       >
-        Net {{paymentTerm}} Day<ng-container *ngIf="invoice.paymentTerms !== 1">s</ng-container>
+        Net {{paymentTerm}} Day<ng-container *ngIf="paymentTerm !== 1">s</ng-container>
       </button>
       <ng-template cdkConnectedOverlay
                    [cdkConnectedOverlayOrigin]="trigger"

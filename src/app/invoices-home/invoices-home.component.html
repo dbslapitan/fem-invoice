@@ -40,7 +40,7 @@
       </ul>
     </ng-template>
 
-    <button class="new-invoice"><span class="new-invoice-design"></span>
+    <button class="new-invoice" (click)="newInvoiceClicked()"><span class="new-invoice-design"></span>
       <span *ngIf="isNotMobile$ | async; else newInvoice">New Invoice</span>
       <ng-template #newInvoice>
         <span>New</span>

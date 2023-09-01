@@ -1,11 +1,14 @@
 import {Component, ElementRef, EventEmitter, OnInit, Output, Renderer2} from '@angular/core';
 import {BreakpointObserver} from "@angular/cdk/layout";
-import {filter, map, mapTo, Observable, shareReplay} from "rxjs";
-import {ConnectedPosition, OverlayContainer, ScrollStrategyOptions} from "@angular/cdk/overlay";
+import {filter, map, mapTo, Observable, of, shareReplay, switchMap, tap} from "rxjs";
+import {ConnectedPosition, Overlay, OverlayContainer, ScrollStrategyOptions} from "@angular/cdk/overlay";
 import {Invoice} from "../models/invoice.model";
 import {InvoiceService} from "../services/invoice.service";
 import {Filter} from "../models/filter.model";
 import {LoadingService} from "../services/loading.service";
+import {EditInvoiceDialogComponent} from "./edit-invoice-dialog/edit-invoice-dialog.component";
+import {Dialog} from "@angular/cdk/dialog";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'invoices-home',
@@ -40,7 +43,10 @@ export class InvoicesHomeComponent implements OnInit{
   constructor(private breakPoint: BreakpointObserver,
               private invoiceService: InvoiceService,
               private scrollStrategyOptions: ScrollStrategyOptions,
-              private loadingService: LoadingService) {
+              private loadingService: LoadingService,
+              private overlay: Overlay,
+              private dialog: Dialog,
+              private router: Router) {
 
   }
 
@@ -106,5 +112,33 @@ export class InvoicesHomeComponent implements OnInit{
     this.invoicesCount$ = this.filteredInvoice$.pipe(
       map(invoices => invoices.length)
     );
+  }
+
+  newInvoiceClicked(){
+    const header = document.getElementById('header');
+    header!.scrollIntoView();
+    const dialogRef = this.dialog.open(EditInvoiceDialogComponent, {
+      data: {
+        invoice: null,
+        items: null,
+        addresses: null,
+        isEdit: false
+      },
+      id: "createInvoice",
+      backdropClass: 'edit-backdrop',
+      positionStrategy:
+        this.overlay.position().global().left()
+    });
+    dialogRef.closed.pipe(
+      switchMap((body: any) => {
+        if(body){
+          return this.invoiceService.saveFullInvoiceChanges(body);
+        }
+        else {
+          return of(null)
+        }
+      }),
+      tap(() => this.router.navigate(['invoices'] ))
+    ).subscribe(console.log);
   }
 }
