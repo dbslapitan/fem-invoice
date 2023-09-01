@@ -158,6 +158,7 @@ li > label:hover{
   flex-wrap: wrap;
   width: 100%;
   margin-top: 1.5625rem;
+  justify-content: space-between;
 }
 
 .input-container.dropdown > .payment-term-menu:hover,
@@ -193,6 +194,14 @@ li > label:hover{
 
 .input-container > label{
   color: var(--item-name);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.15385;
+  letter-spacing: -0.00625rem;
+  margin: 0 0 0.5625rem 0;
+}
+
+.input-container > .error-message{
   font-size: 0.8125rem;
   font-weight: 500;
   line-height: 1.15385;
