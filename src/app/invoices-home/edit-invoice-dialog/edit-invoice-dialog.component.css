@@ -139,6 +139,10 @@ li > label:hover{
   letter-spacing: -0.013rem;
 }
 
+input.ng-invalid.ng-touched{
+  border: 1px solid #EC5757;
+}
+
 .go-back{
   background-color: inherit;
   color: var(--invoices-title);
@@ -202,6 +206,7 @@ li > label:hover{
 }
 
 .input-container > .error-message{
+  color: #EC5757;
   font-size: 0.8125rem;
   font-weight: 500;
   line-height: 1.15385;

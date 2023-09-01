@@ -9,55 +9,64 @@
 
     <h4>Bill From</h4>
     <div class="input-container">
-      <label for="senderStreet">Street Address</label>
-      <p class="error-message">can't be empty</p>
+      <label for="senderStreet" [ngClass]="!editForm.controls['senderStreet'].valid && editForm.controls['senderStreet'].touched ? 'error-message' : null">Street Address</label>
+      <p class="error-message" *ngIf="!editForm.controls['senderStreet'].valid && editForm.controls['senderStreet'].touched">can't be empty</p>
       <input id="senderStreet" type="text" formControlName="senderStreet">
     </div>
 
     <div class="input-container short">
-      <label for="senderCity">City</label>
+      <label for="senderCity" [ngClass]="!editForm.controls['senderCity'].valid && editForm.controls['senderCity'].touched ? 'error-message' : null">City</label>
+      <p class="error-message" *ngIf="!editForm.controls['senderCity'].valid && editForm.controls['senderCity'].touched">can't be empty</p>
       <input id="senderCity" type="text" formControlName="senderCity">
     </div>
 
     <div class="input-container short">
-      <label for="senderPostCode">Post Code</label>
+      <label for="senderPostCode" [ngClass]="!editForm.controls['senderPostCode'].valid && editForm.controls['senderPostCode'].touched ? 'error-message' : null">Post Code</label>
+      <p class="error-message" *ngIf="!editForm.controls['senderPostCode'].valid && editForm.controls['senderPostCode'].touched">can't be empty</p>
       <input id="senderPostCode" type="text" formControlName="senderPostCode">
     </div>
 
     <div class="input-container mobile-short">
-      <label for="senderCountry">Country</label>
+      <label for="senderCountry" [ngClass]="!editForm.controls['senderCountry'].valid && editForm.controls['senderCountry'].touched ? 'error-message' : null">Country</label>
+      <p class="error-message" *ngIf="!editForm.controls['senderCountry'].valid && editForm.controls['senderCountry'].touched">can't be empty</p>
       <input id="senderCountry" type="text" formControlName="senderCountry">
     </div>
 
     <h4>Bill To</h4>
 
     <div class="input-container">
-      <label for="name">Client's Name</label>
+      <label for="name" [ngClass]="!editForm.controls['clientName'].valid && editForm.controls['clientName'].touched ? 'error-message' : null">Client's Name</label>
+      <p class="error-message" *ngIf="!editForm.controls['clientName'].valid && editForm.controls['clientName'].touched">can't be empty</p>
       <input id="name" type="text" formControlName="clientName">
     </div>
 
     <div class="input-container">
-      <label for="email">Client's Email</label>
+      <label for="email" [ngClass]="!editForm.controls['clientEmail'].valid && editForm.controls['clientEmail'].touched ? 'error-message' : null">Client's Email</label>
+      <p class="error-message" *ngIf="!editForm.controls['clientEmail'].valid && editForm.controls['clientEmail'].touched">can't be empty</p>
       <input id="email" type="email" formControlName="clientEmail">
     </div>
 
     <div class="input-container">
-      <label for="clientStreet">Street Address</label>
+      <label for="clientStreet" [ngClass]="!editForm.controls['clientStreet'].valid && editForm.controls['clientStreet'].touched ? 'error-message' : null">Street Address</label>
+      <p class="error-message" *ngIf="!editForm.controls['clientStreet'].valid && editForm.controls['clientStreet'].touched">can't be empty</p>
       <input id="clientStreet" type="text" formControlName="clientStreet">
     </div>
 
     <div class="input-container short">
-      <label for="clientCity">City</label>
+      <label for="clientCity" [ngClass]="!editForm.controls['clientCity'].valid && editForm.controls['clientCity'].touched ? 'error-message' : null">City</label>
+      <p class="error-message" *ngIf="!editForm.controls['clientCity'].valid && editForm.controls['clientCity'].touched">can't be empty</p>
       <input id="clientCity" type="text" formControlName="clientCity">
     </div>
 
     <div class="input-container short">
-      <label for="clientPostCode">Post Code</label>
+      <label for="clientPostCode" [ngClass]="!editForm.controls['clientPostCode'].valid && editForm.controls['clientPostCode'].touched ? 'error-message' : null">Post Code</label>
+      <p class="error-message" *ngIf="!editForm.controls['clientPostCode'].valid && editForm.controls['clientPostCode'].touched">can't be empty</p>
       <input id="clientPostCode" type="text" formControlName="clientPostCode">
     </div>
 
     <div class="input-container mobile-short">
-      <label for="clientCountry">Country</label>
+      <label for="clientCountry" [ngClass]="!editForm.controls['clientCountry'].valid && editForm.controls['clientCountry'].touched ? 'error-message' : null">Country</label>
+      <p class="error-message" *ngIf="!editForm.controls['clientCountry'].valid && editForm.controls['clientCountry'].touched">can't be empty</p>
       <input id="clientCountry" type="text" formControlName="clientCountry">
     </div>
 
@@ -95,7 +104,8 @@
     </div>
 
     <div class="input-container">
-      <label for="projectDescription">Project Description</label>
+      <label for="projectDescription" [ngClass]="!editForm.controls['description'].valid && editForm.controls['description'].touched ? 'error-message' : null">Project Description</label>
+      <p class="error-message" *ngIf="!editForm.controls['description'].valid && editForm.controls['description'].touched">can't be empty</p>
       <input id="projectDescription" type="text" formControlName="description">
     </div>
 
@@ -105,7 +115,8 @@
       <ng-container  *ngFor="let itemForm of getItems.controls; let item=index">
         <div class="item-container" [formGroupName]="item">
           <div class="input-container item-name">
-            <label for="itemName">Item Name</label>
+            <label for="itemName" [ngClass]="!itemForm.valid && itemForm.touched ? 'error-message' : null">Item Name</label>
+            <p class="error-message" *ngIf="!itemForm.valid && itemForm.touched">can't be empty</p>
             <input id="itemName" type="text" formControlName="name">
           </div>
           <div class="input-container quantity">
