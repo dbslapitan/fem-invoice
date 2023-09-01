@@ -285,7 +285,38 @@ this.populateForm();
       (this.getItems.controls[index] as FormGroup).controls['quantity'].setValue(1);
     }
   }
-  saveAsDraft(){
+  saveAsDraft(){const rawValue = this.editForm.getRawValue();
+      const {items,
+          senderStreet,
+          senderCity,
+          senderPostCode,
+          senderCountry,
+          senderAddressId,
+          clientAddressId,
+          clientStreet,
+          clientCity,
+          clientPostCode,
+          clientCountry,
+          ...invoice} = rawValue;
 
+      const addresses: any = [];
+      const senderAddress = {street: senderStreet,
+          city: senderCity,
+          postCode: senderPostCode,
+          country: senderCountry,
+          attachedTo: "senderAddress",
+          id: senderAddressId
+      };
+      const clientAddress = {street: clientStreet,
+          city: clientCity,
+          postCode: clientPostCode,
+          country: clientCountry,
+          attachedTo: "clientAddress",
+          id: clientAddressId
+      }
+      addresses.push(senderAddress);
+      addresses.push(clientAddress);
+      const body = {items, invoice, addresses};
+    this.dialog.getDialogById("createInvoice")?.close(body);
   }
 }

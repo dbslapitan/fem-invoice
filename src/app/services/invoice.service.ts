@@ -32,4 +32,8 @@ export class InvoiceService {
   deleteInvoice(stringId: string){
     return this.http.delete(`${environment.baseUrl}/api/v1/invoices/delete/${stringId}`);
   }
+
+  saveInvoiceAsDraft(body: {invoice: Invoice, addresses: Address[], items: Item[]}){
+    return this.http.post(`${environment.baseUrl}/api/v1/invoices/save-as-draft`, body);
+  }
 }

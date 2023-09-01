@@ -132,7 +132,7 @@ export class InvoicesHomeComponent implements OnInit{
     dialogRef.closed.pipe(
       switchMap((body: any) => {
         if(body){
-          return this.invoiceService.saveFullInvoiceChanges(body);
+          return this.invoiceService.saveInvoiceAsDraft(body);
         }
         else {
           return of(null)
