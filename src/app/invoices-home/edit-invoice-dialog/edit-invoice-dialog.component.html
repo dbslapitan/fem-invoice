@@ -144,10 +144,19 @@
     <p class="error-message" *ngIf="editForm.invalid">- All fields must be added</p>
     <p class="error-message" *ngIf="editForm.controls['items'].getRawValue().length === 0">- An item must be added</p>
   </div>
-  <div class="action-container">
+  <div class="edit action-container" *ngIf="isEdit; else newInvoiceActions">
     <button class="cancel-changes" (click)="cancelChanges()">Cancel</button>
     <button class="save-changes" (click)="submitBtn.click()">Save Changes</button>
   </div>
+
+  <ng-template #newInvoiceActions>
+    <div class="new-invoice action-container">
+      <button class="discard" (click)="cancelChanges()">Discard</button>
+      <button class="save-draft" (click)="saveAsDraft()">Save as Draft</button>
+      <button class="save-changes" (click)="submitBtn.click()">Save Changes</button>
+    </div>
+  </ng-template>
+
 </div>
 
 <loading></loading>

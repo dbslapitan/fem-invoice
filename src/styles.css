@@ -45,6 +45,7 @@ body{
   --date-color: #0C0E16;
   --selected-day: #9277FF;
   --loading-bkg: #F8F8FB;
+  --save-draft-hover: #0C0E16;
 }
 
 body.dark-mode{
@@ -73,6 +74,7 @@ body.dark-mode{
   --date-color: #DFE3FA;
   --selected-day: #7C5DFA;
   --loading-bkg: #141625;
+  --save-draft-hover: #1E2139;
 }
 
 button {
