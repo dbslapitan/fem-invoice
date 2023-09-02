@@ -69,12 +69,11 @@ export class InvoicesHomeComponent implements OnInit{
     );
 
     this.invoices$ = this.updateInvoices$.pipe(switchMap(() => {
-      return this.loadingService
-        .showLoaderUntilCompletion(this.invoiceService.getAllInvoices())
-        .pipe(
-          shareReplay()
-        );
-    }))
+        return this.loadingService
+          .showLoaderUntilCompletion(this.invoiceService.getAllInvoices())
+      }),
+      shareReplay()
+    );
 
     if(localStorage.getItem('filters')){
       try {
@@ -152,8 +151,7 @@ export class InvoicesHomeComponent implements OnInit{
         else {
           return of(null);
         }
-      }),
-      tap(() => this.router.navigate(['invoices'] )),
+      })
     ).subscribe(response => {
       if(response?.success){
         this.updateInvoices$.next(true);

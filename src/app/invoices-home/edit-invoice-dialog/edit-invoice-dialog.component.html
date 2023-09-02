@@ -72,7 +72,7 @@
 
     <div class="input-container invoice-date">
       <h6>Invoice Date</h6>
-      <date-picker formControlName="createdAt"></date-picker>
+      <date-picker formControlName="createdAt" (dateChanged)="dateChanged()"></date-picker>
     </div>
 
     <div class="input-container dropdown payment-term">

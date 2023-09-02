@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit} from '@angular/core';
+import {Component, ElementRef, EventEmitter, OnInit, Output} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 import {ConnectedPosition} from "@angular/cdk/overlay";
 import {Month} from "../../models/enums";
@@ -23,6 +23,9 @@ export class DatePickerComponent implements ControlValueAccessor, OnInit{
   disabled = false;
   dateIsOpen = false;
   daysOfTheMonth: number[] = [];
+
+  @Output()
+  dateChanged = new EventEmitter<void>();
 
   connectedPositions: ConnectedPosition[] = [
     {
@@ -101,6 +104,7 @@ export class DatePickerComponent implements ControlValueAccessor, OnInit{
     this.finalDate.setDate(day);
     this.onChange(this.finalDate);
     this.initialDate = new Date(this.finalDate.getFullYear(), this.finalDate.getMonth(), day);
+    this.dateChanged.emit();
     this.dateIsOpen = false;
   }
 

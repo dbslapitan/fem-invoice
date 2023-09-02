@@ -328,4 +328,12 @@ this.populateForm();
       const body = {items, invoice, addresses};
     this.dialog.getDialogById("createInvoice")?.close(body);
   }
+
+  dateChanged(){
+    this.createdAt = this.editForm.controls["createdAt"].value;
+    const paymentDue = new Date();
+    paymentDue.setFullYear(this.createdAt.getFullYear(), this.createdAt.getMonth(), this.createdAt.getDate() + 1)
+    this.editForm.controls["paymentDue"].setValue(paymentDue);
+    console.log(this.createdAt);
+  }
 }
