@@ -127,6 +127,11 @@ li > label:hover{
   width: 0.77777625rem;
 }
 
+.delete-btn:hover{
+  background-color: red;
+  backdrop-filter: ;
+}
+
 .discard{
   background-color: #F9FAFE;
   color: #7E88C3;

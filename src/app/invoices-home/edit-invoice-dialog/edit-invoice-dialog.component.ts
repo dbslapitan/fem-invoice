@@ -113,24 +113,27 @@ this.populateForm();
         });
         this.addItems();
     }else{
+
+      const paymentDue = new Date();
+      paymentDue.setFullYear(this.createdAt.getFullYear(), this.createdAt.getMonth(), this.createdAt.getDate() + 1)
         this.editForm = this.fb.group({
             stringId: [null],
-            senderStreet: [null, Validators.required],
-            senderCity: [null, Validators.required],
-            senderPostCode: [null, Validators.required],
-            senderCountry: [null, Validators.required],
+            senderStreet: ["", Validators.required],
+            senderCity: ["", Validators.required],
+            senderPostCode: ["", Validators.required],
+            senderCountry: ["", Validators.required],
             clientAddressId: [null],
             senderAddressId: [null],
-            clientName: [null, Validators.required],
-            clientEmail: [null, [Validators.required, Validators.email]],
-            clientStreet: [null, Validators.required],
-            clientCity: [null, Validators.required],
-            clientPostCode: [null, Validators.required],
-            clientCountry: [null, Validators.required],
+            clientName: ["", Validators.required],
+            clientEmail: ["", [Validators.required, Validators.email]],
+            clientStreet: ["", Validators.required],
+            clientCity: ["", Validators.required],
+            clientPostCode: ["", Validators.required],
+            clientCountry: ["", Validators.required],
             createdAt: [{value: this.createdAt, disabled: this.data.isEdit}, Validators.required],
             paymentTerms: [1, Validators.required],
-            paymentDue: [null, Validators.required],
-            description: [null, Validators.required],
+            paymentDue: [paymentDue, Validators.required],
+            description: ["", Validators.required],
             items: this.fb.array([], Validators.required)
         });
     }
@@ -257,11 +260,17 @@ this.populateForm();
   }
 
   updatePrice(index: number, priceDisplay: HTMLInputElement, total: HTMLElement){
-    const priceSplit = priceDisplay.value.split(',');
     const price = (this.getItems.controls[index] as FormGroup).controls['price'];
     const quantity = (this.getItems.controls[index] as FormGroup).controls['quantity'];
     const totalAmt = (this.getItems.controls[index] as FormGroup).controls['total'];
-    price.setValue(priceSplit.join(''));
+    if(isNaN(parseFloat(priceDisplay.value))){
+      price.setValue(0);
+    }
+    else{
+      const priceSplit = priceDisplay.value.split(',');
+      price.setValue(priceSplit.join(''));
+    }
+
     totalAmt.setValue(price.value * quantity.value);
     priceDisplay.value = this.decimalPipe.transform(price.value, ".2") as string;
   }
