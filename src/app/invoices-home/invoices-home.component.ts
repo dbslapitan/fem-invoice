@@ -1,6 +1,18 @@
 import {Component, ElementRef, EventEmitter, OnInit, Output, Renderer2} from '@angular/core';
 import {BreakpointObserver} from "@angular/cdk/layout";
-import {filter, map, mapTo, Observable, of, shareReplay, switchMap, tap} from "rxjs";
+import {
+  BehaviorSubject,
+  catchError,
+  filter,
+  map,
+  mapTo,
+  Observable,
+  of,
+  shareReplay,
+  switchMap,
+  tap,
+  throwError
+} from "rxjs";
 import {ConnectedPosition, Overlay, OverlayContainer, ScrollStrategyOptions} from "@angular/cdk/overlay";
 import {Invoice} from "../models/invoice.model";
 import {InvoiceService} from "../services/invoice.service";
@@ -23,6 +35,7 @@ export class InvoicesHomeComponent implements OnInit{
   invoices$!: Observable<Invoice[]>;
   filteredInvoice$!: Observable<Invoice[]>;
   invoicesCount$!: Observable<number>;
+  private updateInvoices$ = new BehaviorSubject<boolean>(true);
 
   isNotMobile$!: Observable<boolean>;
   filterIsOpen = false;
@@ -55,11 +68,13 @@ export class InvoicesHomeComponent implements OnInit{
       map(({ matches }) => matches)
     );
 
-    this.invoices$ = this.loadingService
-      .showLoaderUntilCompletion(this.invoiceService.getAllInvoices())
-      .pipe(
-        shareReplay()
-      );
+    this.invoices$ = this.updateInvoices$.pipe(switchMap(() => {
+      return this.loadingService
+        .showLoaderUntilCompletion(this.invoiceService.getAllInvoices())
+        .pipe(
+          shareReplay()
+        );
+    }))
 
     if(localStorage.getItem('filters')){
       try {
@@ -135,10 +150,14 @@ export class InvoicesHomeComponent implements OnInit{
           return this.invoiceService.saveInvoiceAsDraft(body);
         }
         else {
-          return of(null)
+          return of(null);
         }
       }),
-      tap(() => this.router.navigate(['invoices'] ))
-    ).subscribe(console.log);
+      tap(() => this.router.navigate(['invoices'] )),
+    ).subscribe(response => {
+      if(response?.success){
+        this.updateInvoices$.next(true);
+      }
+    });
   }
 }

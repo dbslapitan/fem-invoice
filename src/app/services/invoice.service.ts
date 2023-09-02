@@ -34,6 +34,6 @@ export class InvoiceService {
   }
 
   saveInvoiceAsDraft(body: {invoice: Invoice, addresses: Address[], items: Item[]}){
-    return this.http.post(`${environment.baseUrl}/api/v1/invoices/save-as-draft`, body);
+    return this.http.post<{success: boolean, message: string}>(`${environment.baseUrl}/api/v1/invoices/save-as-draft`, body);
   }
 }
